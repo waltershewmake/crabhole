@@ -43,6 +43,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on('host', () => {
+        console.log('host')
         const room = getRoomName()
 
         socket.join(room)
@@ -50,6 +51,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on('command', (data) => {
+        console.log(`command: ${data}`)
         const { command, room } = z.object({
             command: z.string(),
             room: z.string(),
@@ -61,6 +63,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on('response', (data) => {
+        console.log(`response: ${data}`)
         const { response, room } = z.object({
             response: z.string(),
             room: z.string(),

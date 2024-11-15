@@ -2,23 +2,27 @@ import { Server } from "socket.io";
 import express, { json } from 'express';
 import { createServer } from 'node:http';
 import { z } from "zod";
-import { adjectives, animals, colors, NumberDictionary, uniqueNamesGenerator } from "unique-names-generator";
+import { adjectives, animals, NumberDictionary, uniqueNamesGenerator } from "unique-names-generator";
+import cors from 'cors';
 
 const app = express();
 const server = createServer(app);
 const io = new Server(server);
 
-const numbers = NumberDictionary.generate({ min: 1, max: 9})
+app.use(cors({
+    origin: '*'
+}))
+
+const numbers = NumberDictionary.generate({ min: 0, max: 999999, length: 6})
 
 const getRoomName = () => {
-    // generate a wormhole room name
     return uniqueNamesGenerator({
         dictionaries: [
-            adjectives,
-            colors,
-            animals,
             numbers,
-        ]
+            adjectives,
+            animals,
+        ],
+        separator: '-',
     })
 }
 

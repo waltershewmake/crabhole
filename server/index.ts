@@ -55,6 +55,8 @@ io.on('connection', (socket) => {
             room: z.string(),
         }).parse(JSON.parse(data))
 
+        socket.join(room)
+
         io.to(room).emit('command', command)
     })
 
@@ -66,8 +68,6 @@ io.on('connection', (socket) => {
 
         io.to(room).emit('response', response)
     })
-
-    socket.on("*", console.log)
 })
 
 server.listen(3000, () => {

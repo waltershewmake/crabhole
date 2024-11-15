@@ -55,7 +55,7 @@ io.on('connection', (socket) => {
             room: z.string(),
         }).parse(data)
 
-        io.to(room).emit(command)
+        io.to(room).emit('command', command)
     })
 
     socket.on('response', (data) => {

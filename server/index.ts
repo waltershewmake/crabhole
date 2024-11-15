@@ -53,7 +53,7 @@ io.on('connection', (socket) => {
         const { command, room } = z.object({
             command: z.string(),
             room: z.string(),
-        }).parse(data)
+        }).parse(JSON.parse(data))
 
         io.to(room).emit('command', command)
     })
@@ -62,7 +62,7 @@ io.on('connection', (socket) => {
         const { response, room } = z.object({
             response: z.string(),
             room: z.string(),
-        }).parse(data)
+        }).parse(JSON.parse(data))
 
         io.to(room).emit('response', response)
     })

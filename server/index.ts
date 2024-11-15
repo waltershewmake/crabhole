@@ -66,6 +66,8 @@ io.on('connection', (socket) => {
 
         io.to(room).emit('response', response)
     })
+
+    socket.on("*", console.log)
 })
 
 server.listen(3000, () => {

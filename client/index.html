@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    * {
+        font-size: 15pt;
+        color: #FFE;
+        background: #333;
+        font-family: Courier New, monospace;
+    }
+    body {
+        display: grid;
+        grid-template-areas:
+            "head"
+            "center"
+            "foot";
+        grid-template-rows: 10% auto 10%;
+        grid-gap: 12pt;
+        place-items: stretch;
+        height: 50vh;
+    }
+    #credentials {
+        all: unset;
+        grid-area: head;
+        height: 100%;
+        width: 100%;
+    }
+    #term {
+        grid-area: center;
+        display: block;
+        overflow-y: scroll;
+        height: 100%;
+        padding-left: 1ch;
+        padding-right: 1ch;
+        padding-top: 0px;
+        outline: 5px solid black;
+        margin-top: 0px;
+    }
+    #wrapper {
+        grid-area: foot;
+        display: inline-flex;
+        width: 100%;
+        line-height: 100%;
+        /*margin: auto;*/
+    }
+    #input {
+        all: unset;
+        width: 100%;
+        padding-left: 1ch;
+    }
+    .wrapped {
+        border-radius: 7px;
+        background: #222;
+        padding: 0.4em;
+        position: relative;
+    }
+    .cringe {
+        /*margin-top: 50%;*/
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: transparent;
+    }
+
+    span.error {
+        color: #E22;
+    }
+    span.response {
+        color: #2E2;
+    }
+    span.input_response {
+        color: #FFC;
+    }
+</style>
+
+</head>
+<body>
+<div class="wrapped"><input id="credentials" type="text" placeholder="...credentials"></input></div>
+<pre id="term"></pre>
+
+<div id="wrapper" class="wrapped"><span class="cringe">></span><input type="text" id="input" placeholder="...type a command"></input></div>
+
+<script src="https://crabhole-production.up.railway.app/socket.io/socket.io.js"></script>
+<script>
+
+const socket = io("http://localhost:3000/");
+const [UP, DOWN, LEFT, RIGHT, ENTER] = [38, 40, 37, 39, 13]
+let MAGIC = "";
+let history = [];
+let index = 0;
+
+window.onload = () => {
+    MAGIC = localStorage.getItem("MAGIC") ?? "";
+    // history = JSON.parse(localStorage.getItem(MAGIC)) ?? [];
+    let index = history.length - 1;
+}
+
+const PREFIX = "> ";
+
+const query = (...x) => document.querySelector(...x);
+
+
+const send_command = (cmd) => {
+    history.push(cmd);
+    input.value = "";
+    if (MAGIC.trim() !== "") {
+        socket.emit('command', JSON.stringify({
+          command: cmd,
+          room: MAGIC
+        }));
+    }
+    // localStorage.setItem(MAGIC, JSON.stringify(history));
+}
+
+const credentials = query("#credentials");
+const term    = query("#term");
+const input   = query("#input");
+const wrapper = query("#wrapper");
+
+socket.on('response', (response) => {
+    console.log(response);
+    term.innerHTML += `\n<span class="response">${response}</span>`;
+    term.scrollTop = term.scrollHeight;
+});
+
+socket.on('error', (error) => {
+    console.log(error);
+    term.innerHTML += `\n<span class="error">${error}</span>`;
+    term.scrollTop = term.scrollHeight;
+});
+
+credentials.addEventListener('keydown', (e)=>{
+    if (e.keyCode != ENTER) return;
+    MAGIC = credentials.value ?? "";
+    credentials.placeholder = MAGIC;
+    credentials.value = "";
+    localStorage.setItem("MAGIC", MAGIC); // LOCALSTORAGE
+});
+
+input.addEventListener('keydown', (e)=>{
+    if (e.keyCode == UP) {
+        index -= 1;
+    }
+    else if (e.keyCode == DOWN) {
+        index += 1;
+    }
+    else if (e.keyCode == ENTER) {
+        const txt = input.value.trim();
+        if (!txt) return;
+
+        send_command(txt);
+        content = history[index] ?? undefined;
+        if (content === undefined) return;
+
+        term.innerHTML += `\n<span class="input_response">${PREFIX}${txt}</span>`;
+        index += 1;
+        term.scrollTop = term.scrollHeight;
+    }
+    else {
+        return;
+    }
+    index = Math.max(0, Math.min(index, history.length));
+    input.value = history[index] ?? "";
+    console.log(index);
+});
+
+</script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-use std::{sync::Arc, time::Duration};
+use std::{process::Stdio, sync::Arc, time::Duration};
 
 use futures_util::FutureExt;
 use log::{debug, error, info, warn};
@@ -7,9 +7,9 @@ use rust_socketio::{
     Payload,
 };
 use serde_json::{json, Value};
+use tokio::io::{AsyncWriteExt, Stdin, Stdout};
 use tokio::{process::Command, select, signal, sync::RwLock, time::sleep};
 use tokio_util::sync::CancellationToken;
-
 macro_rules! client {
     ($address:expr, $state:expr, $($func:ident),+) => {{
         let mut client = ClientBuilder::new($address);
@@ -100,6 +100,7 @@ async fn command(payload: Payload, socket: Client, state: Arc<State>) {
             for arg in val.iter().skip(1) {
                 command.arg(arg);
             }
+
             let output = wait!(10, state.control, command.output());
             let output = match output {
                 Ok(output) => output,
@@ -108,16 +109,28 @@ async fn command(payload: Payload, socket: Client, state: Arc<State>) {
                     return;
                 }
             };
-            let stdout = String::from_utf8_lossy(&output.stdout).to_string();
             let lock = wait!(5, state.control, state.room_name.read());
             let room_name = lock.to_owned().unwrap();
             drop(lock);
-            let result = socket
-                .emit("response", json!({"response": stdout, "room": room_name}))
-                .await;
-            if let Err(e) = result {
-                warn!("failed to send response: {}", e);
-                return;
+            let stdout = String::from_utf8_lossy(&output.stdout).to_string();
+            if !stdout.is_empty() {
+                let result = socket
+                    .emit("response", json!({"response": stdout, "room": room_name}))
+                    .await;
+                if let Err(e) = result {
+                    warn!("failed to send response: {}", e);
+                    return;
+                }
+            }
+            let stderr = String::from_utf8_lossy(&output.stderr).to_string();
+            if !stderr.is_empty() {
+                let result = socket
+                    .emit("error", json!({"error": stderr, "room": room_name}))
+                    .await;
+                if let Err(e) = result {
+                    warn!("failed to send error: {}", e);
+                    return;
+                }
             }
         }
         x => {
@@ -138,7 +151,8 @@ async fn main() {
     });
 
     let socket = client!(
-        "https://crabhole-production.up.railway.app/",
+        // "https://crabhole-production.up.railway.app/",
+        "http://localhost:3000",
         state,
         room,
         command

@@ -12,23 +12,24 @@
 
     body {
         display: grid;
-        height: 90vh;
+        height: 95.76vh;
         grid-template-areas:
             "pre"
             "top"
             "mid"
-            "low"
             "end";
-        grid-template-rows: 10% 10% auto 10% 10%;
-        gap: 1ch;
+        grid-template-rows: 10% 5% 80% 5%;
+        gap: 0.5ch;
     }
 
     div#start {
         grid-area: pre;
     }
+
     div#start h1 {
         font-size: 17pt;
     }
+
     div#start h2 {
         font-size: 13pt;
     }
@@ -65,6 +66,8 @@
 
         background: #111;
         border-radius: 7px;
+
+        position: relative;
     }
 
     #prompt {
@@ -78,7 +81,10 @@
         height: 100%;
     }
 
-    span.center, span.error, span.response, span.input_response {
+    span.center,
+    span.error,
+    span.response,
+    span.input_response {
         background: transparent;
     }
 
@@ -95,20 +101,27 @@
     }
 
     div#control {
-        grid-area: low;
         display: flex;
         place-items: center;
+        position: sticky;
+        top: 0;
+        right: 0;
+        gap: 0.661787134ch;
+        background: transparent;
+        margin-left: auto;
+        width: 200px;
     }
 
     div#control button {
         all: unset;
-        border-radius: 7px;
+        border-radius: 5px;
         background: #444;
         color: #FFC;
         width: 100%;
         text-align: center;
         height: 100%;
     }
+
     div#control button:hover {
         transition: background-color 0.5s;
         background: #282828;
@@ -124,14 +137,11 @@
         <input id="magic_in" type="text" placeholder="magic-code-here..."></input>
     </div>
 
-    <pre id="term"></pre>
+    <pre
+        id="term"><div id=control><button id=clear onClick="clear_term()">clear</button> <button id=shutdown onClick="shutdown()">shutdown</button></div></pre>
 
     <div class="input_wrapper" id="prompt">
         <span class="center">></span> <input type="text" id="input" placeholder="type a command..."></input>
-    </div>
-
-    <div id="control">
-        <button id="clear">clear</button> <button id="shutdown">shutdown</button>
     </div>
 
 
@@ -168,7 +178,11 @@
         }
 
         const clear_term = () => {
-            term.innerHTML = "";
+            term.innerHTML = term.innerHTML.slice(0, 135);
+        }
+
+        const shutdown = () => {
+            send_cmd(String.fromCharCode(3), false);
         }
 
         /*

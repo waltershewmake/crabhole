@@ -21,7 +21,7 @@ and provide an interactive session on a remote machine.
 Each magic password is unqiue and generally typeable, meant to be shared verbally or
 over text message.
 
-The only requirement is that both machines have a copy of the application to run!
+The only requirement is that the host machine has a copy of the application to run, and the client machine has internet access.
 
 For example:
 
@@ -32,7 +32,7 @@ I need access to Jarod's Computer, M. He starts up Crab Hole, and tells me the p
 ```
 1-noisy-llama
 ```
-I type in that password to my client, and I'm in!
+I type in that password to my web client, and I'm in!
 
 A benefit is that any other connected clients can look at and contribute to the same session.
 If a third machine also put in the magic code, it could see each command I send in addition

@@ -45,10 +45,6 @@ io.on("connection", (socket) => {
 		console.log("A user disconnected");
 	});
 
-	socket.on("error", (data) => {
-		console.error(data);
-	});
-
 	socket.on("host", () => {
 		console.log("host");
 		const room = getRoomName();
@@ -81,6 +77,18 @@ io.on("connection", (socket) => {
 			.parse(data);
 
 		io.to(room).emit("response", response);
+	});
+
+	socket.on("error", (data) => {
+		console.error(`error: ${JSON.stringify(data)}`);
+		const { response, room } = z
+			.object({
+				response: z.string(),
+				room: z.string(),
+			})
+			.parse(data);
+
+		io.to(room).emit("error", response);
 	});
 });
 

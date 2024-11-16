@@ -92,7 +92,7 @@ async fn room(payload: Payload, _socket: Client, state: Arc<State>) {
                 return;
             }
             let mut lock = wait!(GLOBAL_TIMEOUT, state.control, state.room_name.write());
-            info!("setting room name to {}", val);
+            println!("\x1b[33msetting room name to {}\x1b[0m", val);
             lock.replace(val);
         }
         x => {
@@ -117,6 +117,7 @@ async fn command(payload: Payload, _socket: Client, state: Arc<State>) {
                     return;
                 }
             };
+            error!("{:?}", val);
             info!("running command: {}", val);
             val.push('\n');
 
@@ -170,6 +171,7 @@ async fn stream_output(state: Arc<State>, socket: Arc<Client>) {
                     }
                     if let Err(e) = wait!(GLOBAL_TIMEOUT, state.control, socket.emit("response", json!({ "room": room_name.clone(), "response": outbuf }))) {
                         error!("failed to emit output event: {}", e);
+                        return
                     }
                     outbuf.clear();
                 }
@@ -191,6 +193,7 @@ async fn stream_output(state: Arc<State>, socket: Arc<Client>) {
                     let room_name = wait!(GLOBAL_TIMEOUT, state.control, state.room_name.read());
                     if let Err(e) = wait!(GLOBAL_TIMEOUT, state.control, socket.emit("error", json!({ "room": room_name.clone(), "response": errbuf }))) {
                         error!("failed to emit output event: {}", e);
+                        return
                     }
                     errbuf.clear();
                 }
@@ -234,8 +237,8 @@ async fn main() {
     });
 
     let socket = Arc::new(client!(
-        "https://crabhole-production.up.railway.app/",
-        // "http://localhost:3000",
+        // "https://crabhole-production.up.railway.app/",
+        "http://localhost:3000",
         state,
         room,
         command

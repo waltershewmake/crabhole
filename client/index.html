@@ -164,12 +164,6 @@ socket.on('response', response => {
     // console.log(1);
 });
 
-// setInterval(()=>{
-//     db_list.forEach(item => term.innerHTML += item);
-//     db_list = [];
-//     scroll_term();
-// }, 100);
-
 socket.on('error', error => {
     term.innerHTML += `<span class="error">${error}</span><br>`;
     scroll_term();

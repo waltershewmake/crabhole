@@ -1,169 +1,198 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head></head>
 <style>
-    * {
-        font-size: 15pt;
-        color: #FFE;
-        background: #333;
-        font-family: Courier New, monospace;
-    }
-    body {
-        display: grid;
-        grid-template-areas:
-            "head"
-            "center"
-            "foot";
-        grid-template-rows: 10% auto 10%;
-        grid-gap: 12pt;
-        place-items: stretch;
-        height: 50vh;
-    }
-    #credentials {
-        all: unset;
-        grid-area: head;
-        height: 100%;
-        width: 100%;
-    }
-    #term {
-        grid-area: center;
-        display: block;
-        overflow-y: scroll;
-        height: 100%;
-        padding-left: 1ch;
-        padding-right: 1ch;
-        padding-top: 0px;
-        outline: 5px solid black;
-        margin-top: 0px;
-    }
-    #wrapper {
-        grid-area: foot;
-        display: inline-flex;
-        width: 100%;
-        line-height: 100%;
-        /*margin: auto;*/
-    }
-    #input {
-        all: unset;
-        width: 100%;
-        padding-left: 1ch;
-    }
-    .wrapped {
-        border-radius: 7px;
-        background: #222;
-        padding: 0.4em;
-        position: relative;
-    }
-    .cringe {
-        /*margin-top: 50%;*/
-        position: absolute;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        background: transparent;
-    }
+* {
+    font-size: 15pt;
+    color: #FFE;
+    background: #333;
+    font-family: Courier New, monospace;
+}
 
-    span.error {
-        color: #E22;
-    }
-    span.response {
-        color: #2E2;
-    }
-    span.input_response {
-        color: #FFC;
-    }
+body {
+    display: grid;
+    height: 70vh;
+    grid-template-areas:
+        "top"
+        "mid"
+        "bot";
+    grid-template-rows: 10% 80% 10%;
+    gap: 30px;
+}
+
+div.input_wrapper {
+    border-radius: 7px;
+    background: #222;
+    position: relative;
+}
+
+input {
+    all: unset;
+    width: 100%;
+    height: 100%;
+    padding-inline: 1ch;
+}
+
+input#magic_in { /* Top Box */
+    grid-area: top;
+}
+
+pre#term {
+    grid-area: mid;
+
+    overflow-y: scroll;
+    outline: 5px solid black;
+    margin-top: 0px;
+    height: 100%;
+}
+
+#prompt { /* Bottom Box */
+    box-sizing: border-box;
+    grid-area: bot;
+    display: flex;
+    align-items: center;
+    padding-left: 1ch;
+    width: 100%;
+    height: 100%;
+}
+
+span.center {
+    background: transparent;
+}
+
+span.error {
+    color: #E22;
+}
+span.response {
+    color: #FFC;
+}
+span.input_response {
+    color: #2E2;
+}
+
 </style>
-
-</head>
 <body>
-<div class="wrapped"><input id="credentials" type="text" placeholder="...credentials"></input></div>
+
+<div class="input_wrapper">
+    <input id="magic_in" type="text" placeholder="magic-code-here..."></input>
+</div>
+
 <pre id="term"></pre>
 
-<div id="wrapper" class="wrapped"><span class="cringe">></span><input type="text" id="input" placeholder="...type a command"></input></div>
+<div class="input_wrapper" id="prompt">
+<span class="center">></span> <input type="text" id="input" placeholder="type a command..."></input>
+</div>
+
+<div id="control">
+    <button name="clear">clear</button> <button name="sigint">sigint (^c)</button> <button name="sigtstp">sigtstp (^z)</button> <button name="eof">eof (^D)</button>
+</div>
+
 
 <script src="https://crabhole-production.up.railway.app/socket.io/socket.io.js"></script>
 <script>
 
-const socket = io("http://localhost:3000/");
-const [UP, DOWN, LEFT, RIGHT, ENTER] = [38, 40, 37, 39, 13]
-let MAGIC = "";
-let history = [];
-let index = 0;
+/*
+ * ENVIRONMENT SET UP
+ * sockets, constants, queries
+ */
+const socket = io("https://crabhole-production.up.railway.app/");
+const [UP, DOWN, LEFT, RIGHT, ENTER] = [38,40,37,39,13];
 
-window.onload = () => {
-    MAGIC = localStorage.getItem("MAGIC") ?? "";
-    // history = JSON.parse(localStorage.getItem(MAGIC)) ?? [];
-    let index = history.length - 1;
-}
-
-const PREFIX = "> ";
+let magic_code = "";
+let history    = [];
+let index      = 0;
+let cmd_prefix = "> ";
 
 const query = (...x) => document.querySelector(...x);
+const magic_in = query("#magic_in");
+const term     = query("#term");
+const input    = query("#input");
+const prompt   = query("#prompt");
+/*
+ * LISTENERS
+ * sockets, window, etc
+ */
 
-
-const send_command = (cmd) => {
-    history.push(cmd);
-    input.value = "";
-    if (MAGIC.trim() !== "") {
-        socket.emit('command', JSON.stringify({
-          command: cmd,
-          room: MAGIC
-        }));
-    }
-    // localStorage.setItem(MAGIC, JSON.stringify(history));
+const scroll_term = () => {
+    term.scrollTop = term.scrollHeight;
 }
 
-const credentials = query("#credentials");
-const term    = query("#term");
-const input   = query("#input");
-const wrapper = query("#wrapper");
+window.addEventListener('load', () => {
+    // load items from localStorage as necessary
+    magic_code = localStorage.getItem("magic_code") ?? "";
+    history    = JSON.parse(localStorage.getItem(magic_code)) ?? []; // get history associated with code
+    index      = Math.max(history.length, 0);
 
-socket.on('response', (response) => {
-    console.log(response);
-    term.innerHTML += `\n<span class="response">${response}</span>`;
-    term.scrollTop = term.scrollHeight;
+    magic_in.value = magic_code;
+    console.log(magic_in.value);
 });
 
-socket.on('error', (error) => {
-    console.log(error);
-    term.innerHTML += `\n<span class="error">${error}</span>`;
-    term.scrollTop = term.scrollHeight;
-});
-
-credentials.addEventListener('keydown', (e)=>{
+magic_in.addEventListener('keydown', e => {
     if (e.keyCode != ENTER) return;
-    MAGIC = credentials.value ?? "";
-    credentials.placeholder = MAGIC;
-    credentials.value = "";
-    localStorage.setItem("MAGIC", MAGIC); // LOCALSTORAGE
+    magic_code = magic_in.value ?? "";
+    magic_in.placeholder = magic_code;
+    magic_in.value = "";
+    localStorage.setItem("magic_code", magic_code);
 });
 
-input.addEventListener('keydown', (e)=>{
-    if (e.keyCode == UP) {
-        index -= 1;
+const send_cmd = (cmd, push=true) => {
+    if (push) {
+        history.push(cmd);
     }
-    else if (e.keyCode == DOWN) {
-        index += 1;
+    if (magic_code.trim() !== "") {
+        socket.emit("command", {
+            command: cmd,
+            room: magic_code,
+        });
     }
-    else if (e.keyCode == ENTER) {
-        const txt = input.value.trim();
-        if (!txt) return;
+    if (push) {
+        term.innerHTML += `<span class="input_response">${cmd_prefix}${cmd}</span><br>`
+    }
+    input.value = "";
+    localStorage.setItem(`${magic_code}`, JSON.stringify(history));
+}
 
-        send_command(txt);
-        content = history[index] ?? undefined;
-        if (content === undefined) return;
+socket.on('response', response => {
+    term.innerHTML += `<span class="response">${response}</span><br>`;
+    scroll_term();
+});
 
-        term.innerHTML += `\n<span class="input_response">${PREFIX}${txt}</span>`;
-        index += 1;
-        term.scrollTop = term.scrollHeight;
-    }
-    else {
-        return;
+socket.on('error', error => {
+    term.innerHTML += `<span class="error">${error}</span><br>`;
+    scroll_term();
+});
+
+input.addEventListener('keydown', e => {
+    switch (e.keyCode) {
+        case UP:
+            index -= 1;
+            break;
+        case DOWN:
+            index += 1;
+            break;
+        case ENTER:
+            const txt = input.value.trim();
+            if (!txt) return;
+            send_cmd(txt);
+            index += 1;
+            break;
+        default:
+            if (e.ctrlKey && e.keyCode != 17) {
+                send_cmd(String.fromCharCode(e.keyCode - 64), false);
+            }
+            return;
     }
     index = Math.max(0, Math.min(index, history.length));
-    input.value = history[index] ?? "";
+    if (index == history.length) {
+        input.value = "";
+    }
+    else {
+        input.value = history[index];
+    }
+    scroll_term();
     console.log(index);
+    console.log(history);
 });
-
 </script>
 </body>
 </html>

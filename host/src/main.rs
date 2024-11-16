@@ -1,7 +1,7 @@
 #![feature(async_closure)]
 #![feature(let_chains)]
 
-const GLOBAL_TIMEOUT: u64 = 100;
+const GLOBAL_TIMEOUT: u64 = 25;
 
 use std::{process::Stdio, sync::Arc, time::Duration};
 
@@ -68,6 +68,7 @@ struct State {
     room_name: RwLock<Option<String>>,
     control: CancellationToken,
     stdio: IO,
+    child_pid: u32,
 }
 
 async fn room(payload: Payload, _socket: Client, state: Arc<State>) {
@@ -120,8 +121,17 @@ async fn command(payload: Payload, _socket: Client, state: Arc<State>) {
             if val.len() == 1 {
                 match val.as_bytes()[0] {
                     3 => {
-                        debug!("received ctrl-c, shutting down");
-                        state.control.cancel();
+                        debug!("parsed ctrl-c, chutting down child process");
+                        debug!("{}", state.child_pid);
+                        let pid = state.child_pid;
+                        if let Err(e) = wait!(
+                            GLOBAL_TIMEOUT,
+                            state.control,
+                            Command::new("kill").arg("-2").arg(pid.to_string()).status()
+                        ) {
+                            error!("failed to kill child process: {}", e);
+                            return;
+                        }
                         return;
                     }
                     _ => {}
@@ -227,6 +237,7 @@ async fn main() {
         .spawn()
         .expect("failed to spawn process");
 
+    let pid = process.id().expect("failed to get process id");
     let stdin = process.stdin.expect("failed to open stdin");
     let stdout = process.stdout.expect("failed to open stdout");
     let stderr = process.stderr.expect("failed to open stderr");
@@ -237,6 +248,7 @@ async fn main() {
     let state = Arc::new(State {
         control: control.clone(),
         room_name: RwLock::new(None),
+        child_pid: pid,
         stdio: IO {
             stdin: Mutex::new(stdin),
             stdout: Mutex::new(stdout),
@@ -280,6 +292,12 @@ async fn main() {
                 debug!("main function received shutdown request");
             }
         }
+    }
+
+    #[allow(unreachable_code)]
+    #[allow(unused_variables)]
+    if let Err(e) = wait!(GLOBAL_TIMEOUT, state.control, socket.emit("error", json!({"room_name": state.room_name.try_read().unwrap_or(return).clone(), "response": "host disconnected"}))) {
+        error!("failed to disconnect: {}", e);
     }
 
     wait!(GLOBAL_TIMEOUT, state.control, socket.disconnect()).expect("Failed to disconnect");

@@ -1,3 +1,8 @@
+#![feature(async_closure)]
+#![feature(let_chains)]
+
+const GLOBAL_TIMEOUT: u64 = 500;
+
 use std::{process::Stdio, sync::Arc, time::Duration};
 
 use futures_util::FutureExt;
@@ -7,9 +12,15 @@ use rust_socketio::{
     Payload,
 };
 use serde_json::{json, Value};
-use tokio::io::{AsyncWriteExt, Stdin, Stdout};
+use tokio::{
+    io::{AsyncBufReadExt, AsyncWriteExt, BufReader, BufWriter},
+    process::{ChildStderr, ChildStdin, ChildStdout},
+    spawn,
+    sync::Mutex,
+};
 use tokio::{process::Command, select, signal, sync::RwLock, time::sleep};
 use tokio_util::sync::CancellationToken;
+
 macro_rules! client {
     ($address:expr, $state:expr, $($func:ident),+) => {{
         let mut client = ClientBuilder::new($address);
@@ -23,24 +34,40 @@ macro_rules! client {
     }};
 }
 macro_rules! wait {
-    ($seconds:literal, $control:expr, $future:expr $(,$err:expr)?) => {
+    ($seconds:expr, $control:expr, $future:expr $(,$err:expr)?) => {
         select! {
             x = $future => x,
             _ = $control.cancelled() => {
                 debug!("future ({}) aborted due to shutdown", stringify!($future));
                 return $($err)?;
             }
-            _ = sleep(Duration::from_secs($seconds)) => {
+            _ = sleep(Duration::from_millis($seconds)) => {
                 warn!("future ({}) timed out", stringify!($future));
                 return $($err)?;
             }
         }
     };
+    ($control:expr, $future:expr $(,$err:expr)?) => {
+        select! {
+            x = $future => x,
+            _ = $control.cancelled() => {
+                debug!("future ({}) aborted due to shutdown", stringify!($future));
+                return $($err)?;
+            }
+        }
+    }
+}
+
+struct IO {
+    stdin: Mutex<BufWriter<ChildStdin>>,
+    stdout: Mutex<BufReader<ChildStdout>>,
+    stderr: Mutex<BufReader<ChildStderr>>,
 }
 
 struct State {
     room_name: RwLock<Option<String>>,
     control: CancellationToken,
+    stdio: IO,
 }
 
 async fn room(payload: Payload, _socket: Client, state: Arc<State>) {
@@ -64,7 +91,7 @@ async fn room(payload: Payload, _socket: Client, state: Arc<State>) {
                 warn!("expected string length between 5 and 30, got len {}", len);
                 return;
             }
-            let mut lock = wait!(5, state.control, state.room_name.write());
+            let mut lock = wait!(GLOBAL_TIMEOUT, state.control, state.room_name.write());
             info!("setting room name to {}", val);
             lock.replace(val);
         }
@@ -74,7 +101,7 @@ async fn room(payload: Payload, _socket: Client, state: Arc<State>) {
     }
 }
 
-async fn command(payload: Payload, socket: Client, state: Arc<State>) {
+async fn command(payload: Payload, _socket: Client, state: Arc<State>) {
     debug!("command event received");
     match payload {
         Payload::Text(vec) => {
@@ -83,7 +110,7 @@ async fn command(payload: Payload, socket: Client, state: Arc<State>) {
                 warn!("expected vec of 1 item, got {} item(s)", len);
                 return;
             }
-            let val = match &vec[0] {
+            let mut val = match &vec[0] {
                 Value::String(s) => s.clone(),
                 _ => {
                     warn!("expected String, got {:?}", vec[0]);
@@ -91,50 +118,81 @@ async fn command(payload: Payload, socket: Client, state: Arc<State>) {
                 }
             };
             info!("running command: {}", val);
-            let val = val.trim().split(' ').collect::<Vec<&str>>();
-            if val.len() < 1 {
-                warn!("unable to run empty command");
+            val.push('\n');
+
+            debug!("obtaining lock on stdin");
+            let mut stdin = wait!(GLOBAL_TIMEOUT, state.control, state.stdio.stdin.lock());
+            debug!("lock acquired");
+
+            if let Err(e) = wait!(
+                GLOBAL_TIMEOUT,
+                state.control,
+                stdin.write_all(val.as_bytes())
+            ) {
+                error!("failed to write to stdin: {}", e);
                 return;
             }
-            let mut command = Command::new(val[0]);
-            for arg in val.iter().skip(1) {
-                command.arg(arg);
-            }
-
-            let output = wait!(10, state.control, command.output());
-            let output = match output {
-                Ok(output) => output,
-                Err(e) => {
-                    warn!("error running command: {}", e);
-                    return;
-                }
-            };
-            let lock = wait!(5, state.control, state.room_name.read());
-            let room_name = lock.to_owned().unwrap();
-            drop(lock);
-            let stdout = String::from_utf8_lossy(&output.stdout).to_string();
-            if !stdout.is_empty() {
-                let result = socket
-                    .emit("response", json!({"response": stdout, "room": room_name}))
-                    .await;
-                if let Err(e) = result {
-                    warn!("failed to send response: {}", e);
-                    return;
-                }
-            }
-            let stderr = String::from_utf8_lossy(&output.stderr).to_string();
-            if !stderr.is_empty() {
-                let result = socket
-                    .emit("error", json!({"error": stderr, "room": room_name}))
-                    .await;
-                if let Err(e) = result {
-                    warn!("failed to send error: {}", e);
-                    return;
-                }
+            if let Err(e) = wait!(GLOBAL_TIMEOUT, state.control, stdin.flush()) {
+                error!("failed to flush stdin: {}", e);
+                return;
             }
         }
         x => {
             warn!("expected String(s), got {:?}", x)
+        }
+    }
+}
+
+async fn stream_output(state: Arc<State>, socket: Arc<Client>) {
+    let mut stdout = state.stdio.stdout.lock().await;
+    let mut stderr = state.stdio.stderr.lock().await;
+    let mut outbuf = String::new();
+    let mut errbuf = String::new();
+    debug!("output stream starting");
+    loop {
+        // println!("{:?}", stdout);
+        // sleep(Duration::from_secs(5)).await;
+        select! {
+            _ = state.control.cancelled() => {
+                debug!("output stream loop ending due to shutdown");
+                return
+            }
+            status = stdout.read_line(&mut outbuf) => match status {
+                Ok(0) => {
+                    info!("stdout stream ended, shutting down");
+                    state.control.cancel();
+                    return
+                }
+                Ok(_) => {
+                    let room_name = wait!(GLOBAL_TIMEOUT, state.control, state.room_name.read());
+                    if let Err(e) = wait!(GLOBAL_TIMEOUT, state.control, socket.emit("response", json!({ "room": room_name.clone(), "response": outbuf }))) {
+                        error!("failed to emit output event: {}", e);
+                    }
+                    outbuf.clear();
+                }
+                Err(e) => {
+                    error!("failed to read from stdout: {}", e);
+                    return
+                }
+            },
+            status = stderr.read_line(&mut errbuf) => match status {
+                Ok(0) => {
+                    info!("stderr stream ended, shutting down");
+                    state.control.cancel();
+                    return
+                }
+                Ok(_) => {
+                    let room_name = wait!(GLOBAL_TIMEOUT, state.control, state.room_name.read());
+                    if let Err(e) = wait!(GLOBAL_TIMEOUT, state.control, socket.emit("error", json!({ "room": room_name.clone(), "response": errbuf }))) {
+                        error!("failed to emit output event: {}", e);
+                    }
+                    errbuf.clear();
+                }
+                _ => {
+                    error!("failed to read from stderr");
+                    return
+                }
+            }
         }
     }
 }
@@ -145,18 +203,39 @@ async fn main() {
 
     let control = CancellationToken::new();
 
+    let process = Command::new("sh")
+        .stdout(Stdio::piped())
+        .stderr(Stdio::piped())
+        .stdin(Stdio::piped())
+        .spawn()
+        .expect("failed to spawn process");
+
+    let stdin = process.stdin.expect("failed to open stdin");
+    let stdout = process.stdout.expect("failed to open stdout");
+    let stderr = process.stderr.expect("failed to open stderr");
+    let stdin = BufWriter::new(stdin);
+    let stdout = BufReader::new(stdout);
+    let stderr = BufReader::new(stderr);
+
     let state = Arc::new(State {
         control: control.clone(),
         room_name: RwLock::new(None),
+        stdio: IO {
+            stdin: Mutex::new(stdin),
+            stdout: Mutex::new(stdout),
+            stderr: Mutex::new(stderr),
+        },
     });
 
-    let socket = client!(
-        // "https://crabhole-production.up.railway.app/",
-        "http://localhost:3000",
+    let socket = Arc::new(client!(
+        "https://crabhole-production.up.railway.app/",
+        // "http://localhost:3000",
         state,
         room,
         command
-    );
+    ));
+
+    spawn(stream_output(state.clone(), socket.clone()));
 
     let result = socket
         .emit("host", "quidquid latine dictum sit; altum sonatur")

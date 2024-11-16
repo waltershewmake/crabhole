@@ -95,7 +95,8 @@ span.input_response {
  * ENVIRONMENT SET UP
  * sockets, constants, queries
  */
-const socket = io("https://crabhole-production.up.railway.app/");
+const socket = io("http://192.168.2.3:3000")
+//const socket = io("https://crabhole-production.up.railway.app/");
 const [UP, DOWN, LEFT, RIGHT, ENTER] = [38,40,37,39,13];
 
 let magic_code = "";
@@ -151,11 +152,23 @@ const send_cmd = (cmd, push=true) => {
     input.value = "";
     localStorage.setItem(`${magic_code}`, JSON.stringify(history));
 }
-
+let span = undefined;
+// let db_list = [];
 socket.on('response', response => {
-    term.innerHTML += `<span class="response">${response}</span><br>`;
+    db_list.push(`<span class="response">${response}</span><br>`);
+    span = document.createElement("span");
+    span.textContent = response;
+    term.appendChild(span);
+    term.appendChild(document.createElement("br"));
     scroll_term();
+    // console.log(1);
 });
+
+// setInterval(()=>{
+//     db_list.forEach(item => term.innerHTML += item);
+//     db_list = [];
+//     scroll_term();
+// }, 100);
 
 socket.on('error', error => {
     term.innerHTML += `<span class="error">${error}</span><br>`;

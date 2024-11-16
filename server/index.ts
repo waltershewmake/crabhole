@@ -25,9 +25,9 @@ app.use(
 	}),
 );
 
-const numbers = NumberDictionary.generate({ min: 0, max: 999999, length: 6 });
-
 const getRoomName = () => {
+	const numbers = NumberDictionary.generate({ min: 0, max: 9, length: 1 });
+
 	return uniqueNamesGenerator({
 		dictionaries: [numbers, adjectives, animals],
 		separator: "-",
@@ -58,7 +58,7 @@ io.on("connection", (socket) => {
 	});
 
 	socket.on("command", (data) => {
-		console.log(`command: ${data}`);
+		console.log(`command: ${JSON.stringify(data)}`);
 		const { command, room } = z
 			.object({
 				command: z.string(),
@@ -72,7 +72,7 @@ io.on("connection", (socket) => {
 	});
 
 	socket.on("response", (data) => {
-		console.log(`response: ${data}`);
+		console.log(`response: ${JSON.stringify(data)}`);
 		const { response, room } = z
 			.object({
 				response: z.string(),

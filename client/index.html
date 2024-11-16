@@ -44,6 +44,7 @@ pre#term {
     outline: 5px solid black;
     margin-top: 0px;
     height: 100%;
+    padding: 1ch;
 }
 
 #prompt { /* Bottom Box */
@@ -84,7 +85,7 @@ span.input_response {
 </div>
 
 <div id="control">
-    <button name="clear">clear</button> <button name="sigint">sigint (^c)</button> <button name="sigtstp">sigtstp (^z)</button> <button name="eof">eof (^D)</button>
+    <button id="clear">clear</button> <button id="sigint">sigint (^c)</button> <button id="sigtstp">sigtstp (^z)</button> <button id="eof">eof (^D)</button>
 </div>
 
 
@@ -95,8 +96,8 @@ span.input_response {
  * ENVIRONMENT SET UP
  * sockets, constants, queries
  */
-const socket = io("http://192.168.2.3:3000")
-//const socket = io("https://crabhole-production.up.railway.app/");
+//const socket = io("http://192.168.2.3:3000")
+const socket = io("https://crabhole-production.up.railway.app/");
 const [UP, DOWN, LEFT, RIGHT, ENTER] = [38,40,37,39,13];
 
 let magic_code = "";
@@ -109,6 +110,11 @@ const magic_in = query("#magic_in");
 const term     = query("#term");
 const input    = query("#input");
 const prompt   = query("#prompt");
+
+const btn_clear   = query("#clear");
+const btn_sigint  = query("#sigint");
+const btn_sigtstp = query("#sigtstp");
+const btn_eof     = query("#eof");
 /*
  * LISTENERS
  * sockets, window, etc
@@ -127,6 +133,12 @@ window.addEventListener('load', () => {
     magic_in.value = magic_code;
     console.log(magic_in.value);
 });
+
+btn_clear.addEventListener('click', () => term.innerHTML = "");
+btn_sigint.addEventListener('click', () => send_cmd(String.fromCharCode(3), false));
+btn_sigtstp.addEventListener('click', () => send_cmd(String.fromCharCode(26), false));
+btn_eof.addEventListener('click', () => send_cmd(String.fromCharCode(4), false));
+
 
 magic_in.addEventListener('keydown', e => {
     if (e.keyCode != ENTER) return;
@@ -153,15 +165,12 @@ const send_cmd = (cmd, push=true) => {
     localStorage.setItem(`${magic_code}`, JSON.stringify(history));
 }
 let span = undefined;
-// let db_list = [];
 socket.on('response', response => {
-    db_list.push(`<span class="response">${response}</span><br>`);
     span = document.createElement("span");
     span.textContent = response;
     term.appendChild(span);
     term.appendChild(document.createElement("br"));
     scroll_term();
-    // console.log(1);
 });
 
 socket.on('error', error => {

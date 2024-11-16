@@ -6,20 +6,31 @@
     * {
         font-size: 15pt;
         color: #FFE;
-        background: #333;
+        background-color: #333;
         font-family: Courier New, monospace;
     }
 
     body {
         display: grid;
-        height: 70vh;
+        height: 90vh;
         grid-template-areas:
+            "pre"
             "top"
             "mid"
             "low"
             "end";
-        grid-template-rows: 10% auto 10% 10%;
-        gap: 30px;
+        grid-template-rows: 10% 10% auto 10% 10%;
+        gap: 1ch;
+    }
+
+    div#start {
+        grid-area: pre;
+    }
+    div#start h1 {
+        font-size: 20pt;
+    }
+    div#start h2 {
+        font-size: 15pt;
     }
 
     body * {
@@ -48,16 +59,18 @@
         grid-area: mid;
 
         overflow-y: scroll;
-        outline: 5px solid black;
         margin-top: 0px;
         height: 100%;
         padding: 1ch;
+
+        background: #111;
+        border-radius: 7px;
     }
 
     #prompt {
         /* Bottom Box */
         box-sizing: border-box;
-        grid-area: low;
+        grid-area: end;
         display: flex;
         align-items: center;
         padding-left: 1ch;
@@ -65,7 +78,7 @@
         height: 100%;
     }
 
-    span.center {
+    span.center, span.error, span.response, span.input_response {
         background: transparent;
     }
 
@@ -82,7 +95,7 @@
     }
 
     div#control {
-        grid-area: end;
+        grid-area: low;
         display: flex;
         place-items: center;
     }
@@ -96,10 +109,17 @@
         text-align: center;
         height: 100%;
     }
+    div#control button:hover {
+        transition: background-color 0.5s;
+        background: #282828;
+    }
 </style>
 
 <body>
-
+    <div id="start">
+        <h1>Crab Hole</h1>
+        <h2>Jayson Bunnell, Walter Shewmake, Jarod Whiting</h2>
+    </div>
     <div class="input_wrapper">
         <input id="magic_in" type="text" placeholder="magic-code-here..."></input>
     </div>
@@ -122,8 +142,6 @@
          * ENVIRONMENT SET UP
          * sockets, constants, queries
          */
-
-        //const socket = io("http://192.168.2.3:3000")
         const socket = io("https://crabhole-production.up.railway.app/");
         const [UP, DOWN, LEFT, RIGHT, ENTER] = [38, 40, 37, 39, 13];
 
@@ -132,6 +150,10 @@
         let index = 0;
         let cmd_prefix = "> ";
 
+        /*
+         * QUERY VARIABLES
+         * buttons, divs, spans, etc
+         */
         const query = (...x) => document.querySelector(...x);
         const magic_in = query("#magic_in");
         const term = query("#term");
@@ -140,28 +162,33 @@
 
         const btn_clear = query("#clear");
         const btn_shutdown = query("#shutdown");
-        /*
-         * LISTENERS
-         * sockets, window, etc
-         */
 
         const scroll_term = () => {
             term.scrollTop = term.scrollHeight;
         }
 
+        const clear_term = () => {
+            term.innerHTML = "";
+        }
+
+        /*
+         * LISTENERS
+         * sockets, window, etc
+         */
         window.addEventListener('load', () => {
-            // load items from localStorage as necessary
+            // Use the 'magic_code' cookie to store previous code
             magic_code = localStorage.getItem("magic_code") ?? "";
             history = JSON.parse(localStorage.getItem(magic_code)) ?? []; // get history associated with code
-            index = Math.max(history.length, 0);
+            index = Math.max(history.length, 0); // start past the end for empty input
 
-            magic_in.value = magic_code;
-            console.log(magic_in.value);
+            magic_in.placeholder = magic_code;
         });
 
-        btn_clear.addEventListener('click', () => term.innerHTML = "");
+        // clear button, send sigkill
+        btn_clear.addEventListener('click', () => clear_term());
         btn_shutdown.addEventListener('click', () => send_cmd(String.fromCharCode(3), false));
 
+        // listen for changing of the magic sequence
         magic_in.addEventListener('keydown', e => {
             if (e.keyCode != ENTER) return;
             magic_code = magic_in.value ?? "";
@@ -170,6 +197,10 @@
             localStorage.setItem("magic_code", magic_code);
         });
 
+        /*
+         * Socketed IO, terminal input listener
+         *
+         */
         const send_cmd = (cmd, push = true) => {
             if (push) {
                 history.push(cmd);
@@ -180,26 +211,47 @@
                     room: magic_code,
                 });
             }
-            if (push) {
-                term.innerHTML += `<span class="input_response">${cmd_prefix}${cmd}</span><br>`
-            }
+            // if (push) {
+            //     // naively append
+            //     term.innerHTML += `<span class="input_response">${cmd_prefix}${cmd}</span><br>`
+            // }
             input.value = "";
             localStorage.setItem(`${magic_code}`, JSON.stringify(history));
         }
+        // add spans as item nodes
         let span = undefined;
         socket.on('response', response => {
             span = document.createElement("span");
+            span.classList.add("response");
             span.textContent = response;
             term.appendChild(span);
             term.appendChild(document.createElement("br"));
             scroll_term();
         });
 
-        socket.on('error', error => {
-            term.innerHTML += `<span class="error">${error}</span><br>`;
+        // listen for command event
+        socket.on('command', cmd => {
+            span = document.createElement("span");
+            span.classList.add("input_response");
+            span.textContent = cmd;
+            term.appendChild(span);
+            term.appendChild(document.createElement("br"));
             scroll_term();
         });
 
+        // handle errors
+        socket.on('error', error => {
+            span = document.createElement("span");
+            span.classList.add("error");
+            span.textContent = error;
+            term.appendChild(span);
+            term.appendChild(document.createElement("br"));
+            scroll_term();
+        });
+        /*
+         * Handle history navigation and value submission
+         *
+         */
         input.addEventListener('keydown', e => {
             switch (e.keyCode) {
                 case UP:
@@ -215,8 +267,8 @@
                     index += 1;
                     break;
                 default:
-                    if (e.ctrlKey && e.keyCode != 17) {
-                        send_cmd(String.fromCharCode(e.keyCode - 64), false);
+                    if (e.ctrlKey && e.keyCode == 76) {
+                        clear_term();
                     }
                     return;
             }
@@ -228,8 +280,6 @@
                 input.value = history[index];
             }
             scroll_term();
-            console.log(index);
-            console.log(history);
         });
     </script>
 </body>

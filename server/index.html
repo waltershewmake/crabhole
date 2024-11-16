@@ -16,19 +16,19 @@
         grid-template-areas:
             "pre"
             "top"
-            "mid"
-            "low"
-            "end";
-        grid-template-rows: 10% 10% auto 10% 10%;
+            "mid";
+        grid-template-rows: 10% 10% 80%;
         gap: 1ch;
     }
 
     div#start {
         grid-area: pre;
     }
+
     div#start h1 {
         font-size: 17pt;
     }
+
     div#start h2 {
         font-size: 13pt;
     }
@@ -70,15 +70,22 @@
     #prompt {
         /* Bottom Box */
         box-sizing: border-box;
-        grid-area: end;
+        /* grid-area: end; */
+        position: absolute;
         display: flex;
         align-items: center;
         padding-left: 1ch;
-        width: 100%;
-        height: 100%;
+        /* width: 100%; */
+        /* height: 100%; */
+        left: 1ch;
+        bottom: 1ch;
+        right: 1ch;
     }
 
-    span.center, span.error, span.response, span.input_response {
+    span.center,
+    span.error,
+    span.response,
+    span.input_response {
         background: transparent;
     }
 
@@ -94,10 +101,17 @@
         color: #2E2;
     }
 
+    pre#term {
+        position: relative;
+    }
+
     div#control {
-        grid-area: low;
+        /* grid-area: low; */
         display: flex;
         place-items: center;
+        position: absolute;
+        top: 0;
+        right: 0;
     }
 
     div#control button {
@@ -109,6 +123,7 @@
         text-align: center;
         height: 100%;
     }
+
     div#control button:hover {
         transition: background-color 0.5s;
         background: #282828;
@@ -124,16 +139,14 @@
         <input id="magic_in" type="text" placeholder="magic-code-here..."></input>
     </div>
 
-    <pre id="term"></pre>
-
-    <div class="input_wrapper" id="prompt">
-        <span class="center">></span> <input type="text" id="input" placeholder="type a command..."></input>
-    </div>
-
-    <div id="control">
-        <button id="clear">clear</button> <button id="shutdown">shutdown</button>
-    </div>
-
+    <pre id="term">
+        <div id="control">
+            <button id="clear">clear</button> <button id="shutdown">shutdown</button>
+        </div>
+        <div class="input_wrapper" id="prompt">
+            <span class="center">></span> <input type="text" id="input" placeholder="type a command..."></input>
+        </div>
+    </pre>
 
     <script src="https://crabhole-production.up.railway.app/socket.io/socket.io.js"></script>
     <script>

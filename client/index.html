@@ -15,9 +15,14 @@ body {
     grid-template-areas:
         "top"
         "mid"
-        "bot";
-    grid-template-rows: 10% 80% 10%;
+        "low"
+        "end";
+    grid-template-rows: 10% auto 10% 10%;
     gap: 30px;
+}
+
+body * {
+    box-sizing: border-box;
 }
 
 div.input_wrapper {
@@ -49,7 +54,7 @@ pre#term {
 
 #prompt { /* Bottom Box */
     box-sizing: border-box;
-    grid-area: bot;
+    grid-area: low;
     display: flex;
     align-items: center;
     padding-left: 1ch;
@@ -69,6 +74,21 @@ span.response {
 }
 span.input_response {
     color: #2E2;
+}
+div#control {
+    grid-area: end;
+    display: flex;
+    place-items: center;
+}
+
+div#control button {
+    all: unset;
+    border-radius: 7px;
+    background: #444;
+    color: #FFC;
+    width: 100%;
+    text-align: center;
+    height: 100%;
 }
 
 </style>

@@ -1,7 +1,7 @@
 #![feature(async_closure)]
 #![feature(let_chains)]
 
-const GLOBAL_TIMEOUT: u64 = 500;
+const GLOBAL_TIMEOUT: u64 = 100;
 
 use std::{process::Stdio, sync::Arc, time::Duration};
 
@@ -144,8 +144,8 @@ async fn command(payload: Payload, _socket: Client, state: Arc<State>) {
 }
 
 async fn stream_output(state: Arc<State>, socket: Arc<Client>) {
-    let mut stdout = state.stdio.stdout.lock().await;
-    let mut stderr = state.stdio.stderr.lock().await;
+    let mut stdout = wait!(GLOBAL_TIMEOUT, state.control, state.stdio.stdout.lock());
+    let mut stderr = wait!(GLOBAL_TIMEOUT, state.control, state.stdio.stderr.lock());
     let mut outbuf = String::new();
     let mut errbuf = String::new();
     debug!("output stream starting");
@@ -243,9 +243,11 @@ async fn main() {
 
     spawn(stream_output(state.clone(), socket.clone()));
 
-    let result = socket
-        .emit("host", "quidquid latine dictum sit; altum sonatur")
-        .await;
+    let result = wait!(
+        GLOBAL_TIMEOUT,
+        state.control,
+        socket.emit("host", "quidquid latine dictum sit; altum sonatur")
+    );
 
     if let Err(e) = result {
         error!("error connecting to server: {}", e);
@@ -269,5 +271,5 @@ async fn main() {
         }
     }
 
-    socket.disconnect().await.expect("Failed to disconnect");
+    wait!(GLOBAL_TIMEOUT, state.control, socket.disconnect()).expect("Failed to disconnect");
 }

@@ -117,8 +117,16 @@ async fn command(payload: Payload, _socket: Client, state: Arc<State>) {
                     return;
                 }
             };
-            error!("{:?}", val);
-            info!("running command: {}", val);
+            if val.len() == 1 {
+                match val.as_bytes()[0] {
+                    3 => {
+                        debug!("received ctrl-c, shutting down");
+                        state.control.cancel();
+                        return;
+                    }
+                    _ => {}
+                }
+            }
             val.push('\n');
 
             debug!("obtaining lock on stdin");
@@ -237,8 +245,8 @@ async fn main() {
     });
 
     let socket = Arc::new(client!(
-        // "https://crabhole-production.up.railway.app/",
-        "http://localhost:3000",
+        "https://crabhole-production.up.railway.app/",
+        // "http://localhost:3000",
         state,
         room,
         command

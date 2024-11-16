@@ -152,18 +152,17 @@ const send_cmd = (cmd, push=true) => {
     input.value = "";
     localStorage.setItem(`${magic_code}`, JSON.stringify(history));
 }
-
-let db_list = [];
+let span = undefined;
+// let db_list = [];
 socket.on('response', response => {
     db_list.push(`<span class="response">${response}</span><br>`);
-    last_occurence = now;
-});
-
-setInterval(()=>{
-    db_list.forEach(item => term.innerHTML += item);
-    db_list = [];
+    span = document.createElement("span");
+    span.textContent = response;
+    term.appendChild(span);
+    term.appendChild(document.createElement("br"));
     scroll_term();
-}, 100);
+    // console.log(1);
+});
 
 socket.on('error', error => {
     term.innerHTML += `<span class="error">${error}</span><br>`;

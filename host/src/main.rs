@@ -137,6 +137,7 @@ async fn command(payload: Payload, _socket: Client, state: Arc<State>) {
                     _ => {}
                 }
             }
+            println!("\x1b[32m> {}\x1b[0m", val);
             val.push('\n');
 
             debug!("obtaining lock on stdin");
@@ -187,6 +188,7 @@ async fn stream_output(state: Arc<State>, socket: Arc<Client>) {
                     if outbuf.ends_with('\n') {
                         outbuf.pop();
                     }
+                    println!("{}", outbuf.clone());
                     if let Err(e) = wait!(GLOBAL_TIMEOUT, state.control, socket.emit("response", json!({ "room": room_name.clone(), "response": outbuf }))) {
                         error!("failed to emit output event: {}", e);
                         return
@@ -208,6 +210,7 @@ async fn stream_output(state: Arc<State>, socket: Arc<Client>) {
                     if errbuf.ends_with('\n') {
                         errbuf.pop();
                     }
+                    eprintln!("\x1b[31m{}\x1b[0m", outbuf.clone());
                     let room_name = wait!(GLOBAL_TIMEOUT, state.control, state.room_name.read());
                     if let Err(e) = wait!(GLOBAL_TIMEOUT, state.control, socket.emit("error", json!({ "room": room_name.clone(), "response": errbuf }))) {
                         error!("failed to emit output event: {}", e);

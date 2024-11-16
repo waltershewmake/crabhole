@@ -101,6 +101,7 @@ io.on("connection", (socket) => {
 	});
 });
 
-server.listen(69420, () => {
-	console.log("Server is listening on port 69420");
+const PORT = 3000;
+server.listen(3000, () => {
+	console.log(`Server is listening on port ${PORT}`);
 });

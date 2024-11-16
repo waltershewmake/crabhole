@@ -39,10 +39,18 @@ app.get("/", (_req, res) => {
 });
 
 io.on("connection", (socket) => {
-	console.log("A user connected");
+	console.log(`<-- ${socket.id} connected`);
 
 	socket.on("disconnect", () => {
-		console.log("A user disconnected");
+		console.log(`<-- ${socket.id} disconnected`);
+	});
+
+	socket.onAny((event, ...args) => {
+		console.log(`<-- ${JSON.stringify(event)}`, ...args);
+	});
+
+	socket.onAnyOutgoing((event, ...args) => {
+		console.log(`--> ${JSON.stringify(event)}`, ...args);
 	});
 
 	socket.on("host", () => {
@@ -54,7 +62,6 @@ io.on("connection", (socket) => {
 	});
 
 	socket.on("command", (data) => {
-		console.log(`command: ${JSON.stringify(data)}`);
 		const { command, room } = z
 			.object({
 				command: z.string(),
@@ -68,7 +75,6 @@ io.on("connection", (socket) => {
 	});
 
 	socket.on("response", (data) => {
-		console.log(`response: ${JSON.stringify(data)}`);
 		const { response, room } = z
 			.object({
 				response: z.string(),
@@ -80,7 +86,6 @@ io.on("connection", (socket) => {
 	});
 
 	socket.on("error", (data) => {
-		console.error(`error: ${JSON.stringify(data)}`);
 		const { response, room } = z
 			.object({
 				response: z.string(),

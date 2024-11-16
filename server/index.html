@@ -4,7 +4,7 @@
 <head></head>
 <style>
     * {
-        font-size: 15pt;
+        font-size: 13pt;
         color: #FFE;
         background-color: #333;
         font-family: Courier New, monospace;
@@ -27,10 +27,10 @@
         grid-area: pre;
     }
     div#start h1 {
-        font-size: 20pt;
+        font-size: 17pt;
     }
     div#start h2 {
-        font-size: 15pt;
+        font-size: 13pt;
     }
 
     body * {
@@ -233,7 +233,7 @@
         socket.on('command', cmd => {
             span = document.createElement("span");
             span.classList.add("input_response");
-            span.textContent = cmd;
+            span.textContent = `>${cmd}`;
             term.appendChild(span);
             term.appendChild(document.createElement("br"));
             scroll_term();

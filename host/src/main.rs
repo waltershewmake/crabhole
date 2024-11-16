@@ -165,6 +165,9 @@ async fn stream_output(state: Arc<State>, socket: Arc<Client>) {
                 }
                 Ok(_) => {
                     let room_name = wait!(GLOBAL_TIMEOUT, state.control, state.room_name.read());
+                    if outbuf.ends_with('\n') {
+                        outbuf.pop();
+                    }
                     if let Err(e) = wait!(GLOBAL_TIMEOUT, state.control, socket.emit("response", json!({ "room": room_name.clone(), "response": outbuf }))) {
                         error!("failed to emit output event: {}", e);
                     }
@@ -182,6 +185,9 @@ async fn stream_output(state: Arc<State>, socket: Arc<Client>) {
                     return
                 }
                 Ok(_) => {
+                    if errbuf.ends_with('\n') {
+                        errbuf.pop();
+                    }
                     let room_name = wait!(GLOBAL_TIMEOUT, state.control, state.room_name.read());
                     if let Err(e) = wait!(GLOBAL_TIMEOUT, state.control, socket.emit("error", json!({ "room": room_name.clone(), "response": errbuf }))) {
                         error!("failed to emit output event: {}", e);

@@ -1,0 +1,76 @@
+use std::{
+    os::fd::RawFd,
+    process::{self, Command},
+    time::Duration,
+};
+
+use nix::{
+    pty::forkpty,
+    unistd::{read, ForkResult},
+};
+use portable_pty::{native_pty_system, CommandBuilder, PtySize};
+
+fn read_from_fd(fd: RawFd) -> Option<Vec<u8>> {
+    let mut read_buffer = [0; 65536];
+    let read_result = read(fd, &mut read_buffer);
+    match read_result {
+        Ok(bytes_read) => Some(read_buffer[..bytes_read].to_vec()),
+        Err(_e) => None,
+    }
+}
+
+fn spawn_pty_with_shell(default_shell: String) -> RawFd {
+    // let pty = native_pty_system()
+    //     .openpty(PtySize {
+    //         rows: 80,
+    //         cols: 80,
+    //         pixel_width: 0,
+    //         pixel_height: 0,
+    //     })
+    //     .expect("failed to open pty");
+    // let master = pty.master;
+    // let slave = pty.slave;
+
+    // let mut child = slave
+    //     .spawn_command(CommandBuilder::new(default_shell))
+    //     .expect("child failed to spawn shell");
+    // spawn(move || {
+    //     sleep(Duration::from_millis(2000));
+    //     child.kill().expect("failed to kill the child");
+    // });
+
+    // return master.as_raw_fd().expect("failed to open raw fd");
+    match unsafe { forkpty(None, None) } {
+        Ok(fork_pty_res) => {
+            let stdout_fd = fork_pty_res.master;
+            if let ForkResult::Child = fork_pty_res.fork_result {
+                Command::new(&default_shell)
+                    .spawn()
+                    .expect("failed to spawn");
+                sleep(Duration::from_millis(2000));
+                process::exit(0);
+            }
+            stdout_fd
+        }
+        Err(e) => {
+            panic!("failed to fork {:?}", e);
+        }
+    }
+}
+
+fn main() {
+    let default_shell = std::env::var("SHELL").expect("could not find default shell from $SHELL");
+    let stdout_fd = spawn_pty_with_shell(default_shell);
+    let mut read_buffer = vec![];
+    loop {
+        match read_from_fd(stdout_fd) {
+            Some(mut read_bytes) => {
+                read_buffer.append(&mut read_bytes);
+            }
+            None => {
+                println!("{}", String::from_utf8(read_buffer).unwrap());
+                std::process::exit(0);
+            }
+        }
+    }
+}

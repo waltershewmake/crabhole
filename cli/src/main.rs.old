@@ -1,11 +1,7 @@
 #![feature(async_closure)]
 
 static COMMANDS: &[&str] = &[
-    "bash",
-    "bash",
-    "bash",
-    "bash",
-    "echo hello world",
+    "zsh",
     "ping 192.168.2.1 -c 15",
     "ping 192.168.1.1 -c 10",
 ];
@@ -15,6 +11,7 @@ use std::{
     time::Duration,
 };
 
+use nix::sys::termios::InputFlags;
 use portable_pty::CommandBuilder;
 use tokio::{select, spawn, time::sleep};
 use tokio_util::sync::CancellationToken;
@@ -59,30 +56,47 @@ async fn main() {
     let slave = pty.slave;
 
     let mut command = CommandBuilder::new("bash");
-    // command.arg("--login");
+    command.arg("--login");
 
     let mut s = slave.spawn_command(command).unwrap();
     let pid = s.process_id().unwrap();
 
     let master = pty.master;
+
+    let mut termios = master.get_termios().unwrap();
+
     let writer = master.take_writer().unwrap();
     spawn(write_loop(control.clone(), writer));
 
     let reader = master.try_clone_reader().unwrap();
     spawn(output_loop(control.clone(), reader));
 
-    select! {
-        // _ = tokio::time::sleep(std::time::Duration::from_secs()) => {
-            // println!("timeout");
-        // }
-        _ = tokio::signal::ctrl_c() => {
-            println!("ctrl-c");
+    loop {
+        select! {
+            _ = tokio::time::sleep(std::time::Duration::from_secs(15)) => {
+                println!("timeout");
+                break;
+            }
+            _ = tokio::signal::ctrl_c() => {
+                println!("ctrl-c");
+                // forward ctrl-c to the child process
+                unsafe {
+                    println!("{}", libc::killpg(pid as i32, libc::SIGINT));
+                }
+            }
         }
+
     }
 
-    s.kill().unwrap();
-    // unsafe {
-    // libc::killpg(pid as i32, libc::SIGINT);
-    // }
+    // termios.input_flags |= InputFlags::BRKINT
+    //     | InputFlags::ICRNL
+    //     | InputFlags::IXON
+    //     | InputFlags::IXOFF
+    //     | InputFlags::IMAXBEL
+    //     | InputFlags::IUTF8;
+
+    unsafe {
+        libc::kill(pid as i32, libc::SIGINT);
+    }
     control.cancel();
 }

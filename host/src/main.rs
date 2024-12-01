@@ -1,17 +1,20 @@
 #![feature(async_closure)]
 #![feature(let_chains)]
 
+#[macro_use]
+mod term;
+use term::iobuf;
+
 const GLOBAL_TIMEOUT: u64 = 25;
 
 use std::{process::Stdio, sync::Arc, time::Duration};
 
 use futures_util::FutureExt;
-use log::{debug, error, info, warn};
+// use log::{debug, error, info, warn};
 use rust_socketio::{
     asynchronous::{Client, ClientBuilder},
     Payload,
 };
-use rustyline_async::Readline;
 use serde_json::{json, Value};
 use tokio::{
     io::{AsyncBufReadExt, AsyncWriteExt, BufReader, BufWriter},
@@ -39,7 +42,7 @@ macro_rules! wait {
         select! {
             x = $future => x,
             _ = $control.cancelled() => {
-                debug!("future ({}) aborted due to shutdown", stringify!($future));
+                // debug!("future ({}) aborted due to shutdown", stringify!($future));
                 return $($err)?;
             }
             _ = sleep(Duration::from_millis($seconds)) => {
@@ -52,7 +55,7 @@ macro_rules! wait {
         select! {
             x = $future => x,
             _ = $control.cancelled() => {
-                debug!("future ({}) aborted due to shutdown", stringify!($future));
+                // debug!("future ({}) aborted due to shutdown", stringify!($future));
                 return $($err)?;
             }
         }
@@ -73,7 +76,7 @@ struct State {
 }
 
 async fn room(payload: Payload, _socket: Client, state: Arc<State>) {
-    info!("room event received");
+    // info!("room event received");
     match payload {
         Payload::Text(vec) => {
             let len = vec.len();
@@ -104,7 +107,7 @@ async fn room(payload: Payload, _socket: Client, state: Arc<State>) {
 }
 
 async fn command(payload: Payload, _socket: Client, state: Arc<State>) {
-    debug!("command event received");
+    // debug!("command event received");
     match payload {
         Payload::Text(vec) => {
             let len = vec.len();
@@ -122,8 +125,8 @@ async fn command(payload: Payload, _socket: Client, state: Arc<State>) {
             if val.len() == 1 {
                 match val.as_bytes()[0] {
                     3 => {
-                        debug!("parsed ctrl-c, chutting down child process");
-                        debug!("{}", state.child_pid);
+                        // debug!("parsed ctrl-c, chutting down child process");
+                        // debug!("{}", state.child_pid);
                         let pid = state.child_pid;
                         if let Err(e) = wait!(
                             GLOBAL_TIMEOUT,
@@ -141,9 +144,9 @@ async fn command(payload: Payload, _socket: Client, state: Arc<State>) {
             println!("\x1b[32m> {}\x1b[0m", val);
             val.push('\n');
 
-            debug!("obtaining lock on stdin");
+            // debug!("obtaining lock on stdin");
             let mut stdin = wait!(GLOBAL_TIMEOUT, state.control, state.stdio.stdin.lock());
-            debug!("lock acquired");
+            // debug!("lock acquired");
 
             if let Err(e) = wait!(
                 GLOBAL_TIMEOUT,
@@ -169,18 +172,18 @@ async fn stream_output(state: Arc<State>, socket: Arc<Client>) {
     let mut stderr = wait!(GLOBAL_TIMEOUT, state.control, state.stdio.stderr.lock());
     let mut outbuf = String::new();
     let mut errbuf = String::new();
-    debug!("output stream starting");
+    // debug!("output stream starting");
     loop {
         // println!("{:?}", stdout);
         // sleep(Duration::from_secs(5)).await;
         select! {
             _ = state.control.cancelled() => {
-                debug!("output stream loop ending due to shutdown");
+                // debug!("output stream loop ending due to shutdown");
                 return
             }
             status = stdout.read_line(&mut outbuf) => match status {
                 Ok(0) => {
-                    info!("stdout stream ended, shutting down");
+                    // info!("stdout stream ended, shutting down");
                     state.control.cancel();
                     return
                 }
@@ -203,7 +206,7 @@ async fn stream_output(state: Arc<State>, socket: Arc<Client>) {
             },
             status = stderr.read_line(&mut errbuf) => match status {
                 Ok(0) => {
-                    info!("stderr stream ended, shutting down");
+                    // info!("stderr stream ended, shutting down");
                     state.control.cancel();
                     return
                 }
@@ -230,6 +233,7 @@ async fn stream_output(state: Arc<State>, socket: Arc<Client>) {
 
 #[tokio::main]
 async fn main() {
+    spawn(iobuf());
     env_logger::init();
 
     let control = CancellationToken::new();
@@ -270,9 +274,6 @@ async fn main() {
 
     spawn(stream_output(state.clone(), socket.clone()));
 
-    // let readline =
-    // Readline::new(String::from("\x1b[33m> \x1b[0m")).expect("failed to create readline");
-
     let result = wait!(
         GLOBAL_TIMEOUT,
         state.control,
@@ -282,16 +283,19 @@ async fn main() {
     if let Err(e) = result {
         error!("error connecting to server: {}", e);
     } else {
-        let mut stdin = BufReader::new(tokio::io::stdin());
+        let mut reader = readln!();
         loop {
-            let mut buffer = String::new();
             let socket = socket.clone();
             let state = state.clone();
             select! {
-                _ = stdin.read_line(&mut buffer) => {
+                input = &mut reader => {
+                    reader = readln!();
+                    if input.is_err() {
+                        continue;
+                    }
                     spawn(async move {
                         // send 'buffer' to server as a 'command' event
-                        debug!("sending command event");
+                        // debug!("sending command event");
                         let x = wait!(GLOBAL_TIMEOUT, state.control, state.room_name.read());
                         if x.is_none() {
                             warn!("room name not set, ignoring command");
@@ -301,19 +305,19 @@ async fn main() {
                         if let Err(e) = wait!(
                             GLOBAL_TIMEOUT,
                             state.control,
-                            socket.emit("command", json!({ "room": room_name, "command": buffer.trim_end() }))
+                            socket.emit("command", json!({ "room": room_name, "command": input.unwrap() }))
                         ) {
                             error!("failed to emit command event: {}", e);
                             return;
                         }
-                        debug!("sent command event");
+                        // debug!("sent command event");
                     });
                 },
 
                 res = signal::ctrl_c() => {
                     match res {
                         Ok(()) => {
-                            debug!("received ctrl-c");
+                            // debug!("received ctrl-c");
                             control.cancel();
                             break;
                         }
@@ -325,14 +329,14 @@ async fn main() {
                     }
                 }
                 _ = control.cancelled() => {
-                    debug!("main function received shutdown request");
+                    // debug!("main function received shutdown request");
                     break;
                 }
             }
         }
-        debug!("main function shutting down");
+        // debug!("main function shutting down");
     }
-    debug!("main function shutting down");
+    // debug!("main function shutting down");
     // if let Err(e) = wait!(GLOBAL_TIMEOUT, state.control, socket.emit("error", json!({"room_name": state.room_name.try_read()..clone(), "response": "host disconnected"}))) {
     //     error!("failed to disconnect: {}", e);
     // }
@@ -365,7 +369,7 @@ async fn main() {
                 json!({ "room": room_name, "response": "host disconnected" })
             ) => match result {
                 Ok(_) => {
-                    debug!("notified server of shutdown");
+                    // debug!("notified server of shutdown");
                 }
                 Err(e) => {
                     warn!("failed to notify server of shutdown: {}", e);
@@ -376,21 +380,21 @@ async fn main() {
 
     select! {
         _ = sleep(Duration::from_millis(GLOBAL_TIMEOUT)) => {
-            debug!("unable to close socket");
+            // debug!("unable to close socket");
         }
         _ = socket.disconnect() => {
-            debug!("socket closed");
+            // debug!("socket closed");
         }
     }
 
-    debug!("killing child process");
+    // debug!("killing child process");
 
     select! {
         _ = sleep(Duration::from_millis(5_000)) => {
             error!("unable to kill child process");
         }
         _ = Command::new("kill").arg("-2").arg(pid.to_string()).status() => {
-            debug!("child process killed");
+            // debug!("child process killed");
         }
     }
 

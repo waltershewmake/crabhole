@@ -43,22 +43,22 @@ app.get("/", (_req, res) => {
 });
 
 io.on("connection", (socket) => {
-	console.log(`<-- ${socket.id} connected`);
+	// console.log(`<-- ${socket.id} connected`);
 
-	socket.on("disconnect", () => {
-		console.log(`<-- ${socket.id} disconnected`);
-	});
+	// socket.on("disconnect", () => {
+	// 	// console.log(`<-- ${socket.id} disconnected`);
+	// });
 
-	socket.onAny((event, ...args) => {
-		console.log(`<-- ${JSON.stringify(event)}`, ...args);
-	});
+	// socket.onAny((event, ...args) => {
+	// // 	console.log(`<-- ${JSON.stringify(event)}`, ...args);
+	// });
 
-	socket.onAnyOutgoing((event, ...args) => {
-		console.log(`--> ${JSON.stringify(event)}`, ...args);
-	});
+	// socket.onAnyOutgoing((event, ...args) => {
+	// // 	console.log(`--> ${JSON.stringify(event)}`, ...args);
+	// });
 
 	socket.on("host", () => {
-		console.log("host");
+	// 	console.log("host");
 		const room = getRoomName();
 
 		socket.join(room);

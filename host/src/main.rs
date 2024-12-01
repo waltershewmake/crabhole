@@ -11,6 +11,7 @@ use rust_socketio::{
     asynchronous::{Client, ClientBuilder},
     Payload,
 };
+use rustyline_async::Readline;
 use serde_json::{json, Value};
 use tokio::{
     io::{AsyncBufReadExt, AsyncWriteExt, BufReader, BufWriter},
@@ -210,7 +211,7 @@ async fn stream_output(state: Arc<State>, socket: Arc<Client>) {
                     if errbuf.ends_with('\n') {
                         errbuf.pop();
                     }
-                    eprintln!("\x1b[31m{}\x1b[0m", outbuf.clone());
+                    eprintln!("\x1b[31m{}\x1b[0m", errbuf.clone());
                     let room_name = wait!(GLOBAL_TIMEOUT, state.control, state.room_name.read());
                     if let Err(e) = wait!(GLOBAL_TIMEOUT, state.control, socket.emit("error", json!({ "room": room_name.clone(), "response": errbuf }))) {
                         error!("failed to emit output event: {}", e);
@@ -260,14 +261,17 @@ async fn main() {
     });
 
     let socket = Arc::new(client!(
-        "https://crabhole-production.up.railway.app/",
-        // "http://localhost:3000",
+        // "https://crabhole-production.up.railway.app/",
+        "http://localhost:3000",
         state,
         room,
         command
     ));
 
     spawn(stream_output(state.clone(), socket.clone()));
+
+    // let readline =
+    // Readline::new(String::from("\x1b[33m> \x1b[0m")).expect("failed to create readline");
 
     let result = wait!(
         GLOBAL_TIMEOUT,
@@ -278,30 +282,117 @@ async fn main() {
     if let Err(e) = result {
         error!("error connecting to server: {}", e);
     } else {
-        select! {
-            res = signal::ctrl_c() => {
-                match res {
-                    Ok(()) => {
-                        debug!("received ctrl-c");
-                        control.cancel()
-                    }
-                    Err(e) => {
-                        error!("error listenening to ctrl-c events: {}", e);
-                        control.cancel()
+        let mut stdin = BufReader::new(tokio::io::stdin());
+        loop {
+            let mut buffer = String::new();
+            let socket = socket.clone();
+            let state = state.clone();
+            select! {
+                _ = stdin.read_line(&mut buffer) => {
+                    spawn(async move {
+                        // send 'buffer' to server as a 'command' event
+                        debug!("sending command event");
+                        let x = wait!(GLOBAL_TIMEOUT, state.control, state.room_name.read());
+                        if x.is_none() {
+                            warn!("room name not set, ignoring command");
+                            return;
+                        }
+                        let room_name = x.as_ref().unwrap();
+                        if let Err(e) = wait!(
+                            GLOBAL_TIMEOUT,
+                            state.control,
+                            socket.emit("command", json!({ "room": room_name, "command": buffer.trim_end() }))
+                        ) {
+                            error!("failed to emit command event: {}", e);
+                            return;
+                        }
+                        debug!("sent command event");
+                    });
+                },
+
+                res = signal::ctrl_c() => {
+                    match res {
+                        Ok(()) => {
+                            debug!("received ctrl-c");
+                            control.cancel();
+                            break;
+                        }
+                        Err(e) => {
+                            error!("error listenening to ctrl-c events: {}", e);
+                            control.cancel();
+                            break;
+                        }
                     }
                 }
+                _ = control.cancelled() => {
+                    debug!("main function received shutdown request");
+                    break;
+                }
             }
-            _ = control.cancelled() => {
-                debug!("main function received shutdown request");
+        }
+        debug!("main function shutting down");
+    }
+    debug!("main function shutting down");
+    // if let Err(e) = wait!(GLOBAL_TIMEOUT, state.control, socket.emit("error", json!({"room_name": state.room_name.try_read()..clone(), "response": "host disconnected"}))) {
+    //     error!("failed to disconnect: {}", e);
+    // }
+    let x = select! {
+        _ = sleep(Duration::from_millis(GLOBAL_TIMEOUT)) => {
+            error!("unable to notify server of shutdown");
+            None
+        }
+        result = socket.emit(
+            "error",
+            json!({ "room": state.room_name.read().await.clone(), "response": "host disconnected" })
+        ) => match result {
+            Ok(_) => {
+                Some(state.room_name.read().await.clone())
+            }
+            Err(_) => {
+                None
+            }
+        }
+    };
+
+    if x.is_some() {
+        let room_name = x.as_ref().unwrap();
+        select! {
+            _ = sleep(Duration::from_millis(GLOBAL_TIMEOUT)) => {
+                error!("unable to notify server of shutdown");
+            }
+            result = socket.emit(
+                "error",
+                json!({ "room": room_name, "response": "host disconnected" })
+            ) => match result {
+                Ok(_) => {
+                    debug!("notified server of shutdown");
+                }
+                Err(e) => {
+                    warn!("failed to notify server of shutdown: {}", e);
+                }
             }
         }
     }
 
-    #[allow(unreachable_code)]
-    #[allow(unused_variables)]
-    if let Err(e) = wait!(GLOBAL_TIMEOUT, state.control, socket.emit("error", json!({"room_name": state.room_name.try_read().unwrap_or(return).clone(), "response": "host disconnected"}))) {
-        error!("failed to disconnect: {}", e);
+    select! {
+        _ = sleep(Duration::from_millis(GLOBAL_TIMEOUT)) => {
+            debug!("unable to close socket");
+        }
+        _ = socket.disconnect() => {
+            debug!("socket closed");
+        }
     }
 
-    wait!(GLOBAL_TIMEOUT, state.control, socket.disconnect()).expect("Failed to disconnect");
+    debug!("killing child process");
+
+    select! {
+        _ = sleep(Duration::from_millis(5_000)) => {
+            error!("unable to kill child process");
+        }
+        _ = Command::new("kill").arg("-2").arg(pid.to_string()).status() => {
+            debug!("child process killed");
+        }
+    }
+
+    std::process::exit(0);
 }

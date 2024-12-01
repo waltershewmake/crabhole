@@ -130,7 +130,7 @@
 
 <body>
     <div id="start">
-        <h1>Crab Hole</h1>
+        <h1>Crabwalk</h1>
         <h2>Jayson Bunnell, Walter Shewmake, Jarod Whiting</h2>
     </div>
     <div class="input_wrapper">
@@ -152,7 +152,8 @@
          * ENVIRONMENT SET UP
          * sockets, constants, queries
          */
-        const socket = io("https://crabhole-production.up.railway.app/");
+        <!-- const socket = io("https://crabhole-production.up.railway.app/"); -->
+        const socket = io("http://localhost:3000");
         const [UP, DOWN, LEFT, RIGHT, ENTER] = [38, 40, 37, 39, 13];
 
         let magic_code = "";

@@ -13,7 +13,7 @@ pub struct Term {
 }
 impl Term {
     fn new() -> Self {
-        let (mut rl, out) = Readline::new("\x1b[32m> \x1b[0m".to_owned()).unwrap();
+        let (mut rl, out) = Readline::new("\x1b[1m> \x1b[0m".to_owned()).unwrap();
         rl.should_print_line_on(false, false);
         Term {
             rl: Mutex::new(rl),

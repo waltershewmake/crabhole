@@ -11,6 +11,8 @@ use std::{process::Stdio, sync::Arc, time::Duration};
 
 use futures_util::FutureExt;
 // use log::{debug, error, info, warn};
+use lazy_static::lazy_static;
+use regex::Regex;
 use rust_socketio::{
     asynchronous::{Client, ClientBuilder},
     Payload,
@@ -24,6 +26,11 @@ use tokio::{
 };
 use tokio::{process::Command, select, signal, sync::RwLock, time::sleep};
 use tokio_util::sync::CancellationToken;
+
+lazy_static! {
+    static ref RE: Regex =
+        Regex::new(r"\x1b([\]\^_XP].+(\x1b\\|\x07)|\[[\d;]+[a-ln-zA-Z])").unwrap();
+}
 
 macro_rules! client {
     ($address:expr, $state:expr, $($func:ident),+) => {{
@@ -141,7 +148,7 @@ async fn command(payload: Payload, _socket: Client, state: Arc<State>) {
                     _ => {}
                 }
             }
-            println!("\x1b[32m> {}\x1b[0m", val);
+            // println!("\x1b[32m> {}\x1b[0m", val);
             val.push('\n');
 
             // debug!("obtaining lock on stdin");
@@ -193,7 +200,9 @@ async fn stream_output(state: Arc<State>, socket: Arc<Client>) {
                         outbuf.pop();
                     }
                     println!("{}", outbuf.clone());
-                    if let Err(e) = wait!(GLOBAL_TIMEOUT, state.control, socket.emit("response", json!({ "room": room_name.clone(), "response": outbuf }))) {
+                    let parsed = RE.replace_all(&outbuf, "");
+                    let parsed = ansi_to_html::convert(&parsed).unwrap_or(outbuf.clone());
+                    if let Err(e) = wait!(GLOBAL_TIMEOUT, state.control, socket.emit("response", json!({ "room": room_name.clone(), "response": parsed }))) {
                         error!("failed to emit output event: {}", e);
                         return
                     }
@@ -214,9 +223,12 @@ async fn stream_output(state: Arc<State>, socket: Arc<Client>) {
                     if errbuf.ends_with('\n') {
                         errbuf.pop();
                     }
-                    eprintln!("\x1b[31m{}\x1b[0m", errbuf.clone());
+                    // println!("\x1b[31m{}\x1b[0m", errbuf.clone());
+                    println!("{}", errbuf.clone());
+                    let parsed = RE.replace_all(&errbuf, "");
+                    let parsed = ansi_to_html::convert(&parsed).unwrap_or(errbuf.clone());
                     let room_name = wait!(GLOBAL_TIMEOUT, state.control, state.room_name.read());
-                    if let Err(e) = wait!(GLOBAL_TIMEOUT, state.control, socket.emit("error", json!({ "room": room_name.clone(), "response": errbuf }))) {
+                    if let Err(e) = wait!(GLOBAL_TIMEOUT, state.control, socket.emit("error", json!({ "room": room_name.clone(), "response": parsed }))) {
                         error!("failed to emit output event: {}", e);
                         return
                     }
@@ -238,7 +250,12 @@ async fn main() {
 
     let control = CancellationToken::new();
 
-    let process = Command::new("sh")
+    // let user_shell = std::env::var("SHELL").unwrap_or_else(|_| "/bin/sh".to_string());
+    let user_shell = "/bin/bash";
+    // let process = Command::new("sh")
+    let process = Command::new("script")
+        .arg("-q")
+        .args(&["-c", &user_shell])
         .stdout(Stdio::piped())
         .stderr(Stdio::piped())
         .stdin(Stdio::piped())
@@ -358,25 +375,25 @@ async fn main() {
         }
     };
 
-    if x.is_some() {
-        let room_name = x.as_ref().unwrap();
-        select! {
-            _ = sleep(Duration::from_millis(GLOBAL_TIMEOUT)) => {
-                error!("unable to notify server of shutdown");
-            }
-            result = socket.emit(
-                "error",
-                json!({ "room": room_name, "response": "host disconnected" })
-            ) => match result {
-                Ok(_) => {
-                    // debug!("notified server of shutdown");
-                }
-                Err(e) => {
-                    warn!("failed to notify server of shutdown: {}", e);
-                }
-            }
-        }
-    }
+    // if x.is_some() {
+    //     let room_name = x.as_ref().unwrap();
+    //     select! {
+    //         _ = sleep(Duration::from_millis(GLOBAL_TIMEOUT)) => {
+    //             error!("unable to notify server of shutdown");
+    //         }
+    //         result = socket.emit(
+    //             "error",
+    //             json!({ "room": room_name, "response": "host disconnected" })
+    //         ) => match result {
+    //             Ok(_) => {
+    //                 // debug!("notified server of shutdown");
+    //             }
+    //             Err(e) => {
+    //                 warn!("failed to notify server of shutdown: {}", e);
+    //             }
+    //         }
+    //     }
+    // }
 
     select! {
         _ = sleep(Duration::from_millis(GLOBAL_TIMEOUT)) => {

@@ -1,0 +1,2183 @@
+Script started on 2024-12-05 18:31:18-07:00 [COMMAND="/bin/bash" <not executed on terminal>]
+]0;jarod@suroa:~/projects/crabwalk/host[?2004h[32mjarod@suroa[0m:[32m~/projects/crabwalk/host[0m$[0m ls
+[?2004lCargo.lock  Cargo.toml  [0m[01;32mhost[0m  [01;34mrustyline-async[0m  [01;34msrc[0m  [01;34mtarget[0m  typescript
+]0;jarod@suroa:~/projects/crabwalk/host[?2004h[32mjarod@suroa[0m:[32m~/projects/crabwalk/host[0m$[0m clear
+[?2004l[H[2J[3J]0;jarod@suroa:~/projects/crabwalk/host[?2004h[32mjarod@suroa[0m:[32m~/projects/crabwalk/host[0m$[0m clear
+[?2004l[H[2J[3J]0;jarod@suroa:~/projects/crabwalk/host[?2004h[32mjarod@suroa[0m:[32m~/projects/crabwalk/host[0m$[0m clear
+[?2004l[H[2J[3J]0;jarod@suroa:~/projects/crabwalk/host[?2004h[32mjarod@suroa[0m:[32m~/projects/crabwalk/host[0m$[0m clear
+[?2004l[H[2J[3J]0;jarod@suroa:~/projects/crabwalk/host[?2004h[32mjarod@suroa[0m:[32m~/projects/crabwalk/host[0m$[0m clear
+[?2004l[H[2J[3J]0;jarod@suroa:~/projects/crabwalk/host[?2004h[32mjarod@suroa[0m:[32m~/projects/crabwalk/host[0m$[0m ls
+[?2004lCargo.lock  Cargo.toml  [0m[01;32mhost[0m  [01;34mrustyline-async[0m  [01;34msrc[0m  [01;34mtarget[0m  typescript
+]0;jarod@suroa:~/projects/crabwalk/host[?2004h[32mjarod@suroa[0m:[32m~/projects/crabwalk/host[0m$[0m ls
+[?2004lCargo.lock  Cargo.toml  [0m[01;32mhost[0m  [01;34mrustyline-async[0m  [01;34msrc[0m  [01;34mtarget[0m  typescript
+]0;jarod@suroa:~/projects/crabwalk/host[?2004h[32mjarod@suroa[0m:[32m~/projects/crabwalk/host[0m$[0m ls
+[?2004lCargo.lock  Cargo.toml  [0m[01;32mhost[0m  [01;34mrustyline-async[0m  [01;34msrc[0m  [01;34mtarget[0m  typescript
+]0;jarod@suroa:~/projects/crabwalk/host[?2004h[32mjarod@suroa[0m:[32m~/projects/crabwalk/host[0m$[0m clear
+[?2004l[H[2J[3J]0;jarod@suroa:~/projects/crabwalk/host[?2004h[32mjarod@suroa[0m:[32m~/projects/crabwalk/host[0m$[0m clear
+[?2004l[H[2J[3J]0;jarod@suroa:~/projects/crabwalk/host[?2004h[32mjarod@suroa[0m:[32m~/projects/crabwalk/host[0m$[0m ls
+[?2004lCargo.lock  Cargo.toml  [0m[01;32mhost[0m  [01;34mrustyline-async[0m  [01;34msrc[0m  [01;34mtarget[0m  typescript
+]0;jarod@suroa:~/projects/crabwalk/host[?2004h[32mjarod@suroa[0m:[32m~/projects/crabwalk/host[0m$[0m tree
+[?2004l[01;34m.[0m
+├── Cargo.lock
+├── Cargo.toml
+├── [01;32mhost[0m
+├── [01;34mrustyline-async[0m
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   ├── [01;34mexamples[0m
+│   │   ├── readline.rs
+│   │   ├── test-printing.rs
+│   │   └── test-readline.rs
+│   ├── flake.lock
+│   ├── flake.nix
+│   ├── README.md
+│   ├── rustfmt.toml
+│   ├── rust-toolchain.toml
+│   ├── [01;34msrc[0m
+│   │   ├── history.rs
+│   │   ├── lib.rs
+│   │   └── line.rs
+│   └── UNLICENSE
+├── [01;34msrc[0m
+│   ├── main.rs
+│   └── term.rs
+├── [01;34mtarget[0m
+│   ├── CACHEDIR.TAG
+│   ├── [01;34mdebug[0m
+│   │   ├── [01;34mbuild[0m
+│   │   │   ├── [01;34mcrossbeam-utils-446d1ef4b96950c8[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-446d1ef4b96950c8[0m
+│   │   │   │   └── build_script_build-446d1ef4b96950c8.d
+│   │   │   ├── [01;34mcrossbeam-utils-bbf474c6b65d205b[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mgeneric-array-89ef1ec38c33c456[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mgeneric-array-bbb1b4adc13b5825[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-bbb1b4adc13b5825[0m
+│   │   │   │   └── build_script_build-bbb1b4adc13b5825.d
+│   │   │   ├── [01;34mhttparse-0c657a64cf22360c[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-0c657a64cf22360c[0m
+│   │   │   │   └── build_script_build-0c657a64cf22360c.d
+│   │   │   ├── [01;34mhttparse-b7ddbc1732f42730[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mlibc-bccf62bf177c686a[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-bccf62bf177c686a[0m
+│   │   │   │   └── build_script_build-bccf62bf177c686a.d
+│   │   │   ├── [01;34mlibc-c0960cf52f98a374[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mlock_api-aaceb35a151c5143[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   │   └── autocfg_419b573078e90989_0.ll
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mlock_api-eed5564df30cc2f1[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-eed5564df30cc2f1[0m
+│   │   │   │   └── build_script_build-eed5564df30cc2f1.d
+│   │   │   ├── [01;34mnative-tls-500ec0013c9adc51[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-500ec0013c9adc51[0m
+│   │   │   │   └── build_script_build-500ec0013c9adc51.d
+│   │   │   ├── [01;34mnative-tls-d6af9607f4ee0f1f[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mopenssl-0c701c1bb710e4f3[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mopenssl-5805cf97a6ebd5fc[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-5805cf97a6ebd5fc[0m
+│   │   │   │   └── build_script_build-5805cf97a6ebd5fc.d
+│   │   │   ├── [01;34mopenssl-sys-3b6c51198ee70d07[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mopenssl-sys-b4577b3857091676[0m
+│   │   │   │   ├── [01;32mbuild-script-main[0m
+│   │   │   │   ├── [01;32mbuild_script_main-b4577b3857091676[0m
+│   │   │   │   └── build_script_main-b4577b3857091676.d
+│   │   │   ├── [01;34mparking_lot_core-8614341151da47b8[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-8614341151da47b8[0m
+│   │   │   │   └── build_script_build-8614341151da47b8.d
+│   │   │   ├── [01;34mparking_lot_core-904fa35206e1808d[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mproc-macro2-748f23fb1a226d22[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-748f23fb1a226d22[0m
+│   │   │   │   └── build_script_build-748f23fb1a226d22.d
+│   │   │   ├── [01;34mproc-macro2-e699f14ed852563f[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mserde-5e4f59f3077b4351[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-5e4f59f3077b4351[0m
+│   │   │   │   └── build_script_build-5e4f59f3077b4351.d
+│   │   │   ├── [01;34mserde-63c0c250311080c3[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mserde_json-0872c1f4d5ddfecd[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mserde_json-766bfe2f7215f288[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-766bfe2f7215f288[0m
+│   │   │   │   └── build_script_build-766bfe2f7215f288.d
+│   │   │   ├── [01;34msignal-hook-7b71779eefd93db6[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-7b71779eefd93db6[0m
+│   │   │   │   └── build_script_build-7b71779eefd93db6.d
+│   │   │   ├── [01;34msignal-hook-b08332a5ab7ef2c3[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mslab-a930779af5811693[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   │   └── autocfg_0cd46a32215bda33_0.ll
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mslab-c0a0507d27e30efc[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-c0a0507d27e30efc[0m
+│   │   │   │   └── build_script_build-c0a0507d27e30efc.d
+│   │   │   ├── [01;34mthiserror-4a4d66799d753ea3[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mthiserror-bb699b5d809530be[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-bb699b5d809530be[0m
+│   │   │   │   └── build_script_build-bb699b5d809530be.d
+│   │   │   ├── [01;34mtypenum-5f43c101acb5d9fa[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   │   ├── consts.rs
+│   │   │   │   │   ├── op.rs
+│   │   │   │   │   └── tests.rs
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   └── [01;34mtypenum-ba5380f4f2932d28[0m
+│   │   │       ├── [01;32mbuild-script-main[0m
+│   │   │       ├── [01;32mbuild_script_main-ba5380f4f2932d28[0m
+│   │   │       └── build_script_main-ba5380f4f2932d28.d
+│   │   ├── [01;34mdeps[0m
+│   │   │   ├── adler32-99ddde7e6e69d6c1.d
+│   │   │   ├── aho_corasick-417a2760a2457731.d
+│   │   │   ├── ansi_to_html-89e76b5dd4aeb7d0.d
+│   │   │   ├── anstream-0ea5686b6217a423.d
+│   │   │   ├── anstyle-01d3decc266ec1cd.d
+│   │   │   ├── anstyle_parse-48e11a21b08f3f92.d
+│   │   │   ├── anstyle_query-969be7d9892771ef.d
+│   │   │   ├── async_stream-a401c8a5fc48c206.d
+│   │   │   ├── async_stream_impl-9efe000700accba2.d
+│   │   │   ├── async_trait-1c52ad8d8a771312.d
+│   │   │   ├── atomic_waker-139ffb07fa982694.d
+│   │   │   ├── autocfg-2c35fac7e550c966.d
+│   │   │   ├── backoff-337789be76471dff.d
+│   │   │   ├── base64-309ef582bd843d33.d
+│   │   │   ├── base64-c167c3eb3ecc322f.d
+│   │   │   ├── bitflags-37f44213647a4ace.d
+│   │   │   ├── block_buffer-90f91f4f164fc7ea.d
+│   │   │   ├── byteorder-921e9eb05e03d6ac.d
+│   │   │   ├── bytes-6a4c7ea0a880895d.d
+│   │   │   ├── cc-56fe6666a11bf3b3.d
+│   │   │   ├── cfg_if-57bf25c23e31efdb.d
+│   │   │   ├── colorchoice-14e97c6bdda49f77.d
+│   │   │   ├── cpufeatures-8aa7c06f8cd2cb1a.d
+│   │   │   ├── crossbeam_utils-92ce0696da2b5f4d.d
+│   │   │   ├── crossterm-d711a3127ab59b1c.d
+│   │   │   ├── crypto_common-b04de5b5712dc49f.d
+│   │   │   ├── data_encoding-732fa069be813c83.d
+│   │   │   ├── digest-ad270720b64b56a0.d
+│   │   │   ├── displaydoc-3f86c7962d8cf3c9.d
+│   │   │   ├── encoding_rs-87763af8bd0f20d8.d
+│   │   │   ├── env_filter-4e275e44ab698ac5.d
+│   │   │   ├── env_logger-18d1d464f5e8bcd6.d
+│   │   │   ├── equivalent-9e89cbd86631a94f.d
+│   │   │   ├── fnv-574dedeaa4c89e1d.d
+│   │   │   ├── foreign_types-635c4831cecdaa17.d
+│   │   │   ├── foreign_types_shared-451e418c5f5a784d.d
+│   │   │   ├── form_urlencoded-07a2dedb236e9598.d
+│   │   │   ├── futures_channel-1411bf70963dfe9b.d
+│   │   │   ├── futures_core-3267ce8fda4a14eb.d
+│   │   │   ├── futures_io-124a01bb0b35f096.d
+│   │   │   ├── futures_macro-2eeb1dbde82b657f.d
+│   │   │   ├── futures_sink-96446479240e3330.d
+│   │   │   ├── futures_task-6b7e7a881f61604a.d
+│   │   │   ├── futures_util-58b1748bd4968319.d
+│   │   │   ├── generic_array-d2a92b2da2a24109.d
+│   │   │   ├── getrandom-c919cbafe0c0649a.d
+│   │   │   ├── h2-f17d87ed8323c20f.d
+│   │   │   ├── hashbrown-a42df99be21eb75b.d
+│   │   │   ├── [01;32mhost-f3af821391d90762[0m
+│   │   │   ├── host-f3af821391d90762.d
+│   │   │   ├── httparse-51f001110b5a7f34.d
+│   │   │   ├── http_body-6f948388504fd55b.d
+│   │   │   ├── http_body_util-2be64d4ac71d5c57.d
+│   │   │   ├── http-d299e842755e0015.d
+│   │   │   ├── humantime-28a5c7939082a25f.d
+│   │   │   ├── hyper-d613a7cbee40eb29.d
+│   │   │   ├── hyper_tls-aea23c0c2c978348.d
+│   │   │   ├── hyper_util-46d60c92952bc656.d
+│   │   │   ├── icu_collections-844a15b198133c8a.d
+│   │   │   ├── icu_locid-f8f9431c698a3866.d
+│   │   │   ├── icu_locid_transform-c60f7f72fdb093b7.d
+│   │   │   ├── icu_locid_transform_data-d55fb9d2ae757896.d
+│   │   │   ├── icu_normalizer_data-062659b7008575dd.d
+│   │   │   ├── icu_normalizer-f5ce3149609ca54c.d
+│   │   │   ├── icu_properties_data-03b5a57048e77534.d
+│   │   │   ├── icu_properties-de2798793c12f924.d
+│   │   │   ├── icu_provider-718c5613d71fdfcf.d
+│   │   │   ├── icu_provider_macros-5790be96f92912c1.d
+│   │   │   ├── idna-6d0a22514f93a1a0.d
+│   │   │   ├── idna_adapter-50de04a6d25cc766.d
+│   │   │   ├── indexmap-1d547a578d414d48.d
+│   │   │   ├── instant-969d032a10606262.d
+│   │   │   ├── ipnet-f8f4f35acfc01e80.d
+│   │   │   ├── is_terminal_polyfill-30f534156c1fa16c.d
+│   │   │   ├── itoa-add5260810035b6e.d
+│   │   │   ├── lazy_static-7af2f34f8b124b26.d
+│   │   │   ├── libadler32-99ddde7e6e69d6c1.rlib
+│   │   │   ├── libadler32-99ddde7e6e69d6c1.rmeta
+│   │   │   ├── libaho_corasick-417a2760a2457731.rlib
+│   │   │   ├── libaho_corasick-417a2760a2457731.rmeta
+│   │   │   ├── libansi_to_html-89e76b5dd4aeb7d0.rlib
+│   │   │   ├── libansi_to_html-89e76b5dd4aeb7d0.rmeta
+│   │   │   ├── libanstream-0ea5686b6217a423.rlib
+│   │   │   ├── libanstream-0ea5686b6217a423.rmeta
+│   │   │   ├── libanstyle-01d3decc266ec1cd.rlib
+│   │   │   ├── libanstyle-01d3decc266ec1cd.rmeta
+│   │   │   ├── libanstyle_parse-48e11a21b08f3f92.rlib
+│   │   │   ├── libanstyle_parse-48e11a21b08f3f92.rmeta
+│   │   │   ├── libanstyle_query-969be7d9892771ef.rlib
+│   │   │   ├── libanstyle_query-969be7d9892771ef.rmeta
+│   │   │   ├── libasync_stream-a401c8a5fc48c206.rlib
+│   │   │   ├── libasync_stream-a401c8a5fc48c206.rmeta
+│   │   │   ├── [01;32mlibasync_stream_impl-9efe000700accba2.so[0m
+│   │   │   ├── [01;32mlibasync_trait-1c52ad8d8a771312.so[0m
+│   │   │   ├── libatomic_waker-139ffb07fa982694.rlib
+│   │   │   ├── libatomic_waker-139ffb07fa982694.rmeta
+│   │   │   ├── libautocfg-2c35fac7e550c966.rlib
+│   │   │   ├── libautocfg-2c35fac7e550c966.rmeta
+│   │   │   ├── libbackoff-337789be76471dff.rlib
+│   │   │   ├── libbackoff-337789be76471dff.rmeta
+│   │   │   ├── libbase64-309ef582bd843d33.rlib
+│   │   │   ├── libbase64-309ef582bd843d33.rmeta
+│   │   │   ├── libbase64-c167c3eb3ecc322f.rlib
+│   │   │   ├── libbase64-c167c3eb3ecc322f.rmeta
+│   │   │   ├── libbitflags-37f44213647a4ace.rlib
+│   │   │   ├── libbitflags-37f44213647a4ace.rmeta
+│   │   │   ├── libblock_buffer-90f91f4f164fc7ea.rlib
+│   │   │   ├── libblock_buffer-90f91f4f164fc7ea.rmeta
+│   │   │   ├── libbyteorder-921e9eb05e03d6ac.rlib
+│   │   │   ├── libbyteorder-921e9eb05e03d6ac.rmeta
+│   │   │   ├── libbytes-6a4c7ea0a880895d.rlib
+│   │   │   ├── libbytes-6a4c7ea0a880895d.rmeta
+│   │   │   ├── libc-41bacf664ae5cd40.d
+│   │   │   ├── libcc-56fe6666a11bf3b3.rlib
+│   │   │   ├── libcc-56fe6666a11bf3b3.rmeta
+│   │   │   ├── libcfg_if-57bf25c23e31efdb.rlib
+│   │   │   ├── libcfg_if-57bf25c23e31efdb.rmeta
+│   │   │   ├── libcolorchoice-14e97c6bdda49f77.rlib
+│   │   │   ├── libcolorchoice-14e97c6bdda49f77.rmeta
+│   │   │   ├── libcpufeatures-8aa7c06f8cd2cb1a.rlib
+│   │   │   ├── libcpufeatures-8aa7c06f8cd2cb1a.rmeta
+│   │   │   ├── libcrossbeam_utils-92ce0696da2b5f4d.rlib
+│   │   │   ├── libcrossbeam_utils-92ce0696da2b5f4d.rmeta
+│   │   │   ├── libcrossterm-d711a3127ab59b1c.rlib
+│   │   │   ├── libcrossterm-d711a3127ab59b1c.rmeta
+│   │   │   ├── libcrypto_common-b04de5b5712dc49f.rlib
+│   │   │   ├── libcrypto_common-b04de5b5712dc49f.rmeta
+│   │   │   ├── libdata_encoding-732fa069be813c83.rlib
+│   │   │   ├── libdata_encoding-732fa069be813c83.rmeta
+│   │   │   ├── libdigest-ad270720b64b56a0.rlib
+│   │   │   ├── libdigest-ad270720b64b56a0.rmeta
+│   │   │   ├── [01;32mlibdisplaydoc-3f86c7962d8cf3c9.so[0m
+│   │   │   ├── libencoding_rs-87763af8bd0f20d8.rlib
+│   │   │   ├── libencoding_rs-87763af8bd0f20d8.rmeta
+│   │   │   ├── libenv_filter-4e275e44ab698ac5.rlib
+│   │   │   ├── libenv_filter-4e275e44ab698ac5.rmeta
+│   │   │   ├── libenv_logger-18d1d464f5e8bcd6.rlib
+│   │   │   ├── libenv_logger-18d1d464f5e8bcd6.rmeta
+│   │   │   ├── libequivalent-9e89cbd86631a94f.rlib
+│   │   │   ├── libequivalent-9e89cbd86631a94f.rmeta
+│   │   │   ├── libfnv-574dedeaa4c89e1d.rlib
+│   │   │   ├── libfnv-574dedeaa4c89e1d.rmeta
+│   │   │   ├── libforeign_types-635c4831cecdaa17.rlib
+│   │   │   ├── libforeign_types-635c4831cecdaa17.rmeta
+│   │   │   ├── libforeign_types_shared-451e418c5f5a784d.rlib
+│   │   │   ├── libforeign_types_shared-451e418c5f5a784d.rmeta
+│   │   │   ├── libform_urlencoded-07a2dedb236e9598.rlib
+│   │   │   ├── libform_urlencoded-07a2dedb236e9598.rmeta
+│   │   │   ├── libfutures_channel-1411bf70963dfe9b.rlib
+│   │   │   ├── libfutures_channel-1411bf70963dfe9b.rmeta
+│   │   │   ├── libfutures_core-3267ce8fda4a14eb.rlib
+│   │   │   ├── libfutures_core-3267ce8fda4a14eb.rmeta
+│   │   │   ├── libfutures_io-124a01bb0b35f096.rlib
+│   │   │   ├── libfutures_io-124a01bb0b35f096.rmeta
+│   │   │   ├── [01;32mlibfutures_macro-2eeb1dbde82b657f.so[0m
+│   │   │   ├── libfutures_sink-96446479240e3330.rlib
+│   │   │   ├── libfutures_sink-96446479240e3330.rmeta
+│   │   │   ├── libfutures_task-6b7e7a881f61604a.rlib
+│   │   │   ├── libfutures_task-6b7e7a881f61604a.rmeta
+│   │   │   ├── libfutures_util-58b1748bd4968319.rlib
+│   │   │   ├── libfutures_util-58b1748bd4968319.rmeta
+│   │   │   ├── libgeneric_array-d2a92b2da2a24109.rlib
+│   │   │   ├── libgeneric_array-d2a92b2da2a24109.rmeta
+│   │   │   ├── libgetrandom-c919cbafe0c0649a.rlib
+│   │   │   ├── libgetrandom-c919cbafe0c0649a.rmeta
+│   │   │   ├── libh2-f17d87ed8323c20f.rlib
+│   │   │   ├── libh2-f17d87ed8323c20f.rmeta
+│   │   │   ├── libhashbrown-a42df99be21eb75b.rlib
+│   │   │   ├── libhashbrown-a42df99be21eb75b.rmeta
+│   │   │   ├── libhttparse-51f001110b5a7f34.rlib
+│   │   │   ├── libhttparse-51f001110b5a7f34.rmeta
+│   │   │   ├── libhttp_body-6f948388504fd55b.rlib
+│   │   │   ├── libhttp_body-6f948388504fd55b.rmeta
+│   │   │   ├── libhttp_body_util-2be64d4ac71d5c57.rlib
+│   │   │   ├── libhttp_body_util-2be64d4ac71d5c57.rmeta
+│   │   │   ├── libhttp-d299e842755e0015.rlib
+│   │   │   ├── libhttp-d299e842755e0015.rmeta
+│   │   │   ├── libhumantime-28a5c7939082a25f.rlib
+│   │   │   ├── libhumantime-28a5c7939082a25f.rmeta
+│   │   │   ├── libhyper-d613a7cbee40eb29.rlib
+│   │   │   ├── libhyper-d613a7cbee40eb29.rmeta
+│   │   │   ├── libhyper_tls-aea23c0c2c978348.rlib
+│   │   │   ├── libhyper_tls-aea23c0c2c978348.rmeta
+│   │   │   ├── libhyper_util-46d60c92952bc656.rlib
+│   │   │   ├── libhyper_util-46d60c92952bc656.rmeta
+│   │   │   ├── libicu_collections-844a15b198133c8a.rlib
+│   │   │   ├── libicu_collections-844a15b198133c8a.rmeta
+│   │   │   ├── libicu_locid-f8f9431c698a3866.rlib
+│   │   │   ├── libicu_locid-f8f9431c698a3866.rmeta
+│   │   │   ├── libicu_locid_transform-c60f7f72fdb093b7.rlib
+│   │   │   ├── libicu_locid_transform-c60f7f72fdb093b7.rmeta
+│   │   │   ├── libicu_locid_transform_data-d55fb9d2ae757896.rlib
+│   │   │   ├── libicu_locid_transform_data-d55fb9d2ae757896.rmeta
+│   │   │   ├── libicu_normalizer_data-062659b7008575dd.rlib
+│   │   │   ├── libicu_normalizer_data-062659b7008575dd.rmeta
+│   │   │   ├── libicu_normalizer-f5ce3149609ca54c.rlib
+│   │   │   ├── libicu_normalizer-f5ce3149609ca54c.rmeta
+│   │   │   ├── libicu_properties_data-03b5a57048e77534.rlib
+│   │   │   ├── libicu_properties_data-03b5a57048e77534.rmeta
+│   │   │   ├── libicu_properties-de2798793c12f924.rlib
+│   │   │   ├── libicu_properties-de2798793c12f924.rmeta
+│   │   │   ├── libicu_provider-718c5613d71fdfcf.rlib
+│   │   │   ├── libicu_provider-718c5613d71fdfcf.rmeta
+│   │   │   ├── [01;32mlibicu_provider_macros-5790be96f92912c1.so[0m
+│   │   │   ├── libidna-6d0a22514f93a1a0.rlib
+│   │   │   ├── libidna-6d0a22514f93a1a0.rmeta
+│   │   │   ├── libidna_adapter-50de04a6d25cc766.rlib
+│   │   │   ├── libidna_adapter-50de04a6d25cc766.rmeta
+│   │   │   ├── libindexmap-1d547a578d414d48.rlib
+│   │   │   ├── libindexmap-1d547a578d414d48.rmeta
+│   │   │   ├── libinstant-969d032a10606262.rlib
+│   │   │   ├── libinstant-969d032a10606262.rmeta
+│   │   │   ├── libipnet-f8f4f35acfc01e80.rlib
+│   │   │   ├── libipnet-f8f4f35acfc01e80.rmeta
+│   │   │   ├── libis_terminal_polyfill-30f534156c1fa16c.rlib
+│   │   │   ├── libis_terminal_polyfill-30f534156c1fa16c.rmeta
+│   │   │   ├── libitoa-add5260810035b6e.rlib
+│   │   │   ├── libitoa-add5260810035b6e.rmeta
+│   │   │   ├── liblazy_static-7af2f34f8b124b26.rlib
+│   │   │   ├── liblazy_static-7af2f34f8b124b26.rmeta
+│   │   │   ├── liblibc-41bacf664ae5cd40.rlib
+│   │   │   ├── liblibc-41bacf664ae5cd40.rmeta
+│   │   │   ├── liblitemap-05df7b5877556460.rlib
+│   │   │   ├── liblitemap-05df7b5877556460.rmeta
+│   │   │   ├── liblock_api-e2cb0d427dfba242.rlib
+│   │   │   ├── liblock_api-e2cb0d427dfba242.rmeta
+│   │   │   ├── liblog-e7e7e8ec9ff686da.rlib
+│   │   │   ├── liblog-e7e7e8ec9ff686da.rmeta
+│   │   │   ├── libmemchr-c7ff0286392b94eb.rlib
+│   │   │   ├── libmemchr-c7ff0286392b94eb.rmeta
+│   │   │   ├── libmime-34c62d26cca01717.rlib
+│   │   │   ├── libmime-34c62d26cca01717.rmeta
+│   │   │   ├── libmio-a779dcdbfa881b80.rlib
+│   │   │   ├── libmio-a779dcdbfa881b80.rmeta
+│   │   │   ├── libmio-f7e67d3101774ce3.rlib
+│   │   │   ├── libmio-f7e67d3101774ce3.rmeta
+│   │   │   ├── libnative_tls-42651e926221dd8c.rlib
+│   │   │   ├── libnative_tls-42651e926221dd8c.rmeta
+│   │   │   ├── libonce_cell-6dc575c335e8f5a1.rlib
+│   │   │   ├── libonce_cell-6dc575c335e8f5a1.rmeta
+│   │   │   ├── libopenssl-a4ee99928aab593b.rlib
+│   │   │   ├── libopenssl-a4ee99928aab593b.rmeta
+│   │   │   ├── [01;32mlibopenssl_macros-d61f12222788fa27.so[0m
+│   │   │   ├── libopenssl_probe-7a88c39453af999d.rlib
+│   │   │   ├── libopenssl_probe-7a88c39453af999d.rmeta
+│   │   │   ├── libopenssl_sys-9c7e4027e39eaff0.rlib
+│   │   │   ├── libopenssl_sys-9c7e4027e39eaff0.rmeta
+│   │   │   ├── libparking_lot-7709b186946aa5c3.rlib
+│   │   │   ├── libparking_lot-7709b186946aa5c3.rmeta
+│   │   │   ├── libparking_lot_core-9bb29a1a944989cc.rlib
+│   │   │   ├── libparking_lot_core-9bb29a1a944989cc.rmeta
+│   │   │   ├── libpercent_encoding-a400589552762a21.rlib
+│   │   │   ├── libpercent_encoding-a400589552762a21.rmeta
+│   │   │   ├── libpin_project-bdaecab6173c5f7d.rlib
+│   │   │   ├── libpin_project-bdaecab6173c5f7d.rmeta
+│   │   │   ├── [01;32mlibpin_project_internal-a5f812927f7669ee.so[0m
+│   │   │   ├── libpin_project_lite-2633596a5f246a3b.rlib
+│   │   │   ├── libpin_project_lite-2633596a5f246a3b.rmeta
+│   │   │   ├── libpin_utils-76c2785263cdb1c1.rlib
+│   │   │   ├── libpin_utils-76c2785263cdb1c1.rmeta
+│   │   │   ├── libpkg_config-120c7066f094a743.rlib
+│   │   │   ├── libpkg_config-120c7066f094a743.rmeta
+│   │   │   ├── libppv_lite86-8a06e578497c7efb.rlib
+│   │   │   ├── libppv_lite86-8a06e578497c7efb.rmeta
+│   │   │   ├── libproc_macro2-ea84fab1bb9a207c.rlib
+│   │   │   ├── libproc_macro2-ea84fab1bb9a207c.rmeta
+│   │   │   ├── libquote-9ae4553a06acae1e.rlib
+│   │   │   ├── libquote-9ae4553a06acae1e.rmeta
+│   │   │   ├── librand-bf00d2e1e905c651.rlib
+│   │   │   ├── librand-bf00d2e1e905c651.rmeta
+│   │   │   ├── librand_chacha-fcdbf8ee781c8cb2.rlib
+│   │   │   ├── librand_chacha-fcdbf8ee781c8cb2.rmeta
+│   │   │   ├── librand_core-d575c8e58db50eca.rlib
+│   │   │   ├── librand_core-d575c8e58db50eca.rmeta
+│   │   │   ├── libregex-76588c532abaa1e4.rlib
+│   │   │   ├── libregex-76588c532abaa1e4.rmeta
+│   │   │   ├── libregex_automata-f985a81ac245da1c.rlib
+│   │   │   ├── libregex_automata-f985a81ac245da1c.rmeta
+│   │   │   ├── libregex_syntax-eddb13b0f2ea78f9.rlib
+│   │   │   ├── libregex_syntax-eddb13b0f2ea78f9.rmeta
+│   │   │   ├── libreqwest-51dd97b1797a1c27.rlib
+│   │   │   ├── libreqwest-51dd97b1797a1c27.rmeta
+│   │   │   ├── libringbuf-a475e94dee4001ff.rlib
+│   │   │   ├── libringbuf-a475e94dee4001ff.rmeta
+│   │   │   ├── librust_engineio-5ba12f61d0654204.rlib
+│   │   │   ├── librust_engineio-5ba12f61d0654204.rmeta
+│   │   │   ├── librustls_pemfile-642792cee8028172.rlib
+│   │   │   ├── librustls_pemfile-642792cee8028172.rmeta
+│   │   │   ├── librustls_pki_types-9be9a33ba3c69774.rlib
+│   │   │   ├── librustls_pki_types-9be9a33ba3c69774.rmeta
+│   │   │   ├── librust_socketio-a2bf807b937162cc.rlib
+│   │   │   ├── librust_socketio-a2bf807b937162cc.rmeta
+│   │   │   ├── librustyline_async-b3521c94ac25cf7e.rlib
+│   │   │   ├── librustyline_async-b3521c94ac25cf7e.rmeta
+│   │   │   ├── libryu-2ae7af5af0bb88e0.rlib
+│   │   │   ├── libryu-2ae7af5af0bb88e0.rmeta
+│   │   │   ├── libscopeguard-003ee3b9b09cebdb.rlib
+│   │   │   ├── libscopeguard-003ee3b9b09cebdb.rmeta
+│   │   │   ├── libserde-3180e58b80a4135f.rlib
+│   │   │   ├── libserde-3180e58b80a4135f.rmeta
+│   │   │   ├── [01;32mlibserde_derive-b4dc03cbcca6d0ed.so[0m
+│   │   │   ├── libserde_json-b12d29416f3272c0.rlib
+│   │   │   ├── libserde_json-b12d29416f3272c0.rmeta
+│   │   │   ├── libserde_urlencoded-048dadda94f9fc56.rlib
+│   │   │   ├── libserde_urlencoded-048dadda94f9fc56.rmeta
+│   │   │   ├── libsha1-a0e68185946f57e5.rlib
+│   │   │   ├── libsha1-a0e68185946f57e5.rmeta
+│   │   │   ├── libshlex-f4c3659040844f7b.rlib
+│   │   │   ├── libshlex-f4c3659040844f7b.rmeta
+│   │   │   ├── libsignal_hook-4f3dc22b0d1d1a81.rlib
+│   │   │   ├── libsignal_hook-4f3dc22b0d1d1a81.rmeta
+│   │   │   ├── libsignal_hook_mio-70d32d349b061d84.rlib
+│   │   │   ├── libsignal_hook_mio-70d32d349b061d84.rmeta
+│   │   │   ├── libsignal_hook_registry-fd3c2fb67bc7f819.rlib
+│   │   │   ├── libsignal_hook_registry-fd3c2fb67bc7f819.rmeta
+│   │   │   ├── libslab-d637e80c635d9ae6.rlib
+│   │   │   ├── libslab-d637e80c635d9ae6.rmeta
+│   │   │   ├── libsmallvec-2bf71e8326cc0d46.rlib
+│   │   │   ├── libsmallvec-2bf71e8326cc0d46.rmeta
+│   │   │   ├── libsocket2-7687898b46f13c1c.rlib
+│   │   │   ├── libsocket2-7687898b46f13c1c.rmeta
+│   │   │   ├── libstable_deref_trait-94bc1fab9293791f.rlib
+│   │   │   ├── libstable_deref_trait-94bc1fab9293791f.rmeta
+│   │   │   ├── libstrip_ansi_escapes-4343731939f10037.rlib
+│   │   │   ├── libstrip_ansi_escapes-4343731939f10037.rmeta
+│   │   │   ├── libsyn-883f52e00e2d6eb2.rlib
+│   │   │   ├── libsyn-883f52e00e2d6eb2.rmeta
+│   │   │   ├── libsync_wrapper-4ffdcf013a9b999b.rlib
+│   │   │   ├── libsync_wrapper-4ffdcf013a9b999b.rmeta
+│   │   │   ├── libsynstructure-3210c8d5ec484649.rlib
+│   │   │   ├── libsynstructure-3210c8d5ec484649.rmeta
+│   │   │   ├── libthingbuf-6f89f96dc30d319f.rlib
+│   │   │   ├── libthingbuf-6f89f96dc30d319f.rmeta
+│   │   │   ├── libthiserror-14399824f7fab210.rlib
+│   │   │   ├── libthiserror-14399824f7fab210.rmeta
+│   │   │   ├── [01;32mlibthiserror_impl-9982b6e6d85712e2.so[0m
+│   │   │   ├── libtinystr-69da24855a7120b5.rlib
+│   │   │   ├── libtinystr-69da24855a7120b5.rmeta
+│   │   │   ├── libtokio-7cf8b4de58c198b2.rlib
+│   │   │   ├── libtokio-7cf8b4de58c198b2.rmeta
+│   │   │   ├── [01;32mlibtokio_macros-2310ed3e261d3e53.so[0m
+│   │   │   ├── libtokio_native_tls-ad904069fbe18862.rlib
+│   │   │   ├── libtokio_native_tls-ad904069fbe18862.rmeta
+│   │   │   ├── libtokio_tungstenite-099b6c863c9cb2fa.rlib
+│   │   │   ├── libtokio_tungstenite-099b6c863c9cb2fa.rmeta
+│   │   │   ├── libtokio_util-680285c76287d2b2.rlib
+│   │   │   ├── libtokio_util-680285c76287d2b2.rmeta
+│   │   │   ├── libtower_service-44dbed632a843492.rlib
+│   │   │   ├── libtower_service-44dbed632a843492.rmeta
+│   │   │   ├── libtracing-bfddd9c3cfd3791c.rlib
+│   │   │   ├── libtracing-bfddd9c3cfd3791c.rmeta
+│   │   │   ├── libtracing_core-7c30351e8178d82b.rlib
+│   │   │   ├── libtracing_core-7c30351e8178d82b.rmeta
+│   │   │   ├── libtry_lock-c81c639303c73d15.rlib
+│   │   │   ├── libtry_lock-c81c639303c73d15.rmeta
+│   │   │   ├── libtungstenite-c613a68c75838ac9.rlib
+│   │   │   ├── libtungstenite-c613a68c75838ac9.rmeta
+│   │   │   ├── libtypenum-5326f72807cfe834.rlib
+│   │   │   ├── libtypenum-5326f72807cfe834.rmeta
+│   │   │   ├── libunicode_ident-c1d05c67d34096ea.rlib
+│   │   │   ├── libunicode_ident-c1d05c67d34096ea.rmeta
+│   │   │   ├── libunicode_segmentation-706a662b6285a9e1.rlib
+│   │   │   ├── libunicode_segmentation-706a662b6285a9e1.rmeta
+│   │   │   ├── libunicode_width-496d455ef4b56198.rlib
+│   │   │   ├── libunicode_width-496d455ef4b56198.rmeta
+│   │   │   ├── liburl-c3876314207c8082.rlib
+│   │   │   ├── liburl-c3876314207c8082.rmeta
+│   │   │   ├── libutf16_iter-e8333c715a5bfde4.rlib
+│   │   │   ├── libutf16_iter-e8333c715a5bfde4.rmeta
+│   │   │   ├── libutf8-d1a3605d87052b93.rlib
+│   │   │   ├── libutf8-d1a3605d87052b93.rmeta
+│   │   │   ├── libutf8_iter-7b46fdc8748b2bd7.rlib
+│   │   │   ├── libutf8_iter-7b46fdc8748b2bd7.rmeta
+│   │   │   ├── libutf8parse-d435e47da5544871.rlib
+│   │   │   ├── libutf8parse-d435e47da5544871.rmeta
+│   │   │   ├── libvcpkg-65f69b1e115cb203.rlib
+│   │   │   ├── libvcpkg-65f69b1e115cb203.rmeta
+│   │   │   ├── libversion_check-e39cc59db5cde1cc.rlib
+│   │   │   ├── libversion_check-e39cc59db5cde1cc.rmeta
+│   │   │   ├── libvte-9ede11ef0607fcec.rlib
+│   │   │   ├── libvte-9ede11ef0607fcec.rmeta
+│   │   │   ├── [01;32mlibvte_generate_state_changes-a5defc2e76ee10db.so[0m
+│   │   │   ├── libwant-e685d7a406130720.rlib
+│   │   │   ├── libwant-e685d7a406130720.rmeta
+│   │   │   ├── libwrite16-d18c02dcb762aeae.rlib
+│   │   │   ├── libwrite16-d18c02dcb762aeae.rmeta
+│   │   │   ├── libwriteable-4ad35b37dd154aab.rlib
+│   │   │   ├── libwriteable-4ad35b37dd154aab.rmeta
+│   │   │   ├── libyoke-23f612b2999d7a07.rlib
+│   │   │   ├── libyoke-23f612b2999d7a07.rmeta
+│   │   │   ├── [01;32mlibyoke_derive-71a87b4c8e5df631.so[0m
+│   │   │   ├── libzerocopy-ca45c87811636d4c.rlib
+│   │   │   ├── libzerocopy-ca45c87811636d4c.rmeta
+│   │   │   ├── [01;32mlibzerocopy_derive-c6e6a0d9a43cd297.so[0m
+│   │   │   ├── libzerofrom-3f0395c747dede2b.rlib
+│   │   │   ├── libzerofrom-3f0395c747dede2b.rmeta
+│   │   │   ├── [01;32mlibzerofrom_derive-8e19cceb24b9038b.so[0m
+│   │   │   ├── libzerovec-17395f6dbee42039.rlib
+│   │   │   ├── libzerovec-17395f6dbee42039.rmeta
+│   │   │   ├── [01;32mlibzerovec_derive-340b2fa30eb51769.so[0m
+│   │   │   ├── litemap-05df7b5877556460.d
+│   │   │   ├── lock_api-e2cb0d427dfba242.d
+│   │   │   ├── log-e7e7e8ec9ff686da.d
+│   │   │   ├── memchr-c7ff0286392b94eb.d
+│   │   │   ├── mime-34c62d26cca01717.d
+│   │   │   ├── mio-a779dcdbfa881b80.d
+│   │   │   ├── mio-f7e67d3101774ce3.d
+│   │   │   ├── native_tls-42651e926221dd8c.d
+│   │   │   ├── once_cell-6dc575c335e8f5a1.d
+│   │   │   ├── openssl-a4ee99928aab593b.d
+│   │   │   ├── openssl_macros-d61f12222788fa27.d
+│   │   │   ├── openssl_probe-7a88c39453af999d.d
+│   │   │   ├── openssl_sys-9c7e4027e39eaff0.d
+│   │   │   ├── parking_lot-7709b186946aa5c3.d
+│   │   │   ├── parking_lot_core-9bb29a1a944989cc.d
+│   │   │   ├── percent_encoding-a400589552762a21.d
+│   │   │   ├── pin_project-bdaecab6173c5f7d.d
+│   │   │   ├── pin_project_internal-a5f812927f7669ee.d
+│   │   │   ├── pin_project_lite-2633596a5f246a3b.d
+│   │   │   ├── pin_utils-76c2785263cdb1c1.d
+│   │   │   ├── pkg_config-120c7066f094a743.d
+│   │   │   ├── ppv_lite86-8a06e578497c7efb.d
+│   │   │   ├── proc_macro2-ea84fab1bb9a207c.d
+│   │   │   ├── quote-9ae4553a06acae1e.d
+│   │   │   ├── rand-bf00d2e1e905c651.d
+│   │   │   ├── rand_chacha-fcdbf8ee781c8cb2.d
+│   │   │   ├── rand_core-d575c8e58db50eca.d
+│   │   │   ├── regex-76588c532abaa1e4.d
+│   │   │   ├── regex_automata-f985a81ac245da1c.d
+│   │   │   ├── regex_syntax-eddb13b0f2ea78f9.d
+│   │   │   ├── reqwest-51dd97b1797a1c27.d
+│   │   │   ├── ringbuf-a475e94dee4001ff.d
+│   │   │   ├── rust_engineio-5ba12f61d0654204.d
+│   │   │   ├── rustls_pemfile-642792cee8028172.d
+│   │   │   ├── rustls_pki_types-9be9a33ba3c69774.d
+│   │   │   ├── rust_socketio-a2bf807b937162cc.d
+│   │   │   ├── rustyline_async-b3521c94ac25cf7e.d
+│   │   │   ├── ryu-2ae7af5af0bb88e0.d
+│   │   │   ├── scopeguard-003ee3b9b09cebdb.d
+│   │   │   ├── serde-3180e58b80a4135f.d
+│   │   │   ├── serde_derive-b4dc03cbcca6d0ed.d
+│   │   │   ├── serde_json-b12d29416f3272c0.d
+│   │   │   ├── serde_urlencoded-048dadda94f9fc56.d
+│   │   │   ├── sha1-a0e68185946f57e5.d
+│   │   │   ├── shlex-f4c3659040844f7b.d
+│   │   │   ├── signal_hook-4f3dc22b0d1d1a81.d
+│   │   │   ├── signal_hook_mio-70d32d349b061d84.d
+│   │   │   ├── signal_hook_registry-fd3c2fb67bc7f819.d
+│   │   │   ├── slab-d637e80c635d9ae6.d
+│   │   │   ├── smallvec-2bf71e8326cc0d46.d
+│   │   │   ├── socket2-7687898b46f13c1c.d
+│   │   │   ├── stable_deref_trait-94bc1fab9293791f.d
+│   │   │   ├── strip_ansi_escapes-4343731939f10037.d
+│   │   │   ├── syn-883f52e00e2d6eb2.d
+│   │   │   ├── sync_wrapper-4ffdcf013a9b999b.d
+│   │   │   ├── synstructure-3210c8d5ec484649.d
+│   │   │   ├── thingbuf-6f89f96dc30d319f.d
+│   │   │   ├── thiserror-14399824f7fab210.d
+│   │   │   ├── thiserror_impl-9982b6e6d85712e2.d
+│   │   │   ├── tinystr-69da24855a7120b5.d
+│   │   │   ├── tokio-7cf8b4de58c198b2.d
+│   │   │   ├── tokio_macros-2310ed3e261d3e53.d
+│   │   │   ├── tokio_native_tls-ad904069fbe18862.d
+│   │   │   ├── tokio_tungstenite-099b6c863c9cb2fa.d
+│   │   │   ├── tokio_util-680285c76287d2b2.d
+│   │   │   ├── tower_service-44dbed632a843492.d
+│   │   │   ├── tracing-bfddd9c3cfd3791c.d
+│   │   │   ├── tracing_core-7c30351e8178d82b.d
+│   │   │   ├── try_lock-c81c639303c73d15.d
+│   │   │   ├── tungstenite-c613a68c75838ac9.d
+│   │   │   ├── typenum-5326f72807cfe834.d
+│   │   │   ├── unicode_ident-c1d05c67d34096ea.d
+│   │   │   ├── unicode_segmentation-706a662b6285a9e1.d
+│   │   │   ├── unicode_width-496d455ef4b56198.d
+│   │   │   ├── url-c3876314207c8082.d
+│   │   │   ├── utf16_iter-e8333c715a5bfde4.d
+│   │   │   ├── utf8-d1a3605d87052b93.d
+│   │   │   ├── utf8_iter-7b46fdc8748b2bd7.d
+│   │   │   ├── utf8parse-d435e47da5544871.d
+│   │   │   ├── vcpkg-65f69b1e115cb203.d
+│   │   │   ├── version_check-e39cc59db5cde1cc.d
+│   │   │   ├── vte-9ede11ef0607fcec.d
+│   │   │   ├── vte_generate_state_changes-a5defc2e76ee10db.d
+│   │   │   ├── want-e685d7a406130720.d
+│   │   │   ├── write16-d18c02dcb762aeae.d
+│   │   │   ├── writeable-4ad35b37dd154aab.d
+│   │   │   ├── yoke-23f612b2999d7a07.d
+│   │   │   ├── yoke_derive-71a87b4c8e5df631.d
+│   │   │   ├── zerocopy-ca45c87811636d4c.d
+│   │   │   ├── zerocopy_derive-c6e6a0d9a43cd297.d
+│   │   │   ├── zerofrom-3f0395c747dede2b.d
+│   │   │   ├── zerofrom_derive-8e19cceb24b9038b.d
+│   │   │   ├── zerovec-17395f6dbee42039.d
+│   │   │   └── zerovec_derive-340b2fa30eb51769.d
+│   │   ├── [01;34mexamples[0m
+│   │   ├── [01;32mhost[0m
+│   │   ├── host.d
+│   │   └── [01;34mincremental[0m
+│   │       ├── [01;34mhost-2u3e431rrqd4c[0m
+│   │       │   ├── [01;34ms-h2gfb39k20-1cmcd6i-02xs2xp0a830up6tzu3so1hmq[0m
+│   │       │   │   ├── 011oxyph5wx2oflug6aydx8dm.o
+│   │       │   │   ├── 02zdo9vli4gvykegxpbletste.o
+│   │       │   │   ├── 04e1999wm88xpajhfkpth6yoe.o
+│   │       │   │   ├── 05iei16bbafp0vjwcg5qsbi4v.o
+│   │       │   │   ├── 0bnyd4d7kkbbkywx45hzv9ub0.o
+│   │       │   │   ├── 0bpmgj93xjed3j9iulby7jp7q.o
+│   │       │   │   ├── 0c60d3gf1kfc4diushfzi6hbe.o
+│   │       │   │   ├── 0dqqb2iwclitopyqaa47irobe.o
+│   │       │   │   ├── 0hqg5ts7z8fgakzmq1lyhy6t3.o
+│   │       │   │   ├── 0p8lzh47w7m0hfw6uobrc2ogd.o
+│   │       │   │   ├── 0q0bvqrjrd1er63sqgux72te5.o
+│   │       │   │   ├── 0tukrsxwio4b6uaxwyhiwhf3p.o
+│   │       │   │   ├── 0vx9mp3sox7cc2kdssgxo4pm9.o
+│   │       │   │   ├── 15uoodlkjb86j6z66y09mfhhu.o
+│   │       │   │   ├── 19z3mu8ewqpem7ku1mps2k6tf.o
+│   │       │   │   ├── 1be3ds4z7foo65cmh2j31f588.o
+│   │       │   │   ├── 1cyvsuem4tmqvvtzbmqqmlrpm.o
+│   │       │   │   ├── 1e7vrdtbl44wjzrfsf9xskanc.o
+│   │       │   │   ├── 1ewgj6w98d0fyi4kg9ccwhlrv.o
+│   │       │   │   ├── 1l6acxm685xfg37o7sas396o7.o
+│   │       │   │   ├── 1nerhymbvot0a0dqkgdrw9dmx.o
+│   │       │   │   ├── 1oz49wxemp1pkov0d7qilkuvx.o
+│   │       │   │   ├── 1r2dvbi7jzp84sr1tpojtg9rj.o
+│   │       │   │   ├── 1skp27a9ef869uu496y0sy4ly.o
+│   │       │   │   ├── 1u303n76yjdna7sel3myzncjb.o
+│   │       │   │   ├── 1uxkjgxlmp18of9tpkyp5fgug.o
+│   │       │   │   ├── 1vn3ykwvf1ygkx5l70hhro1yk.o
+│   │       │   │   ├── 1vs1myujj125o1y3beoay3xg2.o
+│   │       │   │   ├── 1whb5wyctwpvq1zoi78dwighd.o
+│   │       │   │   ├── 1xy7iut0ebhbaj3iy7bl62ly3.o
+│   │       │   │   ├── 20yujv921m6vje8ps8khuiu2c.o
+│   │       │   │   ├── 26l5re0wk74yd5rgyrotoc0xa.o
+│   │       │   │   ├── 2jj5s2fqpfo5esczpqcm3w53v.o
+│   │       │   │   ├── 2me3eru85c7z3gfkwrkthizdi.o
+│   │       │   │   ├── 2o5y9cgdzde166qpl2n8s3jtd.o
+│   │       │   │   ├── 2q44onk0hpmrtjhtmxomsyz6r.o
+│   │       │   │   ├── 2s18135c45wm0b9f7dqalumye.o
+│   │       │   │   ├── 2su5gpqhmp593dmh8gpls95du.o
+│   │       │   │   ├── 2ws500eiiot8l4gjbp752nth8.o
+│   │       │   │   ├── 34pp1g8dq4uuky4bf0iqbg7jy.o
+│   │       │   │   ├── 3c0xhg3yl8zrxrt395lwyo8jb.o
+│   │       │   │   ├── 3gstxu555lssl5aucai4r41jg.o
+│   │       │   │   ├── 3ih71hpy7y6f9ycoyrbhyxx2i.o
+│   │       │   │   ├── 3j893yk46aqw85hamx3ownqud.o
+│   │       │   │   ├── 3kgpeqav7f5ps9xdoh9ts6hoe.o
+│   │       │   │   ├── 3kwjj5ommqr4k6kyzjc2kra86.o
+│   │       │   │   ├── 3nrei6bfp0lceujskex3idkox.o
+│   │       │   │   ├── 3qmoa96pdoii8zj81mx9cjpz2.o
+│   │       │   │   ├── 3s3ssnn8nd3db2kbedd6op2t7.o
+│   │       │   │   ├── 3u5789f46e2sxbukekoz39zey.o
+│   │       │   │   ├── 3weetul427zn4nw18kzi641zd.o
+│   │       │   │   ├── 4764qres2ym5ls5fvhtm0o2rf.o
+│   │       │   │   ├── 4a06mg3iu260w86by2paqmrsn.o
+│   │       │   │   ├── 4ajstzo49fibtf7hp6te1giwi.o
+│   │       │   │   ├── 4giiuntz50n3pi2n8t4oxfimm.o
+│   │       │   │   ├── 4mkqqifhxl30kvhf1pe8j7fng.o
+│   │       │   │   ├── 4p3rtsl4dby2260bl0dsfx8k6.o
+│   │       │   │   ├── 4qfzvqhr5byvs4uchx5iyjnv0.o
+│   │       │   │   ├── 4ta7az9zprxoapdw7y7isifff.o
+│   │       │   │   ├── 4uxkqsr4c2rkprgvp2bboj2tx.o
+│   │       │   │   ├── 4wid27smen9cbus3d77dn482u.o
+│   │       │   │   ├── 53ngucx3wjhjiyzt8mkqwmq3k.o
+│   │       │   │   ├── 58jg564bthxkescf4vdunlvix.o
+│   │       │   │   ├── 58r58z5z56v8epl5ohtz7qbpz.o
+│   │       │   │   ├── 5af7l8ao0j2qibb9oubuay6r3.o
+│   │       │   │   ├── 5afss9q8gy4avojrrnx7q0qw0.o
+│   │       │   │   ├── 5gmwyrxyr6fekxw6w4vhhjw6f.o
+│   │       │   │   ├── 5go08bcvb58ji2hpe9xm5uz5v.o
+│   │       │   │   ├── 5kkept7k264gpv3wy026lx5vi.o
+│   │       │   │   ├── 5ogvwnx0a87g2bpctg1afohng.o
+│   │       │   │   ├── 5oobur7uh6u3eot0c6ovc5ulo.o
+│   │       │   │   ├── 5p2v4dzuetf8umw0cg1xa2xel.o
+│   │       │   │   ├── 5pw4snvprh35utw5a95i03n6p.o
+│   │       │   │   ├── 5q5izt74fuwjog8r8h2488u7s.o
+│   │       │   │   ├── 5qfigmpyvm9l3v6x9zil36koj.o
+│   │       │   │   ├── 5sqqsamn15bh0y1zr08qlr2wu.o
+│   │       │   │   ├── 5uu6752vqiwnxlut14j5q6e0q.o
+│   │       │   │   ├── 5zhjmr2e91fxa76nbk2cqk1by.o
+│   │       │   │   ├── 60dxna9mcd6e6y6zurpx2n9rk.o
+│   │       │   │   ├── 61pit3fphd2lrymfbmbwec8qt.o
+│   │       │   │   ├── 64fvt9305cmq6qinbb4uoe0h9.o
+│   │       │   │   ├── 65bf7g35qou2l08vp8vd5a7rq.o
+│   │       │   │   ├── 6cz2ij2v9ndakyx6yozb6herx.o
+│   │       │   │   ├── 6inzfc8q8shx7ngs1c4ugogwn.o
+│   │       │   │   ├── 6ippw5ttugbkbd37vanr71wnf.o
+│   │       │   │   ├── 6jdkj8s3dt4y8u9jxlqcjjze0.o
+│   │       │   │   ├── 6laur0chrp4wfjoh4i2fy6cir.o
+│   │       │   │   ├── 6ls0h94npn3czicx01u5seztc.o
+│   │       │   │   ├── 6si8p7t190l553d1fr061gisd.o
+│   │       │   │   ├── 71twsj7vpj8y06hl0lx2yfve2.o
+│   │       │   │   ├── 72c0mb5cgey72aipv9fnw4rlz.o
+│   │       │   │   ├── 74jrpk14hnyoi136xm22ihj5i.o
+│   │       │   │   ├── 7784gre6i6r5023dd5qoly62w.o
+│   │       │   │   ├── 7e9fso7kv0fg4ocakz3vs8kx5.o
+│   │       │   │   ├── 7egfz26ccdn1nw0mrtpjiel28.o
+│   │       │   │   ├── 7h3dkc1vy3ynilfke7jzyfc3c.o
+│   │       │   │   ├── 7jv8ifp16910s2035fj8g5ns7.o
+│   │       │   │   ├── 7o4gjej35yd17wyf0o5fn2vsv.o
+│   │       │   │   ├── 7schpt8x277f4n4tl6xs24l4w.o
+│   │       │   │   ├── 7ttgs3h5o151rfvfrs4ho7y19.o
+│   │       │   │   ├── 7tw1uqpb0936faly8d3hhwsdl.o
+│   │       │   │   ├── 7twsjlcdpgyh2uyoupdk8sdqo.o
+│   │       │   │   ├── 7ymozu3awa9w7qrm6pfqhmctk.o
+│   │       │   │   ├── 83mjf1hzga3xxu38cbhqyxmkg.o
+│   │       │   │   ├── 86j9nuv1hpnlvopm7mpbazrfh.o
+│   │       │   │   ├── 881xfi5pfm07lxidyxe8edaif.o
+│   │       │   │   ├── 88nqnn9578oct5v6bppidboxj.o
+│   │       │   │   ├── 8ajn9mok1nkevnvzvuawy21gu.o
+│   │       │   │   ├── 8b80jawqk4cv30xqef4q5b9qh.o
+│   │       │   │   ├── 8c4fjc2d2tzz4v0n6oufzt878.o
+│   │       │   │   ├── 8cfpi8p7vfgnqgkg1zoesnwsq.o
+│   │       │   │   ├── 8dgaiqsxqhqxkyiwm23mwzwbz.o
+│   │       │   │   ├── 8fx6nnfaq8pzdtd7xqyowxoig.o
+│   │       │   │   ├── 8r8xntjcg6rb9jto37gmak0sc.o
+│   │       │   │   ├── 8wyc7tid1pcuwn5d1sq5mbok3.o
+│   │       │   │   ├── 917vielqi9ex84mzatukr8qda.o
+│   │       │   │   ├── 92ycidxp0y0iogs37mc2lv9p0.o
+│   │       │   │   ├── 95czrdbarajazb0jjb96vrkqx.o
+│   │       │   │   ├── 9bew71z9k7d0otjpflspetlxo.o
+│   │       │   │   ├── 9euvlc6d67qcemdqc7ijghd1r.o
+│   │       │   │   ├── 9flpk7917o8ya6vxagwvoi0n4.o
+│   │       │   │   ├── 9wfuvnbi8k081j0clp3k32zje.o
+│   │       │   │   ├── 9y3jpprshmu0nv00uh2xmz3x9.o
+│   │       │   │   ├── 9y6dexi95jnvedjmnqpdbhthp.o
+│   │       │   │   ├── 9y6e4gokswamntfxvcx39f534.o
+│   │       │   │   ├── a2s7xo4sy4wtfhcg0k2xybczt.o
+│   │       │   │   ├── a4ngcf2na14akajtmrh0jlqxk.o
+│   │       │   │   ├── a5ot0691ctepigjqnyfw8zxhs.o
+│   │       │   │   ├── aataltqj5g93p64eyu4tz0xlq.o
+│   │       │   │   ├── adstyu5kf8tvmcoy46tv9cn60.o
+│   │       │   │   ├── afraot06llili918tn6or8cre.o
+│   │       │   │   ├── amkm7vr2xninoaildb76mjcy1.o
+│   │       │   │   ├── anmopiksq1h3t4b253ihc51is.o
+│   │       │   │   ├── ardb3m4t3cvflmqb4ofgwl3ng.o
+│   │       │   │   ├── arzz2uded71shhre0822kmrz8.o
+│   │       │   │   ├── aswssld69w9n7xcqh7zhmdv81.o
+│   │       │   │   ├── av60iy7xj364j7wgds2d8wer3.o
+│   │       │   │   ├── awz8nk7xkz26ec47mnn4l7z2x.o
+│   │       │   │   ├── b3rtqzdr20wl9xy9pr7lw6jxf.o
+│   │       │   │   ├── b534mxp9ls17mcsdq8k4d1p30.o
+│   │       │   │   ├── b9ovhu4jdz91gmo1qhagckzhl.o
+│   │       │   │   ├── battgtpk3qa3dho32owktcpjq.o
+│   │       │   │   ├── bfki103nmcd5fgkh6cpls2wsw.o
+│   │       │   │   ├── bgg5xa6mpi2wxgsj9g58fvnju.o
+│   │       │   │   ├── bipa08577e0tuowyaey10qnyf.o
+│   │       │   │   ├── bskcrdydxp589s3r04d86eldi.o
+│   │       │   │   ├── bss8e9k1n3mzqbtje7rliyjg3.o
+│   │       │   │   ├── btz0n63gaunque13c2q3cdsp6.o
+│   │       │   │   ├── bu4hv3q11ubl6o9jf7r8wna3b.o
+│   │       │   │   ├── buvnxvphvpxrvtvlvs196cijr.o
+│   │       │   │   ├── c0klela7kyehw32ix4xnop7y6.o
+│   │       │   │   ├── c1ar5692ag3qe5rw6fe4smzeb.o
+│   │       │   │   ├── c1pdz2rnehrifv08sha31i345.o
+│   │       │   │   ├── c2u24usycupohoxmzm4n5kkcp.o
+│   │       │   │   ├── c33siy8ruk7z7uc9naicibab0.o
+│   │       │   │   ├── c38w62pvnvnysd4t8mf202amu.o
+│   │       │   │   ├── c64xaa3ggyzz22s4qn4ue2deh.o
+│   │       │   │   ├── c8994vuaw9mkqhqrp21v3nk6k.o
+│   │       │   │   ├── cbuhgvhj4ipxaee2t7wgm9ubh.o
+│   │       │   │   ├── cde9vgp21srzk7clb2ryhl27v.o
+│   │       │   │   ├── cdzv0ei8x6jmr7mladacls2c3.o
+│   │       │   │   ├── cg1ny6p9tli152gqanups203n.o
+│   │       │   │   ├── cgwnjl69b1ovs261n3acgaulz.o
+│   │       │   │   ├── cl8iza8x0h95v92zrd62m31bu.o
+│   │       │   │   ├── cmiurl68qo9cuschypctgezla.o
+│   │       │   │   ├── cpe50593eie695kwx56v8oxft.o
+│   │       │   │   ├── cs33gxyqkopoaqsi85wdots05.o
+│   │       │   │   ├── cutm600fwihezgdvabtpqzbhn.o
+│   │       │   │   ├── cvdk01ri3y6c14pgchp3fnank.o
+│   │       │   │   ├── cvv42fjzabrqgkpwimhcl1dsu.o
+│   │       │   │   ├── cz1jvdrii6v9ejwnqwbd3mwg6.o
+│   │       │   │   ├── cz4ahuq3rtfe0sbwn7ln0at8r.o
+│   │       │   │   ├── czs2487y94rxd30djr08xgkub.o
+│   │       │   │   ├── d3e4qgym59vef9mgt8l4pb8bi.o
+│   │       │   │   ├── d3tnw2aebp4wzc8y7h43duwjh.o
+│   │       │   │   ├── d4w9cqqmkggsul7oc2db6znwt.o
+│   │       │   │   ├── d51bydyckpl23krfhoaovnqzz.o
+│   │       │   │   ├── d696kn5334zdj5fjzmgb5vara.o
+│   │       │   │   ├── dbnosl4msuz00w4hihholn0ch.o
+│   │       │   │   ├── dcyy12hkrx6vut0swfel6vgqz.o
+│   │       │   │   ├── dep-graph.bin
+│   │       │   │   ├── df902ejg9tqv2lmdcc5hszgrl.o
+│   │       │   │   ├── dkvjr9v6dblsso1kl8g98lwa4.o
+│   │       │   │   ├── dmkxu7ltdtwz13d6rf8y82qle.o
+│   │       │   │   ├── dsq615sbxxgo5s15xke55f2oh.o
+│   │       │   │   ├── dwbeme8bjgcpcqncilh8fp4wc.o
+│   │       │   │   ├── dzt2zgy5qila58siso99hnq6s.o
+│   │       │   │   ├── e21bzw1vffyuc41qiqtymlg7t.o
+│   │       │   │   ├── e2u793quqagx1qrkvd74ehebp.o
+│   │       │   │   ├── e4hpi0cpwk471uhv4gxc2lmfr.o
+│   │       │   │   ├── e5fqgpvz0xcebn6jakbaiip2j.o
+│   │       │   │   ├── e7daot2e29vlmzyurleoi15pe.o
+│   │       │   │   ├── e8m50d4zho0dykquytjm7s5tx.o
+│   │       │   │   ├── eghh1cgtt5lrn7ps4n0iyldg0.o
+│   │       │   │   ├── egxowfzepouuol5pxgvcogz6s.o
+│   │       │   │   ├── eo5mmwctid23l5t7l9pb4lvor.o
+│   │       │   │   ├── eo82p3trkfstv2x0nwnkej0ve.o
+│   │       │   │   ├── ep7wpti7k8e61w7co84xuf7sf.o
+│   │       │   │   ├── euru57re49k0fsm06vp33e72u.o
+│   │       │   │   ├── exvwxkgc3huy3bxne5r3w0z2k.o
+│   │       │   │   ├── f4v0aynk25p044k07r5uexsxz.o
+│   │       │   │   ├── query-cache.bin
+│   │       │   │   └── work-products.bin
+│   │       │   └── s-h2gfb39k20-1cmcd6i.lock
+│   │       └── [01;34mrustyline_async-14d4fe0r9dcjn[0m
+│   │           ├── [01;34ms-h2gfb11esm-07jgfn9-enthjqbu0zhu6gzjn0gabamom[0m
+│   │           │   ├── 05dbl8qv5l71g7mpc80qkhsbj.o
+│   │           │   ├── 092hlt82bxfeko97dake7exhd.o
+│   │           │   ├── 0c6yspbwccejwq9f0uy76tzth.o
+│   │           │   ├── 0hwhpvcf4xgeztf3qtir0zzo4.o
+│   │           │   ├── 0tactdrgge1nofk0beej5jh54.o
+│   │           │   ├── 0vv5cwd7qk416b9sir3f03qtn.o
+│   │           │   ├── 1143ops2o17vh3kg9oci8uxel.o
+│   │           │   ├── 11t38vx8ee6be3f5mfhg2qw0l.o
+│   │           │   ├── 13qb4jqqnbcsliih2ntsm8ugy.o
+│   │           │   ├── 13td5lpj7rnp50v8d6xpvlsaa.o
+│   │           │   ├── 19emux9z9xyjtmgcfaqlywuem.o
+│   │           │   ├── 1c9dca55xgwksn4vussgcfhwb.o
+│   │           │   ├── 1kgww117wbudwt12hh90lw8o7.o
+│   │           │   ├── 1q8hyirg3k6ekh1voz59rxqc2.o
+│   │           │   ├── 1sw5hk8o3025eow059p3y7ht9.o
+│   │           │   ├── 2c4kyyyhco6osy59ty9z9uyog.o
+│   │           │   ├── 2eyvtbdcccdnynk42sf51qcs3.o
+│   │           │   ├── 2hd0uxtke9gb4wr7r0oilrj0f.o
+│   │           │   ├── 2joowi6sbqpwy2p3q3blzer7k.o
+│   │           │   ├── 2rjzdanabku209zeshdvupuu9.o
+│   │           │   ├── 31xkyre5sud8f22w28ief3x23.o
+│   │           │   ├── 332yv0vexkcz897oemo8m7403.o
+│   │           │   ├── 33c4tz7cj7p6ysad802sc8h02.o
+│   │           │   ├── 33twgxm26t1jghr3cbrscdvrt.o
+│   │           │   ├── 38o8w9kczle0ee9b4xk8kjmul.o
+│   │           │   ├── 3i4n5m8btl6j5n0uj5f1r7pnf.o
+│   │           │   ├── 3k6id3m7y73fo7lgiqkpj6wmh.o
+│   │           │   ├── 3pbj7ow5u93y4ynbu4a1z8jv8.o
+│   │           │   ├── 40p8vqbyx710jasypn8xv5ukx.o
+│   │           │   ├── 41nqvijvb1i8sjh1pr3vgn2be.o
+│   │           │   ├── 45d7hy5093iivgichfvpph8uq.o
+│   │           │   ├── 4c1yboo2h6pvfnb42pee3b61n.o
+│   │           │   ├── 4ee517iapfy2n46vtqy8alq8f.o
+│   │           │   ├── 4h8m35r4c35nnuw48yvk0yiz8.o
+│   │           │   ├── 4ku734vqqwsjtlpt45qg6hqnj.o
+│   │           │   ├── 4q5cqs7lm0l17cqubywwzzpqh.o
+│   │           │   ├── 53qb17bc6jcmm89lprwsbz367.o
+│   │           │   ├── 58h1uxq8ujrzcv9g6s8lr8i1v.o
+│   │           │   ├── 58v7xu9sj6xfspbiwfjdcz84n.o
+│   │           │   ├── 6fbvxk0lhvh0630v0f8dh7l1t.o
+│   │           │   ├── 6ozlpelbmqnjkuq3uwu4cjxiz.o
+│   │           │   ├── 6vua64yqi4ihhthq99ke0mdop.o
+│   │           │   ├── 6xaqxvpn9k853ks7vllaqk362.o
+│   │           │   ├── 737k8vnc9ovqs41zynzxdmvyh.o
+│   │           │   ├── 7e4i4pto1b3vx5raol46jto2o.o
+│   │           │   ├── 7hkw93py31zqzjkrnzu8ca9xz.o
+│   │           │   ├── 7n37yu07k8ppoe2vf93vp3mjd.o
+│   │           │   ├── 7v2nvkxx20p7i2sq10spinpm7.o
+│   │           │   ├── 86eob6hokqy6jx0jo1dcjevn7.o
+│   │           │   ├── 8847tegn6h4a1z5msnwv1le2l.o
+│   │           │   ├── 8bop7vqu1z6ktjov3ddaku5b6.o
+│   │           │   ├── 8i6q3h95t02tz6tkuwq1cxycc.o
+│   │           │   ├── 8jhix01wxoluo0afn7bph36ea.o
+│   │           │   ├── 8ljz39c73b0fnrkb82t8f3nox.o
+│   │           │   ├── 8tdcqtog3mcy1b2px53zky778.o
+│   │           │   ├── 919elc9q574ekwazj53w9h7hm.o
+│   │           │   ├── 93feo8aad0efh5rvphe70e2zd.o
+│   │           │   ├── 93kx3sacqessoiaeph5qa2f4u.o
+│   │           │   ├── 98w0u1p99ftk7e2eq6hgtjb9j.o
+│   │           │   ├── 9ix5p9xo6hcy24hpbh2kk9s2y.o
+│   │           │   ├── 9os8vod4n7nfgd7y9slh87vf4.o
+│   │           │   ├── 9tdihp1cgbbtzv1ar8e9duwr4.o
+│   │           │   ├── a74bgbaelq8p3i7n6cslxh8rl.o
+│   │           │   ├── abv1wk67flpck69j98qr8a40v.o
+│   │           │   ├── ahdvdh55bbgc91l29jp29dcry.o
+│   │           │   ├── aj5qa8lfxod74wi6ex8gdwvpi.o
+│   │           │   ├── amsdtqy2lu1muagoxmnclkc5k.o
+│   │           │   ├── aomp3jtzuh3nd42f8q1wqjc2a.o
+│   │           │   ├── aoz8dbcpd0ntqinjuwf4yne5d.o
+│   │           │   ├── auoyihyvs320fj208x412ck9d.o
+│   │           │   ├── aygh32xrj87ymxaerln9sp46u.o
+│   │           │   ├── azxmuidl74neo79rowwhjw2zw.o
+│   │           │   ├── b3vbha9aiz5fit1voawlo8izx.o
+│   │           │   ├── bna6vrsz5e9l62w0pka120t57.o
+│   │           │   ├── bumsfxg4lg7nx9om8s24lhz8f.o
+│   │           │   ├── bvgo2f3pe189hzcp9oq3lqkv2.o
+│   │           │   ├── c8d3jwzqa1k5glwth7nma50xg.o
+│   │           │   ├── cbb7kz57xkdzgfuddsnc7tlce.o
+│   │           │   ├── cgxi2xp8x40lwy99j6m7v8nmh.o
+│   │           │   ├── cohjf1dye75gdzb3o019mp2pr.o
+│   │           │   ├── cqxa8t6ske64j2ns59ezquf3n.o
+│   │           │   ├── csrglttkai4g88gvgk9d40csq.o
+│   │           │   ├── dbspggk94jpzsz1jyt5rg18d3.o
+│   │           │   ├── deg0himpdbf97nl3ltwcd3v24.o
+│   │           │   ├── dep-graph.bin
+│   │           │   ├── dmxn4hjz2luba0w2xwjq2y7sp.o
+│   │           │   ├── dzw4kf5ci9icl5c1oh01c4p8f.o
+│   │           │   ├── e42kfjewuox3t2l881ww1fkly.o
+│   │           │   ├── e6vg2l7dzjwiw2us6ce8cb6jd.o
+│   │           │   ├── e8f3eacoxwipro91pzouiuh6m.o
+│   │           │   ├── ek4kiaojnioqihqwkep5uzvtf.o
+│   │           │   ├── eo5m4x5juqh4cmou8nyj8morj.o
+│   │           │   ├── esu7u9b5ja5k1xktg3z0avjya.o
+│   │           │   ├── evqd80ip3tyc93dozwuw0a2t1.o
+│   │           │   ├── ewvswmy2kpr0tuxp5fa94ubhv.o
+│   │           │   ├── ewwc6d5953sybvdzzppk38ok0.o
+│   │           │   ├── ex8rs0e7bko6qkcqb286s81gr.o
+│   │           │   ├── ey126e9ryajznea262uugpmc1.o
+│   │           │   ├── ezsna2xizp6znq8f203csb2y3.o
+│   │           │   ├── f1ij6js9ztckpslyan0houprw.o
+│   │           │   ├── f36o19prfoe4pln1i6xgsiglb.o
+│   │           │   ├── query-cache.bin
+│   │           │   └── work-products.bin
+│   │           └── s-h2gfb11esm-07jgfn9.lock
+│   ├── [01;34mrelease[0m
+│   │   ├── [01;34mbuild[0m
+│   │   │   ├── [01;34mcrossbeam-utils-913e69ec353c9766[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mcrossbeam-utils-b17f509b2f151b4b[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-b17f509b2f151b4b[0m
+│   │   │   │   └── build_script_build-b17f509b2f151b4b.d
+│   │   │   ├── [01;34mgeneric-array-1ab7de1251c607b6[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mgeneric-array-3e189a3c73a27f84[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-3e189a3c73a27f84[0m
+│   │   │   │   └── build_script_build-3e189a3c73a27f84.d
+│   │   │   ├── [01;34mhttparse-7b711e948a9da5c4[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-7b711e948a9da5c4[0m
+│   │   │   │   └── build_script_build-7b711e948a9da5c4.d
+│   │   │   ├── [01;34mhttparse-a6e3b6c392a0d165[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mlibc-17bd40ca9c61d11b[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mlibc-647a6522a177eda9[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-647a6522a177eda9[0m
+│   │   │   │   └── build_script_build-647a6522a177eda9.d
+│   │   │   ├── [01;34mlock_api-212783de93fdf810[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-212783de93fdf810[0m
+│   │   │   │   └── build_script_build-212783de93fdf810.d
+│   │   │   ├── [01;34mlock_api-38cfa09a9c3fc51a[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   │   └── autocfg_defa13c9c3610a2d_0.ll
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mnative-tls-412834ad6ceec65f[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mnative-tls-7c8229bebfa798bd[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-7c8229bebfa798bd[0m
+│   │   │   │   └── build_script_build-7c8229bebfa798bd.d
+│   │   │   ├── [01;34mopenssl-1877506a32d35cda[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-1877506a32d35cda[0m
+│   │   │   │   └── build_script_build-1877506a32d35cda.d
+│   │   │   ├── [01;34mopenssl-bb6b4646a67953c8[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mopenssl-sys-0f8d2509fe7c2809[0m
+│   │   │   │   ├── [01;32mbuild-script-main[0m
+│   │   │   │   ├── [01;32mbuild_script_main-0f8d2509fe7c2809[0m
+│   │   │   │   └── build_script_main-0f8d2509fe7c2809.d
+│   │   │   ├── [01;34mopenssl-sys-7ee77a1324e95056[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mparking_lot_core-1b0791ddd0876ced[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mparking_lot_core-287c869c535ee19f[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-287c869c535ee19f[0m
+│   │   │   │   └── build_script_build-287c869c535ee19f.d
+│   │   │   ├── [01;34mproc-macro2-5080f8b6d039a5bc[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-5080f8b6d039a5bc[0m
+│   │   │   │   └── build_script_build-5080f8b6d039a5bc.d
+│   │   │   ├── [01;34mproc-macro2-5fb59c582b953092[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mserde-011e02ac0e0e3385[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-011e02ac0e0e3385[0m
+│   │   │   │   └── build_script_build-011e02ac0e0e3385.d
+│   │   │   ├── [01;34mserde-a026150e611d41da[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mserde_json-332bb7d678b95d77[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mserde_json-4f38111fb019362c[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-4f38111fb019362c[0m
+│   │   │   │   └── build_script_build-4f38111fb019362c.d
+│   │   │   ├── [01;34msignal-hook-38fe48f34104866e[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-38fe48f34104866e[0m
+│   │   │   │   └── build_script_build-38fe48f34104866e.d
+│   │   │   ├── [01;34msignal-hook-89767c38cdd1c8b0[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mslab-210412b0dd7bceb8[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   │   └── autocfg_88e814f7099f323d_0.ll
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mslab-c294cfd08eafaf10[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-c294cfd08eafaf10[0m
+│   │   │   │   └── build_script_build-c294cfd08eafaf10.d
+│   │   │   ├── [01;34mthiserror-87b3d8460798cbbc[0m
+│   │   │   │   ├── [01;32mbuild-script-build[0m
+│   │   │   │   ├── [01;32mbuild_script_build-87b3d8460798cbbc[0m
+│   │   │   │   └── build_script_build-87b3d8460798cbbc.d
+│   │   │   ├── [01;34mthiserror-f7959a576d81f519[0m
+│   │   │   │   ├── invoked.timestamp
+│   │   │   │   ├── [01;34mout[0m
+│   │   │   │   ├── output
+│   │   │   │   ├── root-output
+│   │   │   │   └── stderr
+│   │   │   ├── [01;34mtypenum-10887fee914093f1[0m
+│   │   │   │   ├── [01;32mbuild-script-main[0m
+│   │   │   │   ├── [01;32mbuild_script_main-10887fee914093f1[0m
+│   │   │   │   └── build_script_main-10887fee914093f1.d
+│   │   │   └── [01;34mtypenum-4c1a8c2c7ee74fa6[0m
+│   │   │       ├── invoked.timestamp
+│   │   │       ├── [01;34mout[0m
+│   │   │       │   ├── consts.rs
+│   │   │       │   ├── op.rs
+│   │   │       │   └── tests.rs
+│   │   │       ├── output
+│   │   │       ├── root-output
+│   │   │       └── stderr
+│   │   ├── [01;34mdeps[0m
+│   │   │   ├── adler32-a91bcfe5ed108726.d
+│   │   │   ├── aho_corasick-16523c8a89f22869.d
+│   │   │   ├── ansi_to_html-de6b1874b33a674c.d
+│   │   │   ├── anstream-8beb058243cb853d.d
+│   │   │   ├── anstyle-3ccd540096d8c1b5.d
+│   │   │   ├── anstyle_parse-af022f3203425351.d
+│   │   │   ├── anstyle_query-05fe5593a9941d94.d
+│   │   │   ├── async_stream-e590d7d975e9d0dc.d
+│   │   │   ├── async_stream_impl-6af81b249036387e.d
+│   │   │   ├── async_trait-4f888d09d293bd86.d
+│   │   │   ├── atomic_waker-7765c3e1a0381f64.d
+│   │   │   ├── autocfg-31e8b07b2d0e2b0b.d
+│   │   │   ├── backoff-2eeaec492b63d115.d
+│   │   │   ├── base64-be2aa0a20dcf02a6.d
+│   │   │   ├── base64-bed3832b4ea762bf.d
+│   │   │   ├── bitflags-92ec590fc7272f11.d
+│   │   │   ├── block_buffer-08cd6a869e0e06d3.d
+│   │   │   ├── byteorder-8486069d67b1ae8f.d
+│   │   │   ├── bytes-7aca9425cd3c5567.d
+│   │   │   ├── cc-d28568f3a62f32ab.d
+│   │   │   ├── cfg_if-fad8d17a588f1088.d
+│   │   │   ├── colorchoice-2286acfd22a3fd5b.d
+│   │   │   ├── cpufeatures-ee4af8a1927a75ce.d
+│   │   │   ├── crossbeam_utils-a88b04834f20e5e7.d
+│   │   │   ├── crossterm-4e1aa16389457001.d
+│   │   │   ├── crypto_common-137a2cbaada646c1.d
+│   │   │   ├── data_encoding-da8dfe0d99ace170.d
+│   │   │   ├── digest-6f84a4de1c70f8c2.d
+│   │   │   ├── displaydoc-8c4802b32f707421.d
+│   │   │   ├── encoding_rs-f8b1e53d4596d7be.d
+│   │   │   ├── env_filter-19bb27c1caa653bf.d
+│   │   │   ├── env_logger-0b9aa3fe29f7162d.d
+│   │   │   ├── equivalent-ec054357584dda9d.d
+│   │   │   ├── fnv-82d0a40bbfed6e3d.d
+│   │   │   ├── foreign_types-e43e2c0dbf5f5eaf.d
+│   │   │   ├── foreign_types_shared-8cdc27902e441865.d
+│   │   │   ├── form_urlencoded-a1bb071c7144f399.d
+│   │   │   ├── futures_channel-96bc55a8c29e09a7.d
+│   │   │   ├── futures_core-f573fb0e30e13cad.d
+│   │   │   ├── futures_io-468171500c940df7.d
+│   │   │   ├── futures_macro-e3c35ad7595af816.d
+│   │   │   ├── futures_sink-e9bc234eedfe5542.d
+│   │   │   ├── futures_task-ae72f1fb047c0466.d
+│   │   │   ├── futures_util-5ce20a36be0737c0.d
+│   │   │   ├── generic_array-cdabd89872d9c484.d
+│   │   │   ├── getrandom-f545c4b69aecd503.d
+│   │   │   ├── h2-45ac89a5ac12c257.d
+│   │   │   ├── hashbrown-fb7ec93a71bd45d7.d
+│   │   │   ├── host-2f78cd9e83aee4a3.acfzh1fj67t7rxrnbmd42hf6j.rcgu.o
+│   │   │   ├── host-2f78cd9e83aee4a3.d
+│   │   │   ├── httparse-db8fc6c3ae65dc30.d
+│   │   │   ├── http_body-fd709c050461af29.d
+│   │   │   ├── http_body_util-57439eab5de4f756.d
+│   │   │   ├── http-e79652e00ed509ba.d
+│   │   │   ├── humantime-cee67f0cd4911fc0.d
+│   │   │   ├── hyper-a59ceaa42b4f4437.d
+│   │   │   ├── hyper_tls-1b87e7d4ab65e9a9.d
+│   │   │   ├── hyper_util-0f40c702afe59ffe.d
+│   │   │   ├── icu_collections-53e58e752f3832eb.d
+│   │   │   ├── icu_locid-cc00eb87a5c987fa.d
+│   │   │   ├── icu_locid_transform_data-ec852b7b5ebc35ae.d
+│   │   │   ├── icu_locid_transform-f6c88b8507ec50ee.d
+│   │   │   ├── icu_normalizer-2475af115d076692.d
+│   │   │   ├── icu_normalizer_data-b77fcd2174abf605.d
+│   │   │   ├── icu_properties-28406814964d2633.d
+│   │   │   ├── icu_properties_data-5b0d316c9233df8c.d
+│   │   │   ├── icu_provider-9073b705c7bc2d25.d
+│   │   │   ├── icu_provider_macros-43c5f6c7387fcd09.d
+│   │   │   ├── idna-a4874171fee6ef49.d
+│   │   │   ├── idna_adapter-74954def9d2aef30.d
+│   │   │   ├── indexmap-f9da67dd8859bdb7.d
+│   │   │   ├── instant-74fe91745935f2ea.d
+│   │   │   ├── ipnet-8dd55e5873b4ebc8.d
+│   │   │   ├── is_terminal_polyfill-df70e74377f6cbf5.d
+│   │   │   ├── itoa-adc7b66b20d84975.d
+│   │   │   ├── lazy_static-d9b03ea5c9096ad2.d
+│   │   │   ├── libadler32-a91bcfe5ed108726.rlib
+│   │   │   ├── libadler32-a91bcfe5ed108726.rmeta
+│   │   │   ├── libaho_corasick-16523c8a89f22869.rlib
+│   │   │   ├── libaho_corasick-16523c8a89f22869.rmeta
+│   │   │   ├── libansi_to_html-de6b1874b33a674c.rlib
+│   │   │   ├── libansi_to_html-de6b1874b33a674c.rmeta
+│   │   │   ├── libanstream-8beb058243cb853d.rlib
+│   │   │   ├── libanstream-8beb058243cb853d.rmeta
+│   │   │   ├── libanstyle-3ccd540096d8c1b5.rlib
+│   │   │   ├── libanstyle-3ccd540096d8c1b5.rmeta
+│   │   │   ├── libanstyle_parse-af022f3203425351.rlib
+│   │   │   ├── libanstyle_parse-af022f3203425351.rmeta
+│   │   │   ├── libanstyle_query-05fe5593a9941d94.rlib
+│   │   │   ├── libanstyle_query-05fe5593a9941d94.rmeta
+│   │   │   ├── libasync_stream-e590d7d975e9d0dc.rlib
+│   │   │   ├── libasync_stream-e590d7d975e9d0dc.rmeta
+│   │   │   ├── [01;32mlibasync_stream_impl-6af81b249036387e.so[0m
+│   │   │   ├── [01;32mlibasync_trait-4f888d09d293bd86.so[0m
+│   │   │   ├── libatomic_waker-7765c3e1a0381f64.rlib
+│   │   │   ├── libatomic_waker-7765c3e1a0381f64.rmeta
+│   │   │   ├── libautocfg-31e8b07b2d0e2b0b.rlib
+│   │   │   ├── libautocfg-31e8b07b2d0e2b0b.rmeta
+│   │   │   ├── libbackoff-2eeaec492b63d115.rlib
+│   │   │   ├── libbackoff-2eeaec492b63d115.rmeta
+│   │   │   ├── libbase64-be2aa0a20dcf02a6.rlib
+│   │   │   ├── libbase64-be2aa0a20dcf02a6.rmeta
+│   │   │   ├── libbase64-bed3832b4ea762bf.rlib
+│   │   │   ├── libbase64-bed3832b4ea762bf.rmeta
+│   │   │   ├── libbitflags-92ec590fc7272f11.rlib
+│   │   │   ├── libbitflags-92ec590fc7272f11.rmeta
+│   │   │   ├── libblock_buffer-08cd6a869e0e06d3.rlib
+│   │   │   ├── libblock_buffer-08cd6a869e0e06d3.rmeta
+│   │   │   ├── libbyteorder-8486069d67b1ae8f.rlib
+│   │   │   ├── libbyteorder-8486069d67b1ae8f.rmeta
+│   │   │   ├── libbytes-7aca9425cd3c5567.rlib
+│   │   │   ├── libbytes-7aca9425cd3c5567.rmeta
+│   │   │   ├── libcc-d28568f3a62f32ab.rlib
+│   │   │   ├── libcc-d28568f3a62f32ab.rmeta
+│   │   │   ├── libc-d02b42813295205b.d
+│   │   │   ├── libcfg_if-fad8d17a588f1088.rlib
+│   │   │   ├── libcfg_if-fad8d17a588f1088.rmeta
+│   │   │   ├── libcolorchoice-2286acfd22a3fd5b.rlib
+│   │   │   ├── libcolorchoice-2286acfd22a3fd5b.rmeta
+│   │   │   ├── libcpufeatures-ee4af8a1927a75ce.rlib
+│   │   │   ├── libcpufeatures-ee4af8a1927a75ce.rmeta
+│   │   │   ├── libcrossbeam_utils-a88b04834f20e5e7.rlib
+│   │   │   ├── libcrossbeam_utils-a88b04834f20e5e7.rmeta
+│   │   │   ├── libcrossterm-4e1aa16389457001.rlib
+│   │   │   ├── libcrossterm-4e1aa16389457001.rmeta
+│   │   │   ├── libcrypto_common-137a2cbaada646c1.rlib
+│   │   │   ├── libcrypto_common-137a2cbaada646c1.rmeta
+│   │   │   ├── libdata_encoding-da8dfe0d99ace170.rlib
+│   │   │   ├── libdata_encoding-da8dfe0d99ace170.rmeta
+│   │   │   ├── libdigest-6f84a4de1c70f8c2.rlib
+│   │   │   ├── libdigest-6f84a4de1c70f8c2.rmeta
+│   │   │   ├── [01;32mlibdisplaydoc-8c4802b32f707421.so[0m
+│   │   │   ├── libencoding_rs-f8b1e53d4596d7be.rlib
+│   │   │   ├── libencoding_rs-f8b1e53d4596d7be.rmeta
+│   │   │   ├── libenv_filter-19bb27c1caa653bf.rlib
+│   │   │   ├── libenv_filter-19bb27c1caa653bf.rmeta
+│   │   │   ├── libenv_logger-0b9aa3fe29f7162d.rlib
+│   │   │   ├── libenv_logger-0b9aa3fe29f7162d.rmeta
+│   │   │   ├── libequivalent-ec054357584dda9d.rlib
+│   │   │   ├── libequivalent-ec054357584dda9d.rmeta
+│   │   │   ├── libfnv-82d0a40bbfed6e3d.rlib
+│   │   │   ├── libfnv-82d0a40bbfed6e3d.rmeta
+│   │   │   ├── libforeign_types-e43e2c0dbf5f5eaf.rlib
+│   │   │   ├── libforeign_types-e43e2c0dbf5f5eaf.rmeta
+│   │   │   ├── libforeign_types_shared-8cdc27902e441865.rlib
+│   │   │   ├── libforeign_types_shared-8cdc27902e441865.rmeta
+│   │   │   ├── libform_urlencoded-a1bb071c7144f399.rlib
+│   │   │   ├── libform_urlencoded-a1bb071c7144f399.rmeta
+│   │   │   ├── libfutures_channel-96bc55a8c29e09a7.rlib
+│   │   │   ├── libfutures_channel-96bc55a8c29e09a7.rmeta
+│   │   │   ├── libfutures_core-f573fb0e30e13cad.rlib
+│   │   │   ├── libfutures_core-f573fb0e30e13cad.rmeta
+│   │   │   ├── libfutures_io-468171500c940df7.rlib
+│   │   │   ├── libfutures_io-468171500c940df7.rmeta
+│   │   │   ├── [01;32mlibfutures_macro-e3c35ad7595af816.so[0m
+│   │   │   ├── libfutures_sink-e9bc234eedfe5542.rlib
+│   │   │   ├── libfutures_sink-e9bc234eedfe5542.rmeta
+│   │   │   ├── libfutures_task-ae72f1fb047c0466.rlib
+│   │   │   ├── libfutures_task-ae72f1fb047c0466.rmeta
+│   │   │   ├── libfutures_util-5ce20a36be0737c0.rlib
+│   │   │   ├── libfutures_util-5ce20a36be0737c0.rmeta
+│   │   │   ├── libgeneric_array-cdabd89872d9c484.rlib
+│   │   │   ├── libgeneric_array-cdabd89872d9c484.rmeta
+│   │   │   ├── libgetrandom-f545c4b69aecd503.rlib
+│   │   │   ├── libgetrandom-f545c4b69aecd503.rmeta
+│   │   │   ├── libh2-45ac89a5ac12c257.rlib
+│   │   │   ├── libh2-45ac89a5ac12c257.rmeta
+│   │   │   ├── libhashbrown-fb7ec93a71bd45d7.rlib
+│   │   │   ├── libhashbrown-fb7ec93a71bd45d7.rmeta
+│   │   │   ├── libhttparse-db8fc6c3ae65dc30.rlib
+│   │   │   ├── libhttparse-db8fc6c3ae65dc30.rmeta
+│   │   │   ├── libhttp_body-fd709c050461af29.rlib
+│   │   │   ├── libhttp_body-fd709c050461af29.rmeta
+│   │   │   ├── libhttp_body_util-57439eab5de4f756.rlib
+│   │   │   ├── libhttp_body_util-57439eab5de4f756.rmeta
+│   │   │   ├── libhttp-e79652e00ed509ba.rlib
+│   │   │   ├── libhttp-e79652e00ed509ba.rmeta
+│   │   │   ├── libhumantime-cee67f0cd4911fc0.rlib
+│   │   │   ├── libhumantime-cee67f0cd4911fc0.rmeta
+│   │   │   ├── libhyper-a59ceaa42b4f4437.rlib
+│   │   │   ├── libhyper-a59ceaa42b4f4437.rmeta
+│   │   │   ├── libhyper_tls-1b87e7d4ab65e9a9.rlib
+│   │   │   ├── libhyper_tls-1b87e7d4ab65e9a9.rmeta
+│   │   │   ├── libhyper_util-0f40c702afe59ffe.rlib
+│   │   │   ├── libhyper_util-0f40c702afe59ffe.rmeta
+│   │   │   ├── libicu_collections-53e58e752f3832eb.rlib
+│   │   │   ├── libicu_collections-53e58e752f3832eb.rmeta
+│   │   │   ├── libicu_locid-cc00eb87a5c987fa.rlib
+│   │   │   ├── libicu_locid-cc00eb87a5c987fa.rmeta
+│   │   │   ├── libicu_locid_transform_data-ec852b7b5ebc35ae.rlib
+│   │   │   ├── libicu_locid_transform_data-ec852b7b5ebc35ae.rmeta
+│   │   │   ├── libicu_locid_transform-f6c88b8507ec50ee.rlib
+│   │   │   ├── libicu_locid_transform-f6c88b8507ec50ee.rmeta
+│   │   │   ├── libicu_normalizer-2475af115d076692.rlib
+│   │   │   ├── libicu_normalizer-2475af115d076692.rmeta
+│   │   │   ├── libicu_normalizer_data-b77fcd2174abf605.rlib
+│   │   │   ├── libicu_normalizer_data-b77fcd2174abf605.rmeta
+│   │   │   ├── libicu_properties-28406814964d2633.rlib
+│   │   │   ├── libicu_properties-28406814964d2633.rmeta
+│   │   │   ├── libicu_properties_data-5b0d316c9233df8c.rlib
+│   │   │   ├── libicu_properties_data-5b0d316c9233df8c.rmeta
+│   │   │   ├── libicu_provider-9073b705c7bc2d25.rlib
+│   │   │   ├── libicu_provider-9073b705c7bc2d25.rmeta
+│   │   │   ├── [01;32mlibicu_provider_macros-43c5f6c7387fcd09.so[0m
+│   │   │   ├── libidna-a4874171fee6ef49.rlib
+│   │   │   ├── libidna-a4874171fee6ef49.rmeta
+│   │   │   ├── libidna_adapter-74954def9d2aef30.rlib
+│   │   │   ├── libidna_adapter-74954def9d2aef30.rmeta
+│   │   │   ├── libindexmap-f9da67dd8859bdb7.rlib
+│   │   │   ├── libindexmap-f9da67dd8859bdb7.rmeta
+│   │   │   ├── libinstant-74fe91745935f2ea.rlib
+│   │   │   ├── libinstant-74fe91745935f2ea.rmeta
+│   │   │   ├── libipnet-8dd55e5873b4ebc8.rlib
+│   │   │   ├── libipnet-8dd55e5873b4ebc8.rmeta
+│   │   │   ├── libis_terminal_polyfill-df70e74377f6cbf5.rlib
+│   │   │   ├── libis_terminal_polyfill-df70e74377f6cbf5.rmeta
+│   │   │   ├── libitoa-adc7b66b20d84975.rlib
+│   │   │   ├── libitoa-adc7b66b20d84975.rmeta
+│   │   │   ├── liblazy_static-d9b03ea5c9096ad2.rlib
+│   │   │   ├── liblazy_static-d9b03ea5c9096ad2.rmeta
+│   │   │   ├── liblibc-d02b42813295205b.rlib
+│   │   │   ├── liblibc-d02b42813295205b.rmeta
+│   │   │   ├── liblitemap-c22ddad105e11669.rlib
+│   │   │   ├── liblitemap-c22ddad105e11669.rmeta
+│   │   │   ├── liblock_api-0508c26befd7f227.rlib
+│   │   │   ├── liblock_api-0508c26befd7f227.rmeta
+│   │   │   ├── liblog-e762ed97b40804f6.rlib
+│   │   │   ├── liblog-e762ed97b40804f6.rmeta
+│   │   │   ├── libmemchr-c05f65e1b611714a.rlib
+│   │   │   ├── libmemchr-c05f65e1b611714a.rmeta
+│   │   │   ├── libmime-1d8c19b154c86676.rlib
+│   │   │   ├── libmime-1d8c19b154c86676.rmeta
+│   │   │   ├── libmio-715062621d1e1089.rlib
+│   │   │   ├── libmio-715062621d1e1089.rmeta
+│   │   │   ├── libmio-d1f8223e29ab5917.rlib
+│   │   │   ├── libmio-d1f8223e29ab5917.rmeta
+│   │   │   ├── libnative_tls-29a861594575847d.rlib
+│   │   │   ├── libnative_tls-29a861594575847d.rmeta
+│   │   │   ├── libonce_cell-42f2ba6350fe3c01.rlib
+│   │   │   ├── libonce_cell-42f2ba6350fe3c01.rmeta
+│   │   │   ├── libopenssl-d376af01dbefbe15.rlib
+│   │   │   ├── libopenssl-d376af01dbefbe15.rmeta
+│   │   │   ├── [01;32mlibopenssl_macros-b8ba494d85099431.so[0m
+│   │   │   ├── libopenssl_probe-6cb1d7a01186040b.rlib
+│   │   │   ├── libopenssl_probe-6cb1d7a01186040b.rmeta
+│   │   │   ├── libopenssl_sys-16eee7eaa8d43161.rlib
+│   │   │   ├── libopenssl_sys-16eee7eaa8d43161.rmeta
+│   │   │   ├── libparking_lot-a0a88aeef12f6a1d.rlib
+│   │   │   ├── libparking_lot-a0a88aeef12f6a1d.rmeta
+│   │   │   ├── libparking_lot_core-86cb99668f78530d.rlib
+│   │   │   ├── libparking_lot_core-86cb99668f78530d.rmeta
+│   │   │   ├── libpercent_encoding-70ec8881d22b685d.rlib
+│   │   │   ├── libpercent_encoding-70ec8881d22b685d.rmeta
+│   │   │   ├── libpin_project-9d92663c3a09f255.rlib
+│   │   │   ├── libpin_project-9d92663c3a09f255.rmeta
+│   │   │   ├── [01;32mlibpin_project_internal-ac2fb21082f9eae8.so[0m
+│   │   │   ├── libpin_project_lite-7b8441e52e71b56b.rlib
+│   │   │   ├── libpin_project_lite-7b8441e52e71b56b.rmeta
+│   │   │   ├── libpin_utils-202af3b165b3d697.rlib
+│   │   │   ├── libpin_utils-202af3b165b3d697.rmeta
+│   │   │   ├── libpkg_config-309b4518e178b7e9.rlib
+│   │   │   ├── libpkg_config-309b4518e178b7e9.rmeta
+│   │   │   ├── libppv_lite86-00ed15bfda02047e.rlib
+│   │   │   ├── libppv_lite86-00ed15bfda02047e.rmeta
+│   │   │   ├── libproc_macro2-3721922d88cbb31f.rlib
+│   │   │   ├── libproc_macro2-3721922d88cbb31f.rmeta
+│   │   │   ├── libquote-f4882cd3ab71ed1f.rlib
+│   │   │   ├── libquote-f4882cd3ab71ed1f.rmeta
+│   │   │   ├── librand-a470ef700cdee57d.rlib
+│   │   │   ├── librand-a470ef700cdee57d.rmeta
+│   │   │   ├── librand_chacha-7c5212664e6e860e.rlib
+│   │   │   ├── librand_chacha-7c5212664e6e860e.rmeta
+│   │   │   ├── librand_core-b580889945c30203.rlib
+│   │   │   ├── librand_core-b580889945c30203.rmeta
+│   │   │   ├── libregex_automata-896b7c97e205c868.rlib
+│   │   │   ├── libregex_automata-896b7c97e205c868.rmeta
+│   │   │   ├── libregex-eb9879dcdd716c5e.rlib
+│   │   │   ├── libregex-eb9879dcdd716c5e.rmeta
+│   │   │   ├── libregex_syntax-6f4c90eba0197dd9.rlib
+│   │   │   ├── libregex_syntax-6f4c90eba0197dd9.rmeta
+│   │   │   ├── libreqwest-12d91285d9b9da7d.rlib
+│   │   │   ├── libreqwest-12d91285d9b9da7d.rmeta
+│   │   │   ├── libringbuf-5532d0884f37df50.rlib
+│   │   │   ├── libringbuf-5532d0884f37df50.rmeta
+│   │   │   ├── librust_engineio-a86130e3c0c5a124.rlib
+│   │   │   ├── librust_engineio-a86130e3c0c5a124.rmeta
+│   │   │   ├── librustls_pemfile-b05950cbfeda8400.rlib
+│   │   │   ├── librustls_pemfile-b05950cbfeda8400.rmeta
+│   │   │   ├── librustls_pki_types-75b4251f9472f185.rlib
+│   │   │   ├── librustls_pki_types-75b4251f9472f185.rmeta
+│   │   │   ├── librust_socketio-dc9b06f1680aa456.rlib
+│   │   │   ├── librust_socketio-dc9b06f1680aa456.rmeta
+│   │   │   ├── librustyline_async-7905c26c7eea3b5c.rlib
+│   │   │   ├── librustyline_async-7905c26c7eea3b5c.rmeta
+│   │   │   ├── libryu-f684291f6278b276.rlib
+│   │   │   ├── libryu-f684291f6278b276.rmeta
+│   │   │   ├── libscopeguard-754c88fd46a5186b.rlib
+│   │   │   ├── libscopeguard-754c88fd46a5186b.rmeta
+│   │   │   ├── [01;32mlibserde_derive-e3eb2e8594e6a609.so[0m
+│   │   │   ├── libserde-f41b1138cb4218c8.rlib
+│   │   │   ├── libserde-f41b1138cb4218c8.rmeta
+│   │   │   ├── libserde_json-c01b4a58cc6642dd.rlib
+│   │   │   ├── libserde_json-c01b4a58cc6642dd.rmeta
+│   │   │   ├── libserde_urlencoded-5a4d0041302bfb9e.rlib
+│   │   │   ├── libserde_urlencoded-5a4d0041302bfb9e.rmeta
+│   │   │   ├── libsha1-de902a903d98b64d.rlib
+│   │   │   ├── libsha1-de902a903d98b64d.rmeta
+│   │   │   ├── libshlex-b294729b51f51c79.rlib
+│   │   │   ├── libshlex-b294729b51f51c79.rmeta
+│   │   │   ├── libsignal_hook-75e1a1f52ae3df54.rlib
+│   │   │   ├── libsignal_hook-75e1a1f52ae3df54.rmeta
+│   │   │   ├── libsignal_hook_mio-ad278f179ba0971c.rlib
+│   │   │   ├── libsignal_hook_mio-ad278f179ba0971c.rmeta
+│   │   │   ├── libsignal_hook_registry-128f9963a792a85f.rlib
+│   │   │   ├── libsignal_hook_registry-128f9963a792a85f.rmeta
+│   │   │   ├── libslab-9d3436517b04bb51.rlib
+│   │   │   ├── libslab-9d3436517b04bb51.rmeta
+│   │   │   ├── libsmallvec-f3703f406941ecc0.rlib
+│   │   │   ├── libsmallvec-f3703f406941ecc0.rmeta
+│   │   │   ├── libsocket2-c8ce1d0df36ceada.rlib
+│   │   │   ├── libsocket2-c8ce1d0df36ceada.rmeta
+│   │   │   ├── libstable_deref_trait-f4d4c83021544345.rlib
+│   │   │   ├── libstable_deref_trait-f4d4c83021544345.rmeta
+│   │   │   ├── libstrip_ansi_escapes-6a57d533051436e2.rlib
+│   │   │   ├── libstrip_ansi_escapes-6a57d533051436e2.rmeta
+│   │   │   ├── libsyn-a3407b231ac63fe1.rlib
+│   │   │   ├── libsyn-a3407b231ac63fe1.rmeta
+│   │   │   ├── libsync_wrapper-770b713263c982c5.rlib
+│   │   │   ├── libsync_wrapper-770b713263c982c5.rmeta
+│   │   │   ├── libsynstructure-4dc0b12324ac0140.rlib
+│   │   │   ├── libsynstructure-4dc0b12324ac0140.rmeta
+│   │   │   ├── libthingbuf-7948b310776d2255.rlib
+│   │   │   ├── libthingbuf-7948b310776d2255.rmeta
+│   │   │   ├── libthiserror-839706bb07f80014.rlib
+│   │   │   ├── libthiserror-839706bb07f80014.rmeta
+│   │   │   ├── [01;32mlibthiserror_impl-0ce1c02869908fa4.so[0m
+│   │   │   ├── libtinystr-ecb44e6f29744d51.rlib
+│   │   │   ├── libtinystr-ecb44e6f29744d51.rmeta
+│   │   │   ├── libtokio-9866046a95e35d50.rlib
+│   │   │   ├── libtokio-9866046a95e35d50.rmeta
+│   │   │   ├── [01;32mlibtokio_macros-9177a52175be956e.so[0m
+│   │   │   ├── libtokio_native_tls-af433c651eb186d5.rlib
+│   │   │   ├── libtokio_native_tls-af433c651eb186d5.rmeta
+│   │   │   ├── libtokio_tungstenite-551e867ea9485f75.rlib
+│   │   │   ├── libtokio_tungstenite-551e867ea9485f75.rmeta
+│   │   │   ├── libtokio_util-5c5bc14125494545.rlib
+│   │   │   ├── libtokio_util-5c5bc14125494545.rmeta
+│   │   │   ├── libtower_service-aa9d69d1ba662469.rlib
+│   │   │   ├── libtower_service-aa9d69d1ba662469.rmeta
+│   │   │   ├── libtracing-c1410a4892639ec0.rlib
+│   │   │   ├── libtracing-c1410a4892639ec0.rmeta
+│   │   │   ├── libtracing_core-0eda28f419e1a038.rlib
+│   │   │   ├── libtracing_core-0eda28f419e1a038.rmeta
+│   │   │   ├── libtry_lock-2561b0487478381e.rlib
+│   │   │   ├── libtry_lock-2561b0487478381e.rmeta
+│   │   │   ├── libtungstenite-8cd739a85542bf88.rlib
+│   │   │   ├── libtungstenite-8cd739a85542bf88.rmeta
+│   │   │   ├── libtypenum-ab5577945a405f27.rlib
+│   │   │   ├── libtypenum-ab5577945a405f27.rmeta
+│   │   │   ├── libunicode_ident-509f01f8cfa2ad43.rlib
+│   │   │   ├── libunicode_ident-509f01f8cfa2ad43.rmeta
+│   │   │   ├── libunicode_segmentation-9f5952453252eb4f.rlib
+│   │   │   ├── libunicode_segmentation-9f5952453252eb4f.rmeta
+│   │   │   ├── libunicode_width-c5217d089165b5a2.rlib
+│   │   │   ├── libunicode_width-c5217d089165b5a2.rmeta
+│   │   │   ├── liburl-d6d5aa3e134d6fc0.rlib
+│   │   │   ├── liburl-d6d5aa3e134d6fc0.rmeta
+│   │   │   ├── libutf16_iter-c5fcd9b76f83e9d8.rlib
+│   │   │   ├── libutf16_iter-c5fcd9b76f83e9d8.rmeta
+│   │   │   ├── libutf8-94061e1382b73c2e.rlib
+│   │   │   ├── libutf8-94061e1382b73c2e.rmeta
+│   │   │   ├── libutf8_iter-e813718db59d2564.rlib
+│   │   │   ├── libutf8_iter-e813718db59d2564.rmeta
+│   │   │   ├── libutf8parse-f9101bbfc8c4a22f.rlib
+│   │   │   ├── libutf8parse-f9101bbfc8c4a22f.rmeta
+│   │   │   ├── libvcpkg-b4965d619cabcc71.rlib
+│   │   │   ├── libvcpkg-b4965d619cabcc71.rmeta
+│   │   │   ├── libversion_check-fa06bb5476f5cf07.rlib
+│   │   │   ├── libversion_check-fa06bb5476f5cf07.rmeta
+│   │   │   ├── libvte-4fc4e2bcb960afe2.rlib
+│   │   │   ├── libvte-4fc4e2bcb960afe2.rmeta
+│   │   │   ├── [01;32mlibvte_generate_state_changes-ba7b9015a56fa2c6.so[0m
+│   │   │   ├── libwant-3f34c6a27efc2108.rlib
+│   │   │   ├── libwant-3f34c6a27efc2108.rmeta
+│   │   │   ├── libwrite16-2b73716480c36311.rlib
+│   │   │   ├── libwrite16-2b73716480c36311.rmeta
+│   │   │   ├── libwriteable-b058404de560152e.rlib
+│   │   │   ├── libwriteable-b058404de560152e.rmeta
+│   │   │   ├── libyoke-46ae6e490e56e9b1.rlib
+│   │   │   ├── libyoke-46ae6e490e56e9b1.rmeta
+│   │   │   ├── [01;32mlibyoke_derive-95931cd3f9c21742.so[0m
+│   │   │   ├── libzerocopy-c28fac8b6f72a885.rlib
+│   │   │   ├── libzerocopy-c28fac8b6f72a885.rmeta
+│   │   │   ├── [01;32mlibzerocopy_derive-67254db46ddc7747.so[0m
+│   │   │   ├── libzerofrom-24fd03360f2ec413.rlib
+│   │   │   ├── libzerofrom-24fd03360f2ec413.rmeta
+│   │   │   ├── [01;32mlibzerofrom_derive-ce1b547f4be0f866.so[0m
+│   │   │   ├── libzerovec-9f9cd6c3c0d97f69.rlib
+│   │   │   ├── libzerovec-9f9cd6c3c0d97f69.rmeta
+│   │   │   ├── [01;32mlibzerovec_derive-309484881fbeb8b9.so[0m
+│   │   │   ├── litemap-c22ddad105e11669.d
+│   │   │   ├── lock_api-0508c26befd7f227.d
+│   │   │   ├── log-e762ed97b40804f6.d
+│   │   │   ├── memchr-c05f65e1b611714a.d
+│   │   │   ├── mime-1d8c19b154c86676.d
+│   │   │   ├── mio-715062621d1e1089.d
+│   │   │   ├── mio-d1f8223e29ab5917.d
+│   │   │   ├── native_tls-29a861594575847d.d
+│   │   │   ├── once_cell-42f2ba6350fe3c01.d
+│   │   │   ├── openssl-d376af01dbefbe15.d
+│   │   │   ├── openssl_macros-b8ba494d85099431.d
+│   │   │   ├── openssl_probe-6cb1d7a01186040b.d
+│   │   │   ├── openssl_sys-16eee7eaa8d43161.d
+│   │   │   ├── parking_lot-a0a88aeef12f6a1d.d
+│   │   │   ├── parking_lot_core-86cb99668f78530d.d
+│   │   │   ├── percent_encoding-70ec8881d22b685d.d
+│   │   │   ├── pin_project-9d92663c3a09f255.d
+│   │   │   ├── pin_project_internal-ac2fb21082f9eae8.d
+│   │   │   ├── pin_project_lite-7b8441e52e71b56b.d
+│   │   │   ├── pin_utils-202af3b165b3d697.d
+│   │   │   ├── pkg_config-309b4518e178b7e9.d
+│   │   │   ├── ppv_lite86-00ed15bfda02047e.d
+│   │   │   ├── proc_macro2-3721922d88cbb31f.d
+│   │   │   ├── quote-f4882cd3ab71ed1f.d
+│   │   │   ├── rand-a470ef700cdee57d.d
+│   │   │   ├── rand_chacha-7c5212664e6e860e.d
+│   │   │   ├── rand_core-b580889945c30203.d
+│   │   │   ├── regex_automata-896b7c97e205c868.d
+│   │   │   ├── regex-eb9879dcdd716c5e.d
+│   │   │   ├── regex_syntax-6f4c90eba0197dd9.d
+│   │   │   ├── reqwest-12d91285d9b9da7d.d
+│   │   │   ├── ringbuf-5532d0884f37df50.d
+│   │   │   ├── rust_engineio-a86130e3c0c5a124.d
+│   │   │   ├── rustls_pemfile-b05950cbfeda8400.d
+│   │   │   ├── rustls_pki_types-75b4251f9472f185.d
+│   │   │   ├── rust_socketio-dc9b06f1680aa456.d
+│   │   │   ├── rustyline_async-7905c26c7eea3b5c.d
+│   │   │   ├── ryu-f684291f6278b276.d
+│   │   │   ├── scopeguard-754c88fd46a5186b.d
+│   │   │   ├── serde_derive-e3eb2e8594e6a609.d
+│   │   │   ├── serde-f41b1138cb4218c8.d
+│   │   │   ├── serde_json-c01b4a58cc6642dd.d
+│   │   │   ├── serde_urlencoded-5a4d0041302bfb9e.d
+│   │   │   ├── sha1-de902a903d98b64d.d
+│   │   │   ├── shlex-b294729b51f51c79.d
+│   │   │   ├── signal_hook-75e1a1f52ae3df54.d
+│   │   │   ├── signal_hook_mio-ad278f179ba0971c.d
+│   │   │   ├── signal_hook_registry-128f9963a792a85f.d
+│   │   │   ├── slab-9d3436517b04bb51.d
+│   │   │   ├── smallvec-f3703f406941ecc0.d
+│   │   │   ├── socket2-c8ce1d0df36ceada.d
+│   │   │   ├── stable_deref_trait-f4d4c83021544345.d
+│   │   │   ├── strip_ansi_escapes-6a57d533051436e2.d
+│   │   │   ├── syn-a3407b231ac63fe1.d
+│   │   │   ├── sync_wrapper-770b713263c982c5.d
+│   │   │   ├── synstructure-4dc0b12324ac0140.d
+│   │   │   ├── thingbuf-7948b310776d2255.d
+│   │   │   ├── thiserror-839706bb07f80014.d
+│   │   │   ├── thiserror_impl-0ce1c02869908fa4.d
+│   │   │   ├── tinystr-ecb44e6f29744d51.d
+│   │   │   ├── tokio-9866046a95e35d50.d
+│   │   │   ├── tokio_macros-9177a52175be956e.d
+│   │   │   ├── tokio_native_tls-af433c651eb186d5.d
+│   │   │   ├── tokio_tungstenite-551e867ea9485f75.d
+│   │   │   ├── tokio_util-5c5bc14125494545.d
+│   │   │   ├── tower_service-aa9d69d1ba662469.d
+│   │   │   ├── tracing-c1410a4892639ec0.d
+│   │   │   ├── tracing_core-0eda28f419e1a038.d
+│   │   │   ├── try_lock-2561b0487478381e.d
+│   │   │   ├── tungstenite-8cd739a85542bf88.d
+│   │   │   ├── typenum-ab5577945a405f27.d
+│   │   │   ├── unicode_ident-509f01f8cfa2ad43.d
+│   │   │   ├── unicode_segmentation-9f5952453252eb4f.d
+│   │   │   ├── unicode_width-c5217d089165b5a2.d
+│   │   │   ├── url-d6d5aa3e134d6fc0.d
+│   │   │   ├── utf16_iter-c5fcd9b76f83e9d8.d
+│   │   │   ├── utf8-94061e1382b73c2e.d
+│   │   │   ├── utf8_iter-e813718db59d2564.d
+│   │   │   ├── utf8parse-f9101bbfc8c4a22f.d
+│   │   │   ├── vcpkg-b4965d619cabcc71.d
+│   │   │   ├── version_check-fa06bb5476f5cf07.d
+│   │   │   ├── vte-4fc4e2bcb960afe2.d
+│   │   │   ├── vte_generate_state_changes-ba7b9015a56fa2c6.d
+│   │   │   ├── want-3f34c6a27efc2108.d
+│   │   │   ├── write16-2b73716480c36311.d
+│   │   │   ├── writeable-b058404de560152e.d
+│   │   │   ├── yoke-46ae6e490e56e9b1.d
+│   │   │   ├── yoke_derive-95931cd3f9c21742.d
+│   │   │   ├── zerocopy-c28fac8b6f72a885.d
+│   │   │   ├── zerocopy_derive-67254db46ddc7747.d
+│   │   │   ├── zerofrom-24fd03360f2ec413.d
+│   │   │   ├── zerofrom_derive-ce1b547f4be0f866.d
+│   │   │   ├── zerovec-9f9cd6c3c0d97f69.d
+│   │   │   └── zerovec_derive-309484881fbeb8b9.d
+│   │   ├── [01;34mexamples[0m
+│   │   └── [01;34mincremental[0m
+│   └── [01;34mrust-analyzer[0m
+│       ├── CACHEDIR.TAG
+│       └── [01;34mdebug[0m
+│           ├── [01;34mbuild[0m
+│           │   ├── [01;34mcrossbeam-utils-446d1ef4b96950c8[0m
+│           │   │   ├── [01;32mbuild-script-build[0m
+│           │   │   ├── [01;32mbuild_script_build-446d1ef4b96950c8[0m
+│           │   │   └── build_script_build-446d1ef4b96950c8.d
+│           │   ├── [01;34mcrossbeam-utils-bbf474c6b65d205b[0m
+│           │   │   ├── invoked.timestamp
+│           │   │   ├── [01;34mout[0m
+│           │   │   ├── output
+│           │   │   ├── root-output
+│           │   │   └── stderr
+│           │   ├── [01;34mgeneric-array-89ef1ec38c33c456[0m
+│           │   │   ├── invoked.timestamp
+│           │   │   ├── [01;34mout[0m
+│           │   │   ├── output
+│           │   │   ├── root-output
+│           │   │   └── stderr
+│           │   ├── [01;34mgeneric-array-bbb1b4adc13b5825[0m
+│           │   │   ├── [01;32mbuild-script-build[0m
+│           │   │   ├── [01;32mbuild_script_build-bbb1b4adc13b5825[0m
+│           │   │   └── build_script_build-bbb1b4adc13b5825.d
+│           │   ├── [01;34mhttparse-0c657a64cf22360c[0m
+│           │   │   ├── [01;32mbuild-script-build[0m
+│           │   │   ├── [01;32mbuild_script_build-0c657a64cf22360c[0m
+│           │   │   └── build_script_build-0c657a64cf22360c.d
+│           │   ├── [01;34mhttparse-b7ddbc1732f42730[0m
+│           │   │   ├── invoked.timestamp
+│           │   │   ├── [01;34mout[0m
+│           │   │   ├── output
+│           │   │   ├── root-output
+│           │   │   └── stderr
+│           │   ├── [01;34mlibc-bccf62bf177c686a[0m
+│           │   │   ├── [01;32mbuild-script-build[0m
+│           │   │   ├── [01;32mbuild_script_build-bccf62bf177c686a[0m
+│           │   │   └── build_script_build-bccf62bf177c686a.d
+│           │   ├── [01;34mlibc-c0960cf52f98a374[0m
+│           │   │   ├── invoked.timestamp
+│           │   │   ├── [01;34mout[0m
+│           │   │   ├── output
+│           │   │   ├── root-output
+│           │   │   └── stderr
+│           │   ├── [01;34mlock_api-aaceb35a151c5143[0m
+│           │   │   ├── invoked.timestamp
+│           │   │   ├── [01;34mout[0m
+│           │   │   │   └── autocfg_9661b5975c87d829_0.ll
+│           │   │   ├── output
+│           │   │   ├── root-output
+│           │   │   └── stderr
+│           │   ├── [01;34mlock_api-eed5564df30cc2f1[0m
+│           │   │   ├── [01;32mbuild-script-build[0m
+│           │   │   ├── [01;32mbuild_script_build-eed5564df30cc2f1[0m
+│           │   │   └── build_script_build-eed5564df30cc2f1.d
+│           │   ├── [01;34mnative-tls-500ec0013c9adc51[0m
+│           │   │   ├── [01;32mbuild-script-build[0m
+│           │   │   ├── [01;32mbuild_script_build-500ec0013c9adc51[0m
+│           │   │   └── build_script_build-500ec0013c9adc51.d
+│           │   ├── [01;34mnative-tls-d6af9607f4ee0f1f[0m
+│           │   │   ├── invoked.timestamp
+│           │   │   ├── [01;34mout[0m
+│           │   │   ├── output
+│           │   │   ├── root-output
+│           │   │   └── stderr
+│           │   ├── [01;34mopenssl-0c701c1bb710e4f3[0m
+│           │   │   ├── invoked.timestamp
+│           │   │   ├── [01;34mout[0m
+│           │   │   ├── output
+│           │   │   ├── root-output
+│           │   │   └── stderr
+│           │   ├── [01;34mopenssl-5805cf97a6ebd5fc[0m
+│           │   │   ├── [01;32mbuild-script-build[0m
+│           │   │   ├── [01;32mbuild_script_build-5805cf97a6ebd5fc[0m
+│           │   │   └── build_script_build-5805cf97a6ebd5fc.d
+│           │   ├── [01;34mopenssl-sys-3b6c51198ee70d07[0m
+│           │   │   ├── invoked.timestamp
+│           │   │   ├── [01;34mout[0m
+│           │   │   ├── output
+│           │   │   ├── root-output
+│           │   │   └── stderr
+│           │   ├── [01;34mopenssl-sys-b4577b3857091676[0m
+│           │   │   ├── [01;32mbuild-script-main[0m
+│           │   │   ├── [01;32mbuild_script_main-b4577b3857091676[0m
+│           │   │   └── build_script_main-b4577b3857091676.d
+│           │   ├── [01;34mparking_lot_core-8614341151da47b8[0m
+│           │   │   ├── [01;32mbuild-script-build[0m
+│           │   │   ├── [01;32mbuild_script_build-8614341151da47b8[0m
+│           │   │   └── build_script_build-8614341151da47b8.d
+│           │   ├── [01;34mparking_lot_core-904fa35206e1808d[0m
+│           │   │   ├── invoked.timestamp
+│           │   │   ├── [01;34mout[0m
+│           │   │   ├── output
+│           │   │   ├── root-output
+│           │   │   └── stderr
+│           │   ├── [01;34mproc-macro2-748f23fb1a226d22[0m
+│           │   │   ├── [01;32mbuild-script-build[0m
+│           │   │   ├── [01;32mbuild_script_build-748f23fb1a226d22[0m
+│           │   │   └── build_script_build-748f23fb1a226d22.d
+│           │   ├── [01;34mproc-macro2-e699f14ed852563f[0m
+│           │   │   ├── invoked.timestamp
+│           │   │   ├── [01;34mout[0m
+│           │   │   ├── output
+│           │   │   ├── root-output
+│           │   │   └── stderr
+│           │   ├── [01;34mserde-5e4f59f3077b4351[0m
+│           │   │   ├── [01;32mbuild-script-build[0m
+│           │   │   ├── [01;32mbuild_script_build-5e4f59f3077b4351[0m
+│           │   │   └── build_script_build-5e4f59f3077b4351.d
+│           │   ├── [01;34mserde-63c0c250311080c3[0m
+│           │   │   ├── invoked.timestamp
+│           │   │   ├── [01;34mout[0m
+│           │   │   ├── output
+│           │   │   ├── root-output
+│           │   │   └── stderr
+│           │   ├── [01;34mserde_json-0872c1f4d5ddfecd[0m
+│           │   │   ├── invoked.timestamp
+│           │   │   ├── [01;34mout[0m
+│           │   │   ├── output
+│           │   │   ├── root-output
+│           │   │   └── stderr
+│           │   ├── [01;34mserde_json-766bfe2f7215f288[0m
+│           │   │   ├── [01;32mbuild-script-build[0m
+│           │   │   ├── [01;32mbuild_script_build-766bfe2f7215f288[0m
+│           │   │   └── build_script_build-766bfe2f7215f288.d
+│           │   ├── [01;34msignal-hook-7b71779eefd93db6[0m
+│           │   │   ├── [01;32mbuild-script-build[0m
+│           │   │   ├── [01;32mbuild_script_build-7b71779eefd93db6[0m
+│           │   │   └── build_script_build-7b71779eefd93db6.d
+│           │   ├── [01;34msignal-hook-b08332a5ab7ef2c3[0m
+│           │   │   ├── invoked.timestamp
+│           │   │   ├── [01;34mout[0m
+│           │   │   ├── output
+│           │   │   ├── root-output
+│           │   │   └── stderr
+│           │   ├── [01;34mslab-a930779af5811693[0m
+│           │   │   ├── invoked.timestamp
+│           │   │   ├── [01;34mout[0m
+│           │   │   │   └── autocfg_f069bc44c195fa4f_0.ll
+│           │   │   ├── output
+│           │   │   ├── root-output
+│           │   │   └── stderr
+│           │   ├── [01;34mslab-c0a0507d27e30efc[0m
+│           │   │   ├── [01;32mbuild-script-build[0m
+│           │   │   ├── [01;32mbuild_script_build-c0a0507d27e30efc[0m
+│           │   │   └── build_script_build-c0a0507d27e30efc.d
+│           │   ├── [01;34mthiserror-4a4d66799d753ea3[0m
+│           │   │   ├── invoked.timestamp
+│           │   │   ├── [01;34mout[0m
+│           │   │   ├── output
+│           │   │   ├── root-output
+│           │   │   └── stderr
+│           │   ├── [01;34mthiserror-bb699b5d809530be[0m
+│           │   │   ├── [01;32mbuild-script-build[0m
+│           │   │   ├── [01;32mbuild_script_build-bb699b5d809530be[0m
+│           │   │   └── build_script_build-bb699b5d809530be.d
+│           │   ├── [01;34mtypenum-5f43c101acb5d9fa[0m
+│           │   │   ├── invoked.timestamp
+│           │   │   ├── [01;34mout[0m
+│           │   │   │   ├── consts.rs
+│           │   │   │   ├── op.rs
+│           │   │   │   └── tests.rs
+│           │   │   ├── output
+│           │   │   ├── root-output
+│           │   │   └── stderr
+│           │   └── [01;34mtypenum-ba5380f4f2932d28[0m
+│           │       ├── [01;32mbuild-script-main[0m
+│           │       ├── [01;32mbuild_script_main-ba5380f4f2932d28[0m
+│           │       └── build_script_main-ba5380f4f2932d28.d
+│           ├── [01;34mdeps[0m
+│           │   ├── adler32-297ba5bfd72ea221.d
+│           │   ├── aho_corasick-8555408cfc02a94e.d
+│           │   ├── ansi_to_html-b61d9b5aae00162c.d
+│           │   ├── anstream-4650cbff411975a0.d
+│           │   ├── anstyle-16dc1bd2341c4821.d
+│           │   ├── anstyle_parse-7cf2dfbe6ac22c52.d
+│           │   ├── anstyle_query-0996282cc96a408b.d
+│           │   ├── async_stream-3075263bd91e67d1.d
+│           │   ├── async_stream_impl-9efe000700accba2.d
+│           │   ├── async_trait-1c52ad8d8a771312.d
+│           │   ├── atomic_waker-ef9aa886e151d74e.d
+│           │   ├── autocfg-2c35fac7e550c966.d
+│           │   ├── backoff-27e205588d304333.d
+│           │   ├── base64-0f59129b8e0dbc2d.d
+│           │   ├── base64-5b4bb36afce686df.d
+│           │   ├── bitflags-04194a51d71f18e8.d
+│           │   ├── block_buffer-643da53d82a058ae.d
+│           │   ├── byteorder-f457975fa4e321fd.d
+│           │   ├── bytes-cce76f95b27a7929.d
+│           │   ├── cc-56fe6666a11bf3b3.d
+│           │   ├── cfg_if-28569b4d9cc7a1cd.d
+│           │   ├── colorchoice-c2d88821b40d30d3.d
+│           │   ├── cpufeatures-54604265ce00d3f5.d
+│           │   ├── crossbeam_utils-cad35d6393bc5c9c.d
+│           │   ├── crossterm-18664718fe906cf1.d
+│           │   ├── crypto_common-8b5847e8231cc6c5.d
+│           │   ├── data_encoding-8398fb76b0864980.d
+│           │   ├── digest-15870b9d0b65784b.d
+│           │   ├── displaydoc-3f86c7962d8cf3c9.d
+│           │   ├── encoding_rs-8b9a3c2917d28ca4.d
+│           │   ├── env_filter-9f869c3b8570ab49.d
+│           │   ├── env_logger-79e1b59122b6129a.d
+│           │   ├── equivalent-86abc2f8731a507d.d
+│           │   ├── fnv-5a700c0db21a1777.d
+│           │   ├── foreign_types-ae6494d706c94c20.d
+│           │   ├── foreign_types_shared-02121033fcd0ffd3.d
+│           │   ├── form_urlencoded-6e627ec03ca95ee7.d
+│           │   ├── futures_channel-560b4f99ac445845.d
+│           │   ├── futures_core-b73404804866eb4a.d
+│           │   ├── futures_io-aa73bc27f3e69e14.d
+│           │   ├── futures_macro-2eeb1dbde82b657f.d
+│           │   ├── futures_sink-0320f5700def69ae.d
+│           │   ├── futures_task-3c8abf416d07b3d4.d
+│           │   ├── futures_util-f6f3fb2623a691bb.d
+│           │   ├── generic_array-6ce25106cb871d0e.d
+│           │   ├── getrandom-79b6d8dae4f539d1.d
+│           │   ├── h2-e58033f0b0217a03.d
+│           │   ├── hashbrown-7e0f8bf8ac627e6c.d
+│           │   ├── host-24f13494754b16b9.d
+│           │   ├── host-918ab55d85d41921.d
+│           │   ├── http-a602736787a4bcbc.d
+│           │   ├── httparse-db35bd54d77757aa.d
+│           │   ├── http_body-3ee4b2be87ba11e9.d
+│           │   ├── http_body_util-c3e7fcc9975ff819.d
+│           │   ├── humantime-3e75bfb5ce315183.d
+│           │   ├── hyper-41d5770fbbffe965.d
+│           │   ├── hyper_tls-71e99774cc486174.d
+│           │   ├── hyper_util-58dd6b21a997373b.d
+│           │   ├── icu_collections-f4f86a76dbd1d190.d
+│           │   ├── icu_locid-1d44a14604ad7c1c.d
+│           │   ├── icu_locid_transform_data-33d949a5f9899db9.d
+│           │   ├── icu_locid_transform-ed6db60cd83fffdf.d
+│           │   ├── icu_normalizer_data-27d3f3cc6a5366dc.d
+│           │   ├── icu_normalizer-fdd118d635f02980.d
+│           │   ├── icu_properties_data-40a47f7331cb9d70.d
+│           │   ├── icu_properties-ea694c5ad4f1aaab.d
+│           │   ├── icu_provider-9125ddeb94938682.d
+│           │   ├── icu_provider_macros-5790be96f92912c1.d
+│           │   ├── idna-03fe79e13dd8ca25.d
+│           │   ├── idna_adapter-dd6f1f02351317cd.d
+│           │   ├── indexmap-1cbef14da2d2e185.d
+│           │   ├── instant-96ed7ba50dab570b.d
+│           │   ├── ipnet-bd4ae6181584902a.d
+│           │   ├── is_terminal_polyfill-21d34215414b031b.d
+│           │   ├── itoa-a683cbfaf97156bd.d
+│           │   ├── lazy_static-7cd3fce87eb6d5b9.d
+│           │   ├── libadler32-297ba5bfd72ea221.rmeta
+│           │   ├── libaho_corasick-8555408cfc02a94e.rmeta
+│           │   ├── libansi_to_html-b61d9b5aae00162c.rmeta
+│           │   ├── libanstream-4650cbff411975a0.rmeta
+│           │   ├── libanstyle-16dc1bd2341c4821.rmeta
+│           │   ├── libanstyle_parse-7cf2dfbe6ac22c52.rmeta
+│           │   ├── libanstyle_query-0996282cc96a408b.rmeta
+│           │   ├── libasync_stream-3075263bd91e67d1.rmeta
+│           │   ├── [01;32mlibasync_stream_impl-9efe000700accba2.so[0m
+│           │   ├── [01;32mlibasync_trait-1c52ad8d8a771312.so[0m
+│           │   ├── libatomic_waker-ef9aa886e151d74e.rmeta
+│           │   ├── libautocfg-2c35fac7e550c966.rlib
+│           │   ├── libautocfg-2c35fac7e550c966.rmeta
+│           │   ├── libbackoff-27e205588d304333.rmeta
+│           │   ├── libbase64-0f59129b8e0dbc2d.rmeta
+│           │   ├── libbase64-5b4bb36afce686df.rmeta
+│           │   ├── libbitflags-04194a51d71f18e8.rmeta
+│           │   ├── libblock_buffer-643da53d82a058ae.rmeta
+│           │   ├── libbyteorder-f457975fa4e321fd.rmeta
+│           │   ├── libbytes-cce76f95b27a7929.rmeta
+│           │   ├── libc-8073b5f280a8bcfb.d
+│           │   ├── libcc-56fe6666a11bf3b3.rlib
+│           │   ├── libcc-56fe6666a11bf3b3.rmeta
+│           │   ├── libcfg_if-28569b4d9cc7a1cd.rmeta
+│           │   ├── libcolorchoice-c2d88821b40d30d3.rmeta
+│           │   ├── libcpufeatures-54604265ce00d3f5.rmeta
+│           │   ├── libcrossbeam_utils-cad35d6393bc5c9c.rmeta
+│           │   ├── libcrossterm-18664718fe906cf1.rmeta
+│           │   ├── libcrypto_common-8b5847e8231cc6c5.rmeta
+│           │   ├── libdata_encoding-8398fb76b0864980.rmeta
+│           │   ├── libdigest-15870b9d0b65784b.rmeta
+│           │   ├── [01;32mlibdisplaydoc-3f86c7962d8cf3c9.so[0m
+│           │   ├── libencoding_rs-8b9a3c2917d28ca4.rmeta
+│           │   ├── libenv_filter-9f869c3b8570ab49.rmeta
+│           │   ├── libenv_logger-79e1b59122b6129a.rmeta
+│           │   ├── libequivalent-86abc2f8731a507d.rmeta
+│           │   ├── libfnv-5a700c0db21a1777.rmeta
+│           │   ├── libforeign_types-ae6494d706c94c20.rmeta
+│           │   ├── libforeign_types_shared-02121033fcd0ffd3.rmeta
+│           │   ├── libform_urlencoded-6e627ec03ca95ee7.rmeta
+│           │   ├── libfutures_channel-560b4f99ac445845.rmeta
+│           │   ├── libfutures_core-b73404804866eb4a.rmeta
+│           │   ├── libfutures_io-aa73bc27f3e69e14.rmeta
+│           │   ├── [01;32mlibfutures_macro-2eeb1dbde82b657f.so[0m
+│           │   ├── libfutures_sink-0320f5700def69ae.rmeta
+│           │   ├── libfutures_task-3c8abf416d07b3d4.rmeta
+│           │   ├── libfutures_util-f6f3fb2623a691bb.rmeta
+│           │   ├── libgeneric_array-6ce25106cb871d0e.rmeta
+│           │   ├── libgetrandom-79b6d8dae4f539d1.rmeta
+│           │   ├── libh2-e58033f0b0217a03.rmeta
+│           │   ├── libhashbrown-7e0f8bf8ac627e6c.rmeta
+│           │   ├── libhost-24f13494754b16b9.rmeta
+│           │   ├── libhost-918ab55d85d41921.rmeta
+│           │   ├── libhttp-a602736787a4bcbc.rmeta
+│           │   ├── libhttparse-db35bd54d77757aa.rmeta
+│           │   ├── libhttp_body-3ee4b2be87ba11e9.rmeta
+│           │   ├── libhttp_body_util-c3e7fcc9975ff819.rmeta
+│           │   ├── libhumantime-3e75bfb5ce315183.rmeta
+│           │   ├── libhyper-41d5770fbbffe965.rmeta
+│           │   ├── libhyper_tls-71e99774cc486174.rmeta
+│           │   ├── libhyper_util-58dd6b21a997373b.rmeta
+│           │   ├── libicu_collections-f4f86a76dbd1d190.rmeta
+│           │   ├── libicu_locid-1d44a14604ad7c1c.rmeta
+│           │   ├── libicu_locid_transform_data-33d949a5f9899db9.rmeta
+│           │   ├── libicu_locid_transform-ed6db60cd83fffdf.rmeta
+│           │   ├── libicu_normalizer_data-27d3f3cc6a5366dc.rmeta
+│           │   ├── libicu_normalizer-fdd118d635f02980.rmeta
+│           │   ├── libicu_properties_data-40a47f7331cb9d70.rmeta
+│           │   ├── libicu_properties-ea694c5ad4f1aaab.rmeta
+│           │   ├── libicu_provider-9125ddeb94938682.rmeta
+│           │   ├── [01;32mlibicu_provider_macros-5790be96f92912c1.so[0m
+│           │   ├── libidna-03fe79e13dd8ca25.rmeta
+│           │   ├── libidna_adapter-dd6f1f02351317cd.rmeta
+│           │   ├── libindexmap-1cbef14da2d2e185.rmeta
+│           │   ├── libinstant-96ed7ba50dab570b.rmeta
+│           │   ├── libipnet-bd4ae6181584902a.rmeta
+│           │   ├── libis_terminal_polyfill-21d34215414b031b.rmeta
+│           │   ├── libitoa-a683cbfaf97156bd.rmeta
+│           │   ├── liblazy_static-7cd3fce87eb6d5b9.rmeta
+│           │   ├── liblibc-8073b5f280a8bcfb.rmeta
+│           │   ├── liblitemap-3604895f4203cf67.rmeta
+│           │   ├── liblock_api-ca88bce803530db6.rmeta
+│           │   ├── liblog-2b99c40b35786b5c.rmeta
+│           │   ├── libmemchr-9609b884b32b39e5.rmeta
+│           │   ├── libmime-9fbd22b1793bcb1d.rmeta
+│           │   ├── libmio-5a901c759cc46feb.rmeta
+│           │   ├── libmio-df318ba243817986.rmeta
+│           │   ├── libnative_tls-ca88674299fbea50.rmeta
+│           │   ├── libonce_cell-e43c01b10f2dbc5e.rmeta
+│           │   ├── libopenssl-06682d32ff0a9e1c.rmeta
+│           │   ├── [01;32mlibopenssl_macros-d61f12222788fa27.so[0m
+│           │   ├── libopenssl_probe-4c2cb484e8a9e0ff.rmeta
+│           │   ├── libopenssl_sys-2860827a9d75b6ef.rmeta
+│           │   ├── libparking_lot_core-ae10919cf2c755be.rmeta
+│           │   ├── libparking_lot-daf9cede7355a5d6.rmeta
+│           │   ├── libpercent_encoding-1acbb5d5c0c2a0fb.rmeta
+│           │   ├── libpin_project-1d85556fcaa050a6.rmeta
+│           │   ├── [01;32mlibpin_project_internal-a5f812927f7669ee.so[0m
+│           │   ├── libpin_project_lite-9c9b79dd3117154e.rmeta
+│           │   ├── libpin_utils-da693eaa495cde2e.rmeta
+│           │   ├── libpkg_config-120c7066f094a743.rlib
+│           │   ├── libpkg_config-120c7066f094a743.rmeta
+│           │   ├── libppv_lite86-71d762338d42ecad.rmeta
+│           │   ├── libproc_macro2-ea84fab1bb9a207c.rlib
+│           │   ├── libproc_macro2-ea84fab1bb9a207c.rmeta
+│           │   ├── libquote-9ae4553a06acae1e.rlib
+│           │   ├── libquote-9ae4553a06acae1e.rmeta
+│           │   ├── librand-cddcf4496881c269.rmeta
+│           │   ├── librand_chacha-be15adc539ca96cc.rmeta
+│           │   ├── librand_core-9cc841f90ca130b0.rmeta
+│           │   ├── libregex_automata-2af32f4c0e3e3f6b.rmeta
+│           │   ├── libregex-fb106a008b0591ee.rmeta
+│           │   ├── libregex_syntax-c36b6c87e4dcab35.rmeta
+│           │   ├── libreqwest-1dda8483d4f68312.rmeta
+│           │   ├── libringbuf-60cc3a9fa2414deb.rmeta
+│           │   ├── librust_engineio-adb7afe8a265aeff.rmeta
+│           │   ├── librustls_pemfile-abb9ce3262991730.rmeta
+│           │   ├── librustls_pki_types-f31d7858f34ce29d.rmeta
+│           │   ├── librust_socketio-4c0985e5a03fa18c.rmeta
+│           │   ├── librustyline_async-7c92911c68b8bc13.rmeta
+│           │   ├── libryu-e9965db3940a4197.rmeta
+│           │   ├── libscopeguard-8973bb154cffaf5f.rmeta
+│           │   ├── [01;32mlibserde_derive-b4dc03cbcca6d0ed.so[0m
+│           │   ├── libserde-f070d6298493e895.rmeta
+│           │   ├── libserde_json-3347e7a95efae56a.rmeta
+│           │   ├── libserde_urlencoded-6e624eca9f597a1f.rmeta
+│           │   ├── libsha1-761032dd3db01aa6.rmeta
+│           │   ├── libshlex-f4c3659040844f7b.rlib
+│           │   ├── libshlex-f4c3659040844f7b.rmeta
+│           │   ├── libsignal_hook-9077da011f1a3e13.rmeta
+│           │   ├── libsignal_hook_mio-418dae586082d487.rmeta
+│           │   ├── libsignal_hook_registry-4e25d5d9b2e1218e.rmeta
+│           │   ├── libslab-c13d54688b66d7a8.rmeta
+│           │   ├── libsmallvec-087250fcd5cd6351.rmeta
+│           │   ├── libsocket2-6e3b338f58a35295.rmeta
+│           │   ├── libstable_deref_trait-4ee7b907006f9aef.rmeta
+│           │   ├── libstrip_ansi_escapes-d01a56c369999746.rmeta
+│           │   ├── libsyn-883f52e00e2d6eb2.rlib
+│           │   ├── libsyn-883f52e00e2d6eb2.rmeta
+│           │   ├── libsync_wrapper-66bdaa3c98b1899a.rmeta
+│           │   ├── libsynstructure-3210c8d5ec484649.rlib
+│           │   ├── libsynstructure-3210c8d5ec484649.rmeta
+│           │   ├── libthingbuf-0ff23912412206c2.rmeta
+│           │   ├── libthiserror-a6c9b356b8632d60.rmeta
+│           │   ├── [01;32mlibthiserror_impl-9982b6e6d85712e2.so[0m
+│           │   ├── libtinystr-bedb0dc6434d02af.rmeta
+│           │   ├── libtokio-c113270af8d03cf8.rmeta
+│           │   ├── [01;32mlibtokio_macros-2310ed3e261d3e53.so[0m
+│           │   ├── libtokio_native_tls-1af3333406d75b5f.rmeta
+│           │   ├── libtokio_tungstenite-d0c9f495b292eca8.rmeta
+│           │   ├── libtokio_util-f62c830a2d046522.rmeta
+│           │   ├── libtower_service-df6458538f150e15.rmeta
+│           │   ├── libtracing-1414cc8c5f5c5ca8.rmeta
+│           │   ├── libtracing_core-ea6f311bf668c950.rmeta
+│           │   ├── libtry_lock-5b250ee07148e6b1.rmeta
+│           │   ├── libtungstenite-39558e3e9323168e.rmeta
+│           │   ├── libtypenum-1d6ab7b7d1feadca.rmeta
+│           │   ├── libunicode_ident-c1d05c67d34096ea.rlib
+│           │   ├── libunicode_ident-c1d05c67d34096ea.rmeta
+│           │   ├── libunicode_segmentation-325e0d93c7255321.rmeta
+│           │   ├── libunicode_width-5f63042d22b275fa.rmeta
+│           │   ├── liburl-002930fec4239028.rmeta
+│           │   ├── libutf16_iter-1c0d42585f9454de.rmeta
+│           │   ├── libutf8-7d6e5c4eba13bfa0.rmeta
+│           │   ├── libutf8_iter-4e8da3711efa0fec.rmeta
+│           │   ├── libutf8parse-73e69f71b42bc6d2.rmeta
+│           │   ├── libvcpkg-65f69b1e115cb203.rlib
+│           │   ├── libvcpkg-65f69b1e115cb203.rmeta
+│           │   ├── libversion_check-e39cc59db5cde1cc.rlib
+│           │   ├── libversion_check-e39cc59db5cde1cc.rmeta
+│           │   ├── libvte-dbb78e297a7b3b9a.rmeta
+│           │   ├── [01;32mlibvte_generate_state_changes-a5defc2e76ee10db.so[0m
+│           │   ├── libwant-639c7bc71e7a5fd4.rmeta
+│           │   ├── libwrite16-17982ffe0354ad04.rmeta
+│           │   ├── libwriteable-79f2d817380cfb2e.rmeta
+│           │   ├── libyoke-1c1c7bde6255c25d.rmeta
+│           │   ├── [01;32mlibyoke_derive-71a87b4c8e5df631.so[0m
+│           │   ├── libzerocopy-96a8d6efa5354703.rmeta
+│           │   ├── [01;32mlibzerocopy_derive-c6e6a0d9a43cd297.so[0m
+│           │   ├── libzerofrom-7cc196291b248ce4.rmeta
+│           │   ├── [01;32mlibzerofrom_derive-8e19cceb24b9038b.so[0m
+│           │   ├── libzerovec-d3a957f9b1e28192.rmeta
+│           │   ├── [01;32mlibzerovec_derive-340b2fa30eb51769.so[0m
+│           │   ├── litemap-3604895f4203cf67.d
+│           │   ├── lock_api-ca88bce803530db6.d
+│           │   ├── log-2b99c40b35786b5c.d
+│           │   ├── memchr-9609b884b32b39e5.d
+│           │   ├── mime-9fbd22b1793bcb1d.d
+│           │   ├── mio-5a901c759cc46feb.d
+│           │   ├── mio-df318ba243817986.d
+│           │   ├── native_tls-ca88674299fbea50.d
+│           │   ├── once_cell-e43c01b10f2dbc5e.d
+│           │   ├── openssl-06682d32ff0a9e1c.d
+│           │   ├── openssl_macros-d61f12222788fa27.d
+│           │   ├── openssl_probe-4c2cb484e8a9e0ff.d
+│           │   ├── openssl_sys-2860827a9d75b6ef.d
+│           │   ├── parking_lot_core-ae10919cf2c755be.d
+│           │   ├── parking_lot-daf9cede7355a5d6.d
+│           │   ├── percent_encoding-1acbb5d5c0c2a0fb.d
+│           │   ├── pin_project-1d85556fcaa050a6.d
+│           │   ├── pin_project_internal-a5f812927f7669ee.d
+│           │   ├── pin_project_lite-9c9b79dd3117154e.d
+│           │   ├── pin_utils-da693eaa495cde2e.d
+│           │   ├── pkg_config-120c7066f094a743.d
+│           │   ├── ppv_lite86-71d762338d42ecad.d
+│           │   ├── proc_macro2-ea84fab1bb9a207c.d
+│           │   ├── quote-9ae4553a06acae1e.d
+│           │   ├── rand-cddcf4496881c269.d
+│           │   ├── rand_chacha-be15adc539ca96cc.d
+│           │   ├── rand_core-9cc841f90ca130b0.d
+│           │   ├── regex_automata-2af32f4c0e3e3f6b.d
+│           │   ├── regex-fb106a008b0591ee.d
+│           │   ├── regex_syntax-c36b6c87e4dcab35.d
+│           │   ├── reqwest-1dda8483d4f68312.d
+│           │   ├── ringbuf-60cc3a9fa2414deb.d
+│           │   ├── rust_engineio-adb7afe8a265aeff.d
+│           │   ├── rustls_pemfile-abb9ce3262991730.d
+│           │   ├── rustls_pki_types-f31d7858f34ce29d.d
+│           │   ├── rust_socketio-4c0985e5a03fa18c.d
+│           │   ├── rustyline_async-7c92911c68b8bc13.d
+│           │   ├── ryu-e9965db3940a4197.d
+│           │   ├── scopeguard-8973bb154cffaf5f.d
+│           │   ├── serde_derive-b4dc03cbcca6d0ed.d
+│           │   ├── serde-f070d6298493e895.d
+│           │   ├── serde_json-3347e7a95efae56a.d
+│           │   ├── serde_urlencoded-6e624eca9f597a1f.d
+│           │   ├── sha1-761032dd3db01aa6.d
+│           │   ├── shlex-f4c3659040844f7b.d
+│           │   ├── signal_hook-9077da011f1a3e13.d
+│           │   ├── signal_hook_mio-418dae586082d487.d
+│           │   ├── signal_hook_registry-4e25d5d9b2e1218e.d
+│           │   ├── slab-c13d54688b66d7a8.d
+│           │   ├── smallvec-087250fcd5cd6351.d
+│           │   ├── socket2-6e3b338f58a35295.d
+│           │   ├── stable_deref_trait-4ee7b907006f9aef.d
+│           │   ├── strip_ansi_escapes-d01a56c369999746.d
+│           │   ├── syn-883f52e00e2d6eb2.d
+│           │   ├── sync_wrapper-66bdaa3c98b1899a.d
+│           │   ├── synstructure-3210c8d5ec484649.d
+│           │   ├── thingbuf-0ff23912412206c2.d
+│           │   ├── thiserror-a6c9b356b8632d60.d
+│           │   ├── thiserror_impl-9982b6e6d85712e2.d
+│           │   ├── tinystr-bedb0dc6434d02af.d
+│           │   ├── tokio-c113270af8d03cf8.d
+│           │   ├── tokio_macros-2310ed3e261d3e53.d
+│           │   ├── tokio_native_tls-1af3333406d75b5f.d
+│           │   ├── tokio_tungstenite-d0c9f495b292eca8.d
+│           │   ├── tokio_util-f62c830a2d046522.d
+│           │   ├── tower_service-df6458538f150e15.d
+│           │   ├── tracing-14
